@@ -61,3 +61,7 @@
 [2013-01-11 11:20:06] event.DEBUG: Notified event "kernel.response" to listener "Symfony\Bundle\WebProfilerBundle\EventListener\WebDebugToolbarListener::onKernelResponse". [] []
 [2013-01-11 11:20:06] event.DEBUG: Notified event "kernel.response" to listener "Symfony\Component\HttpKernel\EventListener\StreamedResponseListener::onKernelResponse". [] []
 [2013-01-11 11:20:06] event.DEBUG: Notified event "kernel.terminate" to listener "Symfony\Bundle\SwiftmailerBundle\EventListener\EmailSenderListener::onKernelTerminate". [] []
+[2013-01-12 21:46:17] doctrine.DEBUG: SHOW FULL TABLES WHERE Table_type = 'BASE TABLE' [] []
+[2013-01-12 21:46:27] doctrine.DEBUG: SHOW FULL TABLES WHERE Table_type = 'BASE TABLE' [] []
+[2013-01-12 21:46:27] doctrine.DEBUG: SHOW FULL TABLES WHERE Table_type = 'BASE TABLE' [] []
+[2013-01-12 21:46:27] doctrine.DEBUG: CREATE TABLE StatutPartenaire (stp_id INT AUTO_INCREMENT NOT NULL, stp_libelle VARCHAR(255) NOT NULL, PRIMARY KEY(stp_id)) DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci ENGINE = InnoDB [] []
