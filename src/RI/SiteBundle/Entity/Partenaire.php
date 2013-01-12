@@ -56,12 +56,18 @@ class Partenaire
      */
     private $par_coordonnees;
 
-
+    /**
+     *@ORM\ManyToOne(targetEntity="RI\SiteBundle\Entity\StatutPartenaire")
+     *@ORM\JoinColumn(nullable=false)
+     */
+    
+    private $statutpartenaire;
+    
     /**
      * Get id
      *
      * @return integer 
-     */
+     */    
     public function getId()
     {
         return $this->id;
@@ -180,5 +186,28 @@ class Partenaire
     public function getParCoordonnees()
     {
         return $this->par_coordonnees;
+    }
+
+    /**
+     * Set statutpartenaire
+     *
+     * @param \RI\SiteBundle\Entity\StatutPartenaire $statutpartenaire
+     * @return Partenaire
+     */
+    public function setStatutpartenaire(\RI\SiteBundle\Entity\StatutPartenaire $statutpartenaire)
+    {
+        $this->statutpartenaire = $statutpartenaire;
+    
+        return $this;
+    }
+
+    /**
+     * Get statutpartenaire
+     *
+     * @return \RI\SiteBundle\Entity\StatutPartenaire 
+     */
+    public function getStatutpartenaire()
+    {
+        return $this->statutpartenaire;
     }
 }
