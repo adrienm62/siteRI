@@ -1,4 +1,4 @@
-<?phpph
+<?php
 
 namespace RI\SiteBundle\Entity;
 
@@ -19,7 +19,7 @@ class StatutPartenaire
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
-    private $stp_id;
+    private $id;
 
     /**
      * @var string
@@ -36,7 +36,7 @@ class StatutPartenaire
      */
     public function getId()
     {
-        return $this->stp_id;
+        return $this->id;
     }
 
     /**
