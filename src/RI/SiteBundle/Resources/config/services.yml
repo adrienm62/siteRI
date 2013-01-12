@@ -1,0 +1,7 @@
+parameters:
+#    ri_site.example.class: RI\SiteBundle\Example
+
+services:
+#    ri_site.example:
+#        class: %ri_site.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

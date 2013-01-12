@@ -1,0 +1,26 @@
+ri_site_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: RISiteBundle:Default:index }
+    
+    
+    
+risite_accueil:
+   pattern: /accueil
+   defaults: { _controller: RiSiteBundle:Site:index }
+
+risite_etudiant:
+    pattern: /etudiant/{id}
+    defaults: { _controller: RiSiteBundle:Site:voirEtudiant }
+
+risite_partenaire:
+    pattern: /partenaire/{id}
+    defaults: { _controller: RiSiteBundle:Site:voirPartenaire }
+    
+    
+risite_contact:
+    pattern: /contact/{id}
+    defaults: { _controller: RiSiteBundle:Site:voirContact }
+    
+risite_test:
+    pattern: /test
+    defaults: { _controller: RiSiteBundle:Site:test}
