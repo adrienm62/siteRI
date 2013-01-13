@@ -62,8 +62,14 @@ class Contact
      * @ORM\Column(name="cont_mdp", type="text")
      */
     private $cont_mdp;
-
-
+    
+    /**
+     *
+     *@ORM\OneToMany(targetEntity="RI\SiteBundle\Entity\Partenaire", mappedBy="contact")
+     *@ORM\JoinColumn(nullable=false)
+     */
+    
+    private $partenaire;
     /**
      * Get id
      *
@@ -210,5 +216,45 @@ class Contact
     public function getContMdp()
     {
         return $this->cont_mdp;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->partenaire = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add partenaire
+     *
+     * @param \RI\SiteBundle\Entity\Partenaire $partenaire
+     * @return Contact
+     */
+    public function addPartenaire(\RI\SiteBundle\Entity\Partenaire $partenaire)
+    {
+        $this->partenaire[] = $partenaire;
+    
+        return $this;
+    }
+
+    /**
+     * Remove partenaire
+     *
+     * @param \RI\SiteBundle\Entity\Partenaire $partenaire
+     */
+    public function removePartenaire(\RI\SiteBundle\Entity\Partenaire $partenaire)
+    {
+        $this->partenaire->removeElement($partenaire);
+    }
+
+    /**
+     * Get partenaire
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getPartenaire()
+    {
+        return $this->partenaire;
     }
 }

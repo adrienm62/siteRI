@@ -64,6 +64,13 @@ class Partenaire
     private $statutpartenaire;
     
     /**
+     *@ORM\ManyToOne(targetEntity="RI/SiteBundle/Entity/Contact", inversedBy="partenaire")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    
+    private $contacts;
+    
+    /**
      * Get id
      *
      * @return integer 
@@ -209,5 +216,28 @@ class Partenaire
     public function getStatutpartenaire()
     {
         return $this->statutpartenaire;
+    }
+
+    /**
+     * Set contacts
+     *
+     * @param \RI\SiteBundle\Entity\RI/SiteBundle/Entity/Contact $contacts
+     * @return Partenaire
+     */
+    public function setContacts(\RI\SiteBundle\Entity\RI/SiteBundle/Entity/Contact $contacts)
+    {
+        $this->contacts = $contacts;
+    
+        return $this;
+    }
+
+    /**
+     * Get contacts
+     *
+     * @return \RI\SiteBundle\Entity\RI/SiteBundle/Entity/Contact 
+     */
+    public function getContacts()
+    {
+        return $this->contacts;
     }
 }
