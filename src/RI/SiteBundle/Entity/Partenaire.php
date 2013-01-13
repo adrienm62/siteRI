@@ -224,7 +224,7 @@ class Partenaire
      * @param \RI\SiteBundle\Entity\RI/SiteBundle/Entity/Contact $contacts
      * @return Partenaire
      */
-    public function setContacts(\RI\SiteBundle\Entity\RI/SiteBundle/Entity/Contact $contacts)
+    public function setContacts(\RI\SiteBundle\Entity\Contact $contacts)
     {
         $this->contacts = $contacts;
     

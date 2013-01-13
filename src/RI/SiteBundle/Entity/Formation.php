@@ -34,8 +34,12 @@ class Formation
      * @ORM\Column(name="for_annee", type="integer")
      */
     private $for_annee;
-
-
+    
+    /**
+     *@ORM\ManyToOne(targetEntity="RI/SiteBundle/Entity/Departement")
+     *@ORM\JoinColumn(nullable=false) 
+     */
+    private $departement;
     /**
      * Get id
      *
@@ -90,5 +94,28 @@ class Formation
     public function getForAnnee()
     {
         return $this->for_annee;
+    }
+
+    /**
+     * Set departement
+     *
+     * @param \RI\SiteBundle\Entity\RI/SiteBundle/Entity/Departement $departement
+     * @return Formation
+     */
+    public function setDepartement(\RI\SiteBundle\Entity\RI/SiteBundle/Entity/Departement $departement)
+    {
+        $this->departement = $departement;
+    
+        return $this;
+    }
+
+    /**
+     * Get departement
+     *
+     * @return \RI\SiteBundle\Entity\RI/SiteBundle/Entity/Departement 
+     */
+    public function getDepartement()
+    {
+        return $this->departement;
     }
 }
