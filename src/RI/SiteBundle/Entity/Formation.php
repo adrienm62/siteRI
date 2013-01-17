@@ -102,7 +102,7 @@ class Formation
      * @param \RI\SiteBundle\Entity\RI/SiteBundle/Entity/Departement $departement
      * @return Formation
      */
-    public function setDepartement(\RI\SiteBundle\Entity\RI/SiteBundle/Entity/Departement $departement)
+    public function setDepartement(\RI\SiteBundle\Entity\Departement $departement)
     {
         $this->departement = $departement;
     
