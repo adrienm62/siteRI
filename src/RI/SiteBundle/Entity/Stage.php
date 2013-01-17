@@ -53,6 +53,7 @@ class Stage
         return $this->id;
     }
 
+    
     /**
      * Set sta_sujet
      *
@@ -66,6 +67,7 @@ class Stage
         return $this;
     }
 
+    
     /**
      * Get sta_sujet
      *
