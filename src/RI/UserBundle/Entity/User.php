@@ -9,13 +9,22 @@ use Doctrine\ORM\Mapping as ORM;
  * @ORM\Entity
  * @ORM\Table(name="user")
  */
-class User {
+class User extends BaseUser {
      /**
      * @ORM\Id
-     * @ORM\Column(name = "usr_id", type="integer")
+     * @ORM\Column(name = "id", type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     protected $id;
-}
 
-?>
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+      
+    }
+}
