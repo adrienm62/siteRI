@@ -42,7 +42,17 @@ class Stage
      */
     private $sta_fin;
 
-
+    /**
+     * @ORM\ManyToOne(targetEntity="RI/SiteBundle/Entity/Contact")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $contactPrimaire;
+    
+    /**
+     *@ORM\ManyToOne(targetEntity="RI/SiteBundle/Entity/Formation")
+     *@ORM\JoinColumn(nullable=false)
+     */
+    private $formation;
     /**
      * Get id
      *
@@ -122,5 +132,51 @@ class Stage
     public function getStaFin()
     {
         return $this->sta_fin;
+    }
+
+    /**
+     * Set contactPrimaire
+     *
+     * @param \RI\SiteBundle\Entity\RI/SiteBundle/Entity/Contact $contactPrimaire
+     * @return Stage
+     */
+    public function setContactPrimaire(\RI\SiteBundle\Entity\Contact $contactPrimaire)
+    {
+        $this->contactPrimaire = $contactPrimaire;
+    
+        return $this;
+    }
+
+    /**
+     * Get contactPrimaire
+     *
+     * @return \RI\SiteBundle\Entity\RI/SiteBundle/Entity/Contact 
+     */
+    public function getContactPrimaire()
+    {
+        return $this->contactPrimaire;
+    }
+
+    /**
+     * Set formation
+     *
+     * @param \RI\SiteBundle\Entity\RI/SiteBundle/Entity/Formation $formation
+     * @return Stage
+     */
+    public function setFormation(\RI\SiteBundle\Entity\Formation $formation)
+    {
+        $this->formation = $formation;
+    
+        return $this;
+    }
+
+    /**
+     * Get formation
+     *
+     * @return \RI\SiteBundle\Entity\RI/SiteBundle/Entity/Formation 
+     */
+    public function getFormation()
+    {
+        return $this->formation;
     }
 }
