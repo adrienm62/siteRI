@@ -1,0 +1,7 @@
+parameters:
+#    ri_user.example.class: RI\UserBundle\Example
+
+services:
+#    ri_user.example:
+#        class: %ri_user.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
