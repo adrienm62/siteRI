@@ -3,6 +3,7 @@
 namespace RI\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Formation
@@ -14,9 +15,8 @@ class Formation
 {
     /**
      * @var integer
-     *
-     * @ORM\Column(name="for_id", type="integer")
      * @ORM\Id
+     * @ORM\Column(name="id", type="integer")
      * @ORM\GeneratedValue(strategy="AUTO")
      */
     private $id;
@@ -36,10 +36,10 @@ class Formation
     private $for_annee;
     
     /**
-     *@ORM\ManyToOne(targetEntity="RI/SiteBundle/Entity/Departement")
+     *@ORM\ManyToOne(targetEntity="RI\SiteBundle\Entity\Departement")
      *@ORM\JoinColumn(nullable=false) 
      */
-    private $departement;
+    private $dpt;
     /**
      * Get id
      *
@@ -99,12 +99,12 @@ class Formation
     /**
      * Set departement
      *
-     * @param \RI\SiteBundle\Entity\RI/SiteBundle/Entity/Departement $departement
+     * @param \RI\SiteBundle\Entity\Departement $departement
      * @return Formation
      */
     public function setDepartement(\RI\SiteBundle\Entity\Departement $departement)
     {
-        $this->departement = $departement;
+        $this->dpt= $departement;
     
         return $this;
     }
@@ -112,10 +112,10 @@ class Formation
     /**
      * Get departement
      *
-     * @return \RI\SiteBundle\Entity\RI/SiteBundle/Entity/Departement 
+     * @return \RI\SiteBundle\Entity\Departement 
      */
     public function getDepartement()
     {
-        return $this->departement;
+        return $this->dpt;
     }
 }

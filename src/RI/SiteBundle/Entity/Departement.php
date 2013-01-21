@@ -15,7 +15,7 @@ class Departement
     /**
      * @var integer
      *
-     * @ORM\Column(name="dpt_id", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -36,7 +36,7 @@ class Departement
      */
     public function getId()
     {
-        return $this->id;
+        return $this->dpt_id;
     }
 
     /**

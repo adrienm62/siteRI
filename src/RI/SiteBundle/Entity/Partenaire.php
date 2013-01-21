@@ -15,7 +15,7 @@ class Partenaire
     /**
      * @var integer
      *
-     * @ORM\Column(name="par_id", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -64,7 +64,7 @@ class Partenaire
     private $statutpartenaire;
     
     /**
-     *@ORM\ManyToOne(targetEntity="RI/SiteBundle/Entity/Contact", inversedBy="partenaire")
+     *@ORM\ManyToOne(targetEntity="RI\SiteBundle\Entity\Contact", inversedBy="partenaire")
      * @ORM\JoinColumn(nullable=false)
      */
     
@@ -221,7 +221,7 @@ class Partenaire
     /**
      * Set contacts
      *
-     * @param \RI\SiteBundle\Entity\RI/SiteBundle/Entity/Contact $contacts
+     * @param \RI\SiteBundle\Entity\Contact $contacts
      * @return Partenaire
      */
     public function setContacts(\RI\SiteBundle\Entity\Contact $contacts)
@@ -234,7 +234,7 @@ class Partenaire
     /**
      * Get contacts
      *
-     * @return \RI\SiteBundle\Entity\RI/SiteBundle/Entity/Contact 
+     * @return \RI\SiteBundle\Entity\Contact 
      */
     public function getContacts()
     {

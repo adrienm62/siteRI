@@ -15,7 +15,7 @@ class Stage
     /**
      * @var integer
      *
-     * @ORM\Column(name="sta_id", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -43,13 +43,13 @@ class Stage
     private $sta_fin;
 
     /**
-     * @ORM\ManyToOne(targetEntity="RI/SiteBundle/Entity/Contact")
+     * @ORM\ManyToOne(targetEntity="RI\SiteBundle\Entity\Contact")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $contactPrimaire;
+    private $contactPrincipal;
     
     /**
-     *@ORM\ManyToOne(targetEntity="RI/SiteBundle/Entity/Formation")
+     *@ORM\ManyToOne(targetEntity="RI\SiteBundle\Entity\Formation")
      *@ORM\JoinColumn(nullable=false)
      */
     private $formation;
@@ -137,12 +137,12 @@ class Stage
     /**
      * Set contactPrimaire
      *
-     * @param \RI\SiteBundle\Entity\RI/SiteBundle/Entity/Contact $contactPrimaire
+     * @param \RI\SiteBundle\Entity\Contact $contactPrimaire
      * @return Stage
      */
-    public function setContactPrimaire(\RI\SiteBundle\Entity\Contact $contactPrimaire)
+    public function setContactPrimaire(\RI\SiteBundle\Entity\Contact $contactPrincipal)
     {
-        $this->contactPrimaire = $contactPrimaire;
+        $this->contactPrincipal= $contactPrincipal;
     
         return $this;
     }
@@ -150,7 +150,7 @@ class Stage
     /**
      * Get contactPrimaire
      *
-     * @return \RI\SiteBundle\Entity\RI/SiteBundle/Entity/Contact 
+     * @return \RI\SiteBundle\Entity\Contact 
      */
     public function getContactPrimaire()
     {
@@ -160,7 +160,7 @@ class Stage
     /**
      * Set formation
      *
-     * @param \RI\SiteBundle\Entity\RI/SiteBundle/Entity/Formation $formation
+     * @param \RI\SiteBundle\Entity\Formation $formation
      * @return Stage
      */
     public function setFormation(\RI\SiteBundle\Entity\Formation $formation)
@@ -173,7 +173,7 @@ class Stage
     /**
      * Get formation
      *
-     * @return \RI\SiteBundle\Entity\RI/SiteBundle/Entity/Formation 
+     * @return \RI\SiteBundle\Entity\Formation 
      */
     public function getFormation()
     {

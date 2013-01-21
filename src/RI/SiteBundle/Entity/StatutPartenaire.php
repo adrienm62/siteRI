@@ -15,7 +15,7 @@ class StatutPartenaire
     /**
      * @var integer
      *
-     * @ORM\Column(name="stp_id", type="integer")
+     * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
