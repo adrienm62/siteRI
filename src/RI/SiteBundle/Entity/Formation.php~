@@ -1,0 +1,98 @@
+<?php
+
+namespace RI\SiteBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Formation
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="RI\SiteBundle\Entity\FormationRepository")
+ */
+class Formation
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="for_id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="for_libelle", type="string", length=255)
+     */
+    private $for_libelle;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="for_annee", type="integer")
+     */
+    private $for_annee;
+    
+    /**
+     *@ORM\ManyToOne(targetEntity="RI/SiteBundle/Entity/Departement")
+     *@ORM\JoinColumn(nullable=false) 
+     */
+    private $departement;
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set for_libelle
+     *
+     * @param string $forLibelle
+     * @return Formation
+     */
+    public function setForLibelle($forLibelle)
+    {
+        $this->for_libelle = $forLibelle;
+    
+        return $this;
+    }
+
+    /**
+     * Get for_libelle
+     *
+     * @return string 
+     */
+    public function getForLibelle()
+    {
+        return $this->for_libelle;
+    }
+
+    /**
+     * Set for_annee
+     *
+     * @param integer $forAnnee
+     * @return Formation
+     */
+    public function setForAnnee($forAnnee)
+    {
+        $this->for_annee = $forAnnee;
+    
+        return $this;
+    }
+
+    /**
+     * Get for_annee
+     *
+     * @return integer 
+     */
+    public function getForAnnee()
+    {
+        return $this->for_annee;
+    }
+}
