@@ -1,3 +1,7 @@
+ri_user:
+    resource: "@RIUserBundle/Resources/config/routing.yml"
+    prefix:   /
+
 ri_site:
     resource: "@RISiteBundle/Resources/config/routing.yml"
     prefix:   /
