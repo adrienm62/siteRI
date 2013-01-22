@@ -6,7 +6,9 @@ use Symfony\Component\Httpfoundation\Response;
     
     
 class SiteController extends Controller {
-    
+    public function indexAction(){
+        return $this->render('RISiteBundle:Site:index.html.twig');
+    }
 }
 
 

@@ -6,21 +6,21 @@ ri_site_homepage:
     
 risite_accueil:
    pattern: /accueil
-   defaults: { _controller: RiSiteBundle:Site:index }
+   defaults: { _controller: RISiteBundle:Site:index }
 
 risite_etudiant:
     pattern: /etudiant/{id}
-    defaults: { _controller: RiSiteBundle:Site:voirEtudiant }
+    defaults: { _controller: RISiteBundle:Site:voirEtudiant }
 
 risite_partenaire:
     pattern: /partenaire/{id}
-    defaults: { _controller: RiSiteBundle:Site:voirPartenaire }
+    defaults: { _controller: RISiteBundle:Site:voirPartenaire }
     
     
 risite_contact:
     pattern: /contact/{id}
-    defaults: { _controller: RiSiteBundle:Site:voirContact }
+    defaults: { _controller: RISiteBundle:Site:voirContact }
     
 risite_test:
     pattern: /test
-    defaults: { _controller: RiSiteBundle:Site:test}
+    defaults: { _controller: RISiteBundle:Site:test}
