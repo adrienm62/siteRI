@@ -9,6 +9,24 @@ class SiteController extends Controller {
     public function indexAction(){
         return $this->render('RISiteBundle:Site:index.html.twig');
     }
+    
+    /**
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function ajoutPartenaireAction() {
+        
+    }
+    
+    /**
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function suppressionPartenaireAction(){
+        
+    }
+    
+    
+    
+    
 }
 
 
