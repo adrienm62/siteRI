@@ -1,49 +1,53 @@
 {# app/Resources/views/layout.html.twig #}
+<!DOCTYPE html PUBLIC '-//W3C//DTD XHTML 1.0 Strict//EN' 
+    'http://www.w3.org/TR/xhtml11/DTD/xhtml1-strict.dtd'>
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='en'>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>{% block title %}Site Relations Internationales{% endblock %}</title>
+    <META NAME='DESCRIPTION' CONTENT=' Site web Relations Internationales de l\'IUT de Lens dans le cadre des stages à l\'étranger. '>
+    <META NAME='KEYWORDS' CONTENT='relations,internationales,étranger,étrangère,étrangers,étrangères,France,IUT,Lens,langues,stage,convention'>
+    <META NAME='AUTHOR' CONTENT='Hélène Jacquin, Adrien Mercier, Jocelyn Dusautoir, Antoine Dartique'>
+    <META NAME='REVISIT-AFTER' CONTENT='7 DAYS'> 
+    <META NAME='LANGUAGE' CONTENT='FR'>
+    <META NAME='ROBOTS' CONTENT='All'>
+    <META HTTP-EQUIV='PRAGMA' CONTENT='NO-CHACHE'>
+    {% block stylesheets %}
+    {#Appel du css situé dans  /web/bootstrap/css/bootstrap.css#}
+    <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}" type="text/css" />
+    {% endblock %}
+</head>
+<body>
+    <div class="container">
+        <div id="header" class="hero-unit">
+            <h1>Site Relations Internationales - IUT de Lens</h1>
+        </div>
+        <div class="row">
+        
+            {#Menu à gauche#}
+            <div id="menu" class="span3">
+            <ul class="nav nav-pills nav-stacked">
+                {# utilisation de la fonction {{ path }} pour faire des liens vers d'autres routes#}
+                <li><a href="{{ path('risite_accueil') }}">Accueil</a></li>
+                <br>
+            </ul>
+            </div>            
+            
+            {#création du bloc « body » sans contenu par défaut#}
+            <div id="content" class="span9">
+            {% block body %}
+            {% endblock %}
+            </div>
+        </div>
+        <hr>
 
-<!DOCTYPE html>
-<html>
-	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-
-		<title>{% block title %}Gestion des relations international{% endblock %}</title>
-
-		{% block stylesheets %}
-			<link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.css') }}" type="text/css" />
-		{% endblock %}
-	</head>
-
-	<body>
-		<div class="container">
-			<div id="header" class="hero-unit">
-				<h1>Site Relations Internationales</h1>
-				<p>Ce projet est propulsé par l'IUT de Lens.</p>
-				
-			</div>
-
-			<div class="row">
-				<div id="menu" class="span3">
-					<h3>Site relations internationales</h3>
-					
-					
-				</div>
-				<div id="content" class="span9">
-					{% block body %}
-					{% endblock %}
-				</div>
-			</div>
-
-			<hr>
-
-			<footer>
-				<p>IUT de Lens - Hélène Jacquin - Adrien Mercier -Antoine Dartique - Jocelyn Dusautoir </p>
-			</footer>
-		</div>
-
-	{% block javascripts %}
-		{# Ajoutez ces javascripts si vous comptez vous servir des fonctionnalités du bootstrap Twitter #}
-		<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-		<script type="text/javascript" src="{{ asset('js/bootstrap.js') }}"></script>
-	{% endblock %}
-
-	</body>
+        <footer>
+            <p><center>~ Site développé par Hélène Jacquin, Adrien Mercier, Jocelyn Dusautoir et Antoine Dartique. ~</center></p>
+        </footer>
+    </div>
+    {% block javascripts %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ asset('js/bootstrap.js')}}"></script>
+    {% endblock %}
+</body>
 </html>
