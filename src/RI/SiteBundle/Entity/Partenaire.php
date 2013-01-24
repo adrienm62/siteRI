@@ -70,6 +70,10 @@ class Partenaire
     
     private $contacts;
     
+    
+    public function __construct() {
+        
+    }
     /**
      * Get id
      *

@@ -53,6 +53,13 @@ class Stage
      *@ORM\JoinColumn(nullable=false)
      */
     private $formation;
+    
+    /**
+     *@ORM\ManyToOne(targetEntity="RI\UserBundle\Entity\User")
+     *@ORM\JoinColumn(nullable=true)
+     */
+    
+    private $etudiant;
     /**
      * Get id
      *
