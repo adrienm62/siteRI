@@ -30,7 +30,7 @@ class StatutPartenaire
 
 
     /**
-     * Get stp_id
+     * Get id
      *
      * @return integer 
      */
