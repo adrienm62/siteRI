@@ -1,9 +1,3 @@
-ri_site_homepage:
-    pattern:  /hello/{name}
-    defaults: { _controller: RISiteBundle:Default:index }
-    
-    
-    
 risite_accueil:
    pattern: /accueil
    defaults: { _controller: RISiteBundle:Site:index }
@@ -20,7 +14,19 @@ risite_partenaire:
 risite_contact:
     pattern: /contact/{id}
     defaults: { _controller: RISiteBundle:Site:voirContact }
-    
+
+risite_profil:
+    pattern: /profil/{id}
+    defaults: { _controller: RISiteBundle:Site:voirProfil }
+
+risite_partenaire:
+    pattern: /partenaire
+    defaults: { _controller: RISiteBundle:Site:voirPartenaire }
+
+risite_document:
+    pattern: /document/{id}
+    defaults: { _controller: RISiteBundle:Site:voirDocument }
+
 risite_test:
     pattern: /test
     defaults: { _controller: RISiteBundle:Site:test}
