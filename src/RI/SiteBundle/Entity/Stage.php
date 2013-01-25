@@ -55,11 +55,16 @@ class Stage
     private $formation;
     
     /**
-     *@ORM\ManyToOne(targetEntity="RI\UserBundle\Entity\User")
-     *@ORM\JoinColumn(nullable=true)
+     * @ORM\ManyToMany(targetEntity="RI\SiteBundle\Entity\Contact", cascade = {"persist"})
+     * @ORM\JoinColumn(nullable=true)
      */
+    private $contactsSecondaire;
+
+
+    public function __construct() {
+        
+    }
     
-    private $etudiant;
     /**
      * Get id
      *
@@ -185,5 +190,61 @@ class Stage
     public function getFormation()
     {
         return $this->formation;
+    }
+
+    /**
+     * Set contactPrincipal
+     *
+     * @param \RI\SiteBundle\Entity\Contact $contactPrincipal
+     * @return Stage
+     */
+    public function setContactPrincipal(\RI\SiteBundle\Entity\Contact $contactPrincipal)
+    {
+        $this->contactPrincipal = $contactPrincipal;
+    
+        return $this;
+    }
+
+    /**
+     * Get contactPrincipal
+     *
+     * @return \RI\SiteBundle\Entity\Contact 
+     */
+    public function getContactPrincipal()
+    {
+        return $this->contactPrincipal;
+    }
+
+    /**
+     * Add contactsSecondaire
+     *
+     * @param \RI\SiteBundle\Entity\Contact $contactsSecondaire
+     * @return Stage
+     */
+    public function addContactsSecondaire(\RI\SiteBundle\Entity\Contact $contactsSecondaire)
+    {
+        $this->contactsSecondaire[] = $contactsSecondaire;
+    
+        return $this;
+    }
+
+    /**
+     * Remove contactsSecondaire
+     *
+     * @param \RI\SiteBundle\Entity\Contact $contactsSecondaire
+     */
+    public function removeContactsSecondaire(\RI\SiteBundle\Entity\Contact $contactsSecondaire)
+    {
+        $this->contactsSecondaire->removeElement($contactsSecondaire);
+    }
+
+    /**
+     * Get contactsSecondaire
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getContactsSecondaire()
+    {
+        return $this->contactsSecondaire;
     }
 }

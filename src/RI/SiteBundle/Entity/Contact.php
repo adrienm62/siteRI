@@ -70,6 +70,9 @@ class Contact
      */
     
     private $partenaire;
+    
+    
+    
     /**
      * Get id
      *
