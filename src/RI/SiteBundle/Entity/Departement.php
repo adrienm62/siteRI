@@ -36,7 +36,7 @@ class Departement
      */
     public function getId()
     {
-        return $this->dpt_id;
+        return $this->id;
     }
 
     /**
