@@ -9,12 +9,11 @@ class ContactSecondaireStage {
      * @ORM\Id
      * @ORM\ManyToOne(targetEntity="RI\SiteBundle\Stage")
      */
+     private $stage;
     
-    private $stage;
     /**
     * @ORM\Id
     * @ORM\ManyToOne(targetEntity="RI\SiteBundle\Entity\Contact")
-    
      */
     private $contact;
     
@@ -25,7 +24,7 @@ class ContactSecondaireStage {
     }
     
     public function getStage(){
-        return $stage;
+        return $this->stage;
     }
     
     public function setContact(\RI\SiteBundle\Entity\Contact $contact) {
@@ -33,7 +32,7 @@ class ContactSecondaireStage {
     }
     
     public function getContact(){
-        return $contact;
+        return $this->contact;
     }
 }
 ?>
