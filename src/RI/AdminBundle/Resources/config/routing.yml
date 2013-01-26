@@ -1,3 +1,31 @@
-ri_admin_homepage:
-    pattern:  /hello/{name}
+ri_admin_index:
+    pattern:  /admin
     defaults: { _controller: RIAdminBundle:Admin:index }
+    requirements:
+        _scheme:  htpps  
+      
+
+ri_admin_ajouter_stage:
+    pattern:  /admin/ajout/stage
+    defaults: { _controller: RIAdminBundle:Admin:ajoutStage}
+    requirements:
+        _scheme:  htpps  
+
+ri_admin_ajout_partenaire:
+    pattern:  /admin/ajout/partenaire
+    defaults: { _controller: RIAdminBundle:Admin:ajoutPartenaire}
+    requirements:
+        _scheme:  htpps  
+  
+  
+ri_admin_ajout_contact:
+    pattern:  /admin/ajout/contact
+    defaults: { _controller: RIAdminBundle:Admin:ajoutContact}
+    requirements:
+        _scheme:  htpps
+        
+ri_admin_ajout_statut_partenaire:
+    pattern:  /admin/ajout/stautpartenaire
+    defaults: { _controller: RIAdminBundle:Admin:ajoutStatut}
+    requirements:
+        _scheme:  htpps  

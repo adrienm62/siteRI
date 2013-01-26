@@ -29,6 +29,12 @@ class User extends BaseUser {
      */
     protected $documents;
     
+    /**
+     * @ORM\ManyToMany(targetEntity="RI\SiteBundle\Entity\Stage", cascade = {"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    protected $stage;
+    
     public function getId()
     {
         return $this->id;
