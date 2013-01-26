@@ -10,28 +10,8 @@ class SiteController extends Controller {
         return $this->render('RISiteBundle:Site:index.html.twig');
     }
     
-    /**
-     * @Secure(roles="ROLE_ADMIN")
-     */
-    public function ajoutPartenaireAction() {
-        $partenaire = new Partenaire();
-        $formBuilder = $this->createFormBuilder($partenaire);
-        
-        $formBuilder
-            ->add('par_nom', 'text')
-            ->add('par_pays', 'text')
-            ->add('par_ville', 'text')
-            ->add('par_adresse', 'text')
-            ->add('par_coordonnees', 'text');
-        
-        $form = $formBuilder->getForm();
-         
-    }
     
     
-    public function suppressionPartenaireAction(){
-        
-    }
     
     
     
