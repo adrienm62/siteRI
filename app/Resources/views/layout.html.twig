@@ -29,6 +29,19 @@
             <ul class="nav nav-pills nav-stacked">
                 {# utilisation de la fonction {{ path }} pour faire des liens vers d'autres routes#}
                 <li><a href="{{ path('risite_accueil') }}">Accueil</a></li>
+                {% if is_granted('ROLE_USER')%}
+                <li><a href="{{ path('risite_profil') }}">Profil</a></li>
+                <li><a href="{{ path('risite_partenaire') }}">Partenaires</a></li>
+                <li><a href="{{ path('risite_document') }}">Mes documents</a></li>
+                {% endif%}
+                {% if is_granted('ROLE_SECRETARY')%}
+                <li><a href="{{ path('risite_inscEtu') }}">Inscrire étudiant</a></li>
+                <li><a href="{{ path('risite_documentSec') }}">Gestion des documents</a></li>
+                {% endif%}
+                {% if is_granted('ROLE_ADMIN')%}
+                <li><a href="{{ path('risite_gestionPart') }}">Gestion des Partenaires</a></li>
+                <li><a href="{{ path('risite_stageEtu') }}">Stage des étudiants</a></li>
+                {% endif%}
                 <br>
             </ul>
             </div>            
