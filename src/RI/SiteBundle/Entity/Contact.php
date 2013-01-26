@@ -72,7 +72,11 @@ class Contact
     private $partenaire;
     
     
-    
+    /**
+     * @ORM\ManyToMany(targetEntity="RI\SiteBundle\Entity\Document", cascade = {"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    protected $documents;
     /**
      * Get id
      *
@@ -259,5 +263,38 @@ class Contact
     public function getPartenaire()
     {
         return $this->partenaire;
+    }
+
+    /**
+     * Add documents
+     *
+     * @param \RI\SiteBundle\Entity\Document $documents
+     * @return Contact
+     */
+    public function addDocument(\RI\SiteBundle\Entity\Document $documents)
+    {
+        $this->documents[] = $documents;
+    
+        return $this;
+    }
+
+    /**
+     * Remove documents
+     *
+     * @param \RI\SiteBundle\Entity\Document $documents
+     */
+    public function removeDocument(\RI\SiteBundle\Entity\Document $documents)
+    {
+        $this->documents->removeElement($documents);
+    }
+
+    /**
+     * Get documents
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDocuments()
+    {
+        return $this->documents;
     }
 }

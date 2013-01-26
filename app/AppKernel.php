@@ -22,10 +22,11 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new RI\SiteBundle\RISiteBundle(),
             new RI\UserBundle\RIUserBundle(),
+            new RI\AdminBundle\RIAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
-            $bundles[] = new Acme\DemoBundle\AcmeDemoBundle();
+            
 
             $bundles[] = new Symfony\Bundle\WebProfilerBundle\WebProfilerBundle();
             $bundles[] = new Sensio\Bundle\DistributionBundle\SensioDistributionBundle();

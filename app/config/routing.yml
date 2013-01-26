@@ -1,3 +1,7 @@
+ri_admin:
+    resource: "@RIAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
 ri_user:
     resource: "@RIUserBundle/Resources/config/routing.yml"
     prefix:   /

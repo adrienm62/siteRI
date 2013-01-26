@@ -28,9 +28,7 @@ class SiteController extends Controller {
          
     }
     
-    /**
-     * @Secure(roles="ROLE_ADMIN")
-     */
+    
     public function suppressionPartenaireAction(){
         
     }

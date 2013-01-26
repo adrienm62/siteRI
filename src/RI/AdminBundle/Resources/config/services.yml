@@ -1,0 +1,7 @@
+parameters:
+#    ri_admin.example.class: RI\AdminBundle\Example
+
+services:
+#    ri_admin.example:
+#        class: %ri_admin.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
