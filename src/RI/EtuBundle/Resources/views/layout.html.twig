@@ -1,0 +1,12 @@
+{# src/SiteRI/EtuBundle/Resources/views/layout.html.twig #}
+{% extends "::layout.html.twig" %}
+{% block title %}
+{{ parent() }} - IUT de Lens
+{% endblock %}
+{% block body %}
+
+    {# On définit un nouveau block, que les vues du bundle pourront remplir #}
+    {% block etuRI_body %}
+    {% endblock %}
+    
+{% endblock %}

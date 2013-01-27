@@ -1,3 +1,15 @@
+sec:
+    resource: "@SecBundle/Resources/config/routing.yml"
+    prefix:   /
+
+etu:
+    resource: "@EtuBundle/Resources/config/routing.yml"
+    prefix:   /
+
+ri_part:
+    resource: "@RIPartBundle/Resources/config/routing.yml"
+    prefix:   /
+
 ri_admin:
     resource: "@RIAdminBundle/Resources/config/routing.yml"
     prefix:   /

@@ -38,6 +38,10 @@
                 <li><a href="{{ path('risite_inscEtu') }}">Inscrire étudiant</a></li>
                 <li><a href="{{ path('risite_documentSec') }}">Gestion des documents</a></li>
                 {% endif%}
+                {% if is_granted('ROLE_CONTACT')%}
+                <li><a href="{{ path('risite_stagiaire') }}">Voir stagiaires</a></li>
+                <li><a href="{{ path('risite_documentPart') }}">Gestion des documents</a></li>
+                {% endif%}
                 {% if is_granted('ROLE_ADMIN')%}
                 <li><a href="{{ path('risite_gestionPart') }}">Gestion des Partenaires</a></li>
                 <li><a href="{{ path('risite_stageEtu') }}">Stage des étudiants</a></li>

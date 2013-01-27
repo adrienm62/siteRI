@@ -23,6 +23,9 @@ class AppKernel extends Kernel
             new RI\SiteBundle\RISiteBundle(),
             new RI\UserBundle\RIUserBundle(),
             new RI\AdminBundle\RIAdminBundle(),
+            new RI\PartBundle\RIPartBundle(),
+            new RI\EtuBundle\EtuBundle(),
+            new RI\SecBundle\SecBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

@@ -1,0 +1,7 @@
+parameters:
+#    etu.example.class: RI\EtuBundle\Example
+
+services:
+#    etu.example:
+#        class: %etu.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

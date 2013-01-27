@@ -1,3 +1,11 @@
-ri_admin_homepage:
-    pattern:  /hello/{name}
+risite_adminAcc:
+    pattern:  /admin
     defaults: { _controller: RIAdminBundle:Admin:index }
+
+risite_gestionPart:
+    pattern: /gestionPart/{id}
+    defaults: { _controller: RIAdminBundle:Admin:voirGestionPart }
+
+risite_stageEtu:
+    pattern: /stageEtu/{id}
+    defaults: { _controller: RIAdminBundle:Admin:voirStageEtu }
