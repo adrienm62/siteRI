@@ -25,7 +25,6 @@ ri_admin_ajout_contact:
         _scheme:  htpps
         
 ri_admin_ajout_statut_partenaire:
-    pattern:  /admin/ajout/stautpartenaire
-    defaults: { _controller: RIAdminBundle:Admin:ajoutStatut}
-    requirements:
-        _scheme:  htpps  
+    pattern:  /admin/ajout/statutpartenaire
+    defaults: { _controller: RIAdminBundle:Admin:ajoutStatutPartenaire}
+    
