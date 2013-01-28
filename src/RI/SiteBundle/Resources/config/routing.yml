@@ -2,33 +2,33 @@ risite_accueil:
    pattern: /accueil
    defaults: { _controller: RISiteBundle:Site:index }
 
-#risite_profil:
- #   pattern: /profil/{id}
- #   defaults: { _controller: RISiteBundle:Site:voirProfil }
+risite_profil:
+    pattern: /profil
+    defaults: { _controller: RISiteBundle:Site:voirProfil }
 
-#risite_partenaire:
- #   pattern: /partenaire/{id}
- #   defaults: { _controller: RISiteBundle:Site:voirPartenaire }
+risite_partenaire:
+    pattern: /partenaire
+    defaults: { _controller: RISiteBundle:Site:voirPartenaire }
 
-#risite_document:
-  #  pattern: /document/{id}
- #   defaults: { _controller: RISiteBundle:Site:voirDocument }
+risite_document:
+    pattern: /document
+    defaults: { _controller: RISiteBundle:Site:voirDocument }
 
-#risite_documentSec:
- #   pattern: /documentSec/{id}
- #   defaults: { _controller: RISiteBundle:Site:voirDocumentSec }
+risite_documentSec:
+    pattern: /documentSec
+    defaults: { _controller: RISiteBundle:Site:voirDocumentSec }
 
-#risite_inscEtu:
- #   pattern: /inscEtu/{id}
- #   defaults: { _controller: RISiteBundle:Site:voirInscEtu }
+risite_inscEtu:
+    pattern: /inscEtu
+    defaults: { _controller: RISiteBundle:Site:voirInscEtu }
 
-#risite_gestionPart:
-#    pattern: /gestionPart/{id}
-#    defaults: { _controller: RISiteBundle:Site:voirGestionPart }
+risite_gestionPart:
+    pattern: /gestionPart
+    defaults: { _controller: RISiteBundle:Site:voirGestionPart }
 
-#risite_stageEtu:
-#    pattern: /stageEtu/{id}
-#    defaults: { _controller: RISiteBundle:Site:voirStageEtu }
+risite_stageEtu:
+    pattern: /stageEtu
+    defaults: { _controller: RISiteBundle:Site:voirStageEtu }
 
 risite_test:
     pattern: /test

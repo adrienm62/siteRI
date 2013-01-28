@@ -2,6 +2,39 @@ parameters:
 #    ri_site.example.class: RI\SiteBundle\Example
 
 services:
-#    ri_site.example:
-#        class: %ri_site.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    ri_site.admin.contact:
+        class: RI\SiteBundle\Admin\PartenaireAdmin
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: site, label: Contacts}
+        arguments: [null, RI\SiteBundle\Entity\Contact, RISiteBundle:ContactAdmin]    
+   
+    ri_site.admin.departement:
+        class: RI\SiteBundle\Admin\DepartementAdmin
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: site, label: Departement}
+        arguments: [null, RI\SiteBundle\Entity\Departement, RISiteBundle:DepartementAdmin]    
+   
+    ri_site.admin.formation:
+        class: RI\SiteBundle\Admin\FormationAdmin
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: site, label: Formations}
+        arguments: [null, RI\SiteBundle\Entity\Formation, RISiteBundle:FormationAdmin]    
+   
+    ri_site.admin.partenaire:
+        class: RI\SiteBundle\Admin\PartenaireAdmin
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: site, label: Partenaires}
+        arguments: [null, RI\SiteBundle\Entity\Partenaire, RISiteBundle:PartenaireAdmin]    
+   
+    ri_site.admin.stage:
+        class: RI\SiteBundle\Admin\StageAdmin
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: site, label: Stages}
+        arguments: [null, RI\SiteBundle\Entity\Stage, RISiteBundle:StageAdmin]    
+   
+    ri_site.admin.statutpartenaire:
+        class: RI\SiteBundle\Admin\StatutPartenaireAdmin
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: site, label: StatutPartenaires}
+        arguments: [null, RI\SiteBundle\Entity\StatutPartenaire, RISiteBundle:StatutPartenaireAdmin]    
+   
