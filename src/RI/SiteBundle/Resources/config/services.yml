@@ -3,7 +3,7 @@ parameters:
 
 services:
     ri_site.admin.contact:
-        class: RI\SiteBundle\Admin\PartenaireAdmin
+        class: RI\SiteBundle\Admin\ContactAdmin
         tags:
             - {name: sonata.admin, manager_type: orm, group: site, label: Contacts}
         arguments: [null, RI\SiteBundle\Entity\Contact, RISiteBundle:ContactAdmin]    

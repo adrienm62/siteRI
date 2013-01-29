@@ -38,7 +38,7 @@ class Contact
     /**
      * @var string
      *
-     * @ORM\Column(name="cont_adresse", type="text")
+     * @ORM\Column(name="cont_adresse", type="text", nullable=true)
      */
     private $cont_adresse;
 
@@ -59,13 +59,13 @@ class Contact
     /**
      * @var string
      *
-     * @ORM\Column(name="cont_mdp", type="text")
+     * @ORM\Column(name="cont_mdp", type="text", nullable = true)
      */
     private $cont_mdp;
     
     /**
      *
-     *@ORM\OneToMany(targetEntity="RI\SiteBundle\Entity\Partenaire", mappedBy="contact")
+     *@ORM\ManyToOne(targetEntity="RI\SiteBundle\Entity\Partenaire")
      *@ORM\JoinColumn(nullable=false)
      */
     
@@ -227,41 +227,39 @@ class Contact
     /**
      * Constructor
      */
-    public function __construct()
-    {
-        $this->partenaire = new \Doctrine\Common\Collections\ArrayCollection();
-    }
     
+    
+   
     /**
-     * Add partenaire
+     * Add documents
      *
-     * @param \RI\SiteBundle\Entity\Partenaire $partenaire
+     * @param \RI\SiteBundle\Entity\Document $documents
      * @return Contact
      */
-    public function addPartenaire(\RI\SiteBundle\Entity\Partenaire $partenaire)
+    public function addDocument(\RI\SiteBundle\Entity\Document $documents)
     {
-        $this->partenaire[] = $partenaire;
+        $this->documents[] = $documents;
     
         return $this;
     }
 
     /**
-     * Remove partenaire
+     * Remove documents
      *
-     * @param \RI\SiteBundle\Entity\Partenaire $partenaire
+     * @param \RI\SiteBundle\Entity\Document $documents
      */
-    public function removePartenaire(\RI\SiteBundle\Entity\Partenaire $partenaire)
+    public function removeDocument(\RI\SiteBundle\Entity\Document $documents)
     {
-        $this->partenaire->removeElement($partenaire);
+        $this->documents->removeElement($documents);
     }
 
     /**
-     * Get partenaire
+     * Get documents
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getPartenaire()
+    public function getDocuments()
     {
-        return $this->partenaire;
+        return $this->documents;
     }
 }

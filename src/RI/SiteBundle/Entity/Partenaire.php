@@ -52,7 +52,7 @@ class Partenaire
     /**
      * @var string
      *
-     * @ORM\Column(name="par_coordonnees", type="string", length=255)
+     * @ORM\Column(name="par_coordonnees", type="string", length=255, nullable = true)
      */
     private $par_coordonnees;
 
@@ -63,12 +63,6 @@ class Partenaire
     
     private $statutpartenaire;
     
-    /**
-     *@ORM\ManyToOne(targetEntity="RI\SiteBundle\Entity\Contact", inversedBy="partenaire")
-     * @ORM\JoinColumn(nullable=false)
-     */
-    
-    private $contacts;
     
     
     public function __construct() {
@@ -222,26 +216,9 @@ class Partenaire
         return $this->statutpartenaire;
     }
 
-    /**
-     * Set contacts
-     *
-     * @param \RI\SiteBundle\Entity\Contact $contacts
-     * @return Partenaire
-     */
-    public function setContacts(\RI\SiteBundle\Entity\Contact $contacts)
-    {
-        $this->contacts = $contacts;
     
-        return $this;
-    }
-
-    /**
-     * Get contacts
-     *
-     * @return \RI\SiteBundle\Entity\Contact 
-     */
-    public function getContacts()
-    {
-        return $this->contacts;
+    
+    public function __toString() {
+        return $this->getParNom();
     }
 }

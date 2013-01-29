@@ -15,20 +15,20 @@ class StatutPartenaireAdmin extends Admin {
     protected function configureFormFields(FormMapper $formMapper)
     {
         $formMapper
-            ->add('stp_libelle', 'text');
-        
+            ->add('stp_libelle');
+          
     }
     
     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
     {
         $datagridMapper
-            ->add('stp_libelle', 'text');
+            ->add('stp_libelle');
     }
     
      protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
-            ->addIdentifier('stp_libelle', 'text');
+            ->addIdentifier('stp_libelle');
     }
 }
 

@@ -7,7 +7,27 @@ use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Form\FormMapper;
 class FormationAdmin extends Admin {
-    //put your code here
+    protected function configureFormFields(FormMapper $formMapper)
+     {
+         $formMapper
+                  ->add('for_libelle')->add('departement')->add('for_annee');
+                 
+     }
+     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+     {
+          $datagridMapper
+                  ->add('for_libelle')->add('departement')->add('for_annee');
+                 
+     }
+     
+     protected function configureListFields(ListMapper $listMapper)
+     {
+         $listMapper
+                  ->add('for_libelle')->add('departement')->add('for_annee');
+                 
+     } 
+     
+     
 }
 
 ?>

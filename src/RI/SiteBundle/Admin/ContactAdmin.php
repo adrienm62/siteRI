@@ -9,7 +9,42 @@ use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Form\FormMapper;
 
 class ContactAdmin extends Admin {
-    //put your code here
+     protected $datagridValues = array(
+        '_sort_order' => 'ASC',
+        '_sort_by' => 'cont_nom');
+    
+     protected function configureFormFields(FormMapper $formMapper)
+     {
+         $formMapper->add('cont_nom')
+                  ->add('cont_prenom')
+                 ->add('partenaire')
+                 ->add('cont_adresse')
+                 ->add('cont_mail')
+                 ->add('cont_tel')
+                 ->add('cont_adresse');
+                 
+     }
+     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+     {
+          $datagridMapper->add('cont_nom')
+                  ->add('cont_prenom')
+                 ->add('partenaire')
+                 ->add('cont_adresse')
+                 ->add('cont_mail')
+                 ->add('cont_tel')
+                 ->add('cont_adresse');
+     }
+     
+     protected function configureListFields(ListMapper $listMapper)
+     {
+         $listMapper->add('cont_nom')
+                  ->add('cont_prenom')
+                 ->add('partenaire')
+                 ->add('cont_adresse')
+                 ->add('cont_mail')
+                 ->add('cont_tel')
+                 ->add('cont_adresse');
+     } 
 }
 
 ?>

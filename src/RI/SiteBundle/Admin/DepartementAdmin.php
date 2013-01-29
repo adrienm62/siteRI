@@ -8,7 +8,21 @@ use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Form\FormMapper;
 
 class DepartementAdmin extends Admin {
-    
+     protected function configureFormFields(FormMapper $formMapper)
+     {
+         $formMapper
+                  ->add('dpt_libelle');
+                 
+     }
+     protected function configureDatagridFilters(DatagridMapper $datagridMapper)
+     {
+          $datagridMapper->add('dpt_libelle');
+     }
+     
+     protected function configureListFields(ListMapper $listMapper)
+     {
+         $listMapper->add('dpt_libelle');
+     } 
 }
 
 ?>
