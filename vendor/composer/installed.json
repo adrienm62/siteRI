@@ -1432,266 +1432,6 @@
         ]
     },
     {
-        "name": "doctrine/migrations",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/doctrine/migrations",
-            "reference": "e1f6efcd94993b493de5c6a413cbc327ea9c0caa"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://github.com/doctrine/migrations/archive/e1f6efcd94993b493de5c6a413cbc327ea9c0caa.zip",
-            "reference": "e1f6efcd94993b493de5c6a413cbc327ea9c0caa",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.2",
-            "doctrine/dbal": ">=2.0,<2.5.x-dev"
-        },
-        "require-dev": {
-            "symfony/console": "2.*",
-            "symfony/yaml": "2.*"
-        },
-        "suggest": {
-            "symfony/console": "to run the migration from the console"
-        },
-        "time": "2012-12-27 16:39:29",
-        "type": "library",
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "Doctrine\\DBAL\\Migrations": "lib"
-            }
-        },
-        "notification-url": "http://packagist.org/downloads/",
-        "license": [
-            "LGPL"
-        ],
-        "authors": [
-            {
-                "name": "Jonathan Wage",
-                "email": "jonwage@gmail.com",
-                "homepage": "http://www.jwage.com/"
-            },
-            {
-                "name": "Benjamin Eberlei",
-                "email": "kontakt@beberlei.de"
-            }
-        ],
-        "description": "Database Schema migrations using Doctrine DBAL",
-        "homepage": "http://www.doctrine-project.org",
-        "keywords": [
-            "database",
-            "migrations"
-        ]
-    },
-    {
-        "name": "doctrine/doctrine-migrations-bundle",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "target-dir": "Doctrine/Bundle/MigrationsBundle",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/doctrine/DoctrineMigrationsBundle.git",
-            "reference": "99c0192804134a8c1d0588777bd98bdbc2dbb554"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://github.com/doctrine/DoctrineMigrationsBundle/archive/99c0192804134a8c1d0588777bd98bdbc2dbb554.zip",
-            "reference": "99c0192804134a8c1d0588777bd98bdbc2dbb554",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.2",
-            "doctrine/migrations": "*",
-            "symfony/framework-bundle": ">=2.1.0,<2.3-dev",
-            "doctrine/doctrine-bundle": ">=1.0,<2.0"
-        },
-        "time": "2013-01-12 20:06:22",
-        "type": "symfony-bundle",
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "Doctrine\\Bundle\\MigrationsBundle": ""
-            }
-        },
-        "notification-url": "http://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "http://symfony.com/contributors"
-            },
-            {
-                "name": "Doctrine Project",
-                "homepage": "http://www.doctrine-project.org"
-            }
-        ],
-        "description": "Symfony DoctrineMigrationsBundle",
-        "homepage": "http://www.doctrine-project.org",
-        "keywords": [
-            "dbal",
-            "migrations",
-            "schema"
-        ]
-    },
-    {
-        "name": "doctrine/doctrine-fixtures-bundle",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "target-dir": "Doctrine/Bundle/FixturesBundle",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/doctrine/DoctrineFixturesBundle.git",
-            "reference": "95d1e0291878f64d376c878d9578239760cbaf73"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://github.com/doctrine/DoctrineFixturesBundle/archive/95d1e0291878f64d376c878d9578239760cbaf73.zip",
-            "reference": "95d1e0291878f64d376c878d9578239760cbaf73",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.2",
-            "doctrine/data-fixtures": "*",
-            "symfony/doctrine-bridge": ">=2.1.0,<2.3-dev",
-            "doctrine/doctrine-bundle": ">=1.0,<2.0"
-        },
-        "time": "2013-01-13 12:20:51",
-        "type": "symfony-bundle",
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "Doctrine\\Bundle\\FixturesBundle": ""
-            }
-        },
-        "notification-url": "http://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            },
-            {
-                "name": "Symfony Community",
-                "homepage": "http://symfony.com/contributors"
-            },
-            {
-                "name": "Doctrine Project",
-                "homepage": "http://www.doctrine-project.org"
-            }
-        ],
-        "description": "Symfony DoctrineFixturesBundle",
-        "homepage": "http://www.doctrine-project.org",
-        "keywords": [
-            "persistence",
-            "Fixture"
-        ]
-    },
-    {
-        "name": "instaclick/base-test-bundle",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "target-dir": "IC/Bundle/Base/TestBundle",
-        "source": {
-            "type": "git",
-            "url": "http://github.com/instaclick/ICBaseTestBundle",
-            "reference": "9d43bbed1989a528576c87fc59e2a759708f11dc"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://github.com/instaclick/ICBaseTestBundle/archive/9d43bbed1989a528576c87fc59e2a759708f11dc.zip",
-            "reference": "9d43bbed1989a528576c87fc59e2a759708f11dc",
-            "shasum": ""
-        },
-        "require": {
-            "php": ">=5.3.2",
-            "doctrine/doctrine-fixtures-bundle": "dev-master",
-            "symfony/framework-bundle": ">=2.0,<3.0-dev"
-        },
-        "time": "2013-01-18 21:32:17",
-        "type": "symfony-bundle",
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "IC\\Bundle\\Base\\TestBundle": ""
-            }
-        },
-        "notification-url": "http://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "InstaClick Inc.",
-                "homepage": "http://www.instaclick.com"
-            }
-        ],
-        "description": "This bundle provides lower level support for functional tests on Symfony2.",
-        "keywords": [
-            "Symfony2"
-        ]
-    },
-    {
-        "name": "twig/extensions",
-        "version": "dev-master",
-        "version_normalized": "9999999-dev",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/fabpot/Twig-extensions",
-            "reference": "5c2d515d4624bdd588226d688173cf0399a4d8cf"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://github.com/fabpot/Twig-extensions/archive/5c2d515d4624bdd588226d688173cf0399a4d8cf.zip",
-            "reference": "5c2d515d4624bdd588226d688173cf0399a4d8cf",
-            "shasum": ""
-        },
-        "require": {
-            "twig/twig": "1.*"
-        },
-        "time": "2013-01-04 16:55:05",
-        "type": "library",
-        "extra": {
-            "branch-alias": {
-                "dev-master": "1.0.x-dev"
-            }
-        },
-        "installation-source": "source",
-        "autoload": {
-            "psr-0": {
-                "Twig_Extensions_": "lib/"
-            }
-        },
-        "notification-url": "http://packagist.org/downloads/",
-        "license": [
-            "MIT"
-        ],
-        "authors": [
-            {
-                "name": "Fabien Potencier",
-                "email": "fabien@symfony.com"
-            }
-        ],
-        "description": "Common additional features for Twig that do not directly belong in core",
-        "homepage": "https://github.com/fabpot/Twig-extensions",
-        "keywords": [
-            "debug",
-            "i18n",
-            "text"
-        ]
-    },
-    {
         "name": "sonata-project/jquery-bundle",
         "version": "dev-master",
         "version_normalized": "9999999-dev",
@@ -1862,12 +1602,12 @@
         "source": {
             "type": "git",
             "url": "git://github.com/sonata-project/SonataAdminBundle.git",
-            "reference": "701ecbac99b3d2f5a89cd3af2abab4842b4d4dc7"
+            "reference": "e98ebe183c31729875b3ca9aeff54da000579d8b"
         },
         "dist": {
             "type": "zip",
-            "url": "https://github.com/sonata-project/SonataAdminBundle/archive/701ecbac99b3d2f5a89cd3af2abab4842b4d4dc7.zip",
-            "reference": "701ecbac99b3d2f5a89cd3af2abab4842b4d4dc7",
+            "url": "https://api.github.com/repos/sonata-project/SonataAdminBundle/zipball/e98ebe183c31729875b3ca9aeff54da000579d8b",
+            "reference": "e98ebe183c31729875b3ca9aeff54da000579d8b",
             "shasum": ""
         },
         "require": {
@@ -1892,7 +1632,7 @@
             "sonata-project/doctrine-orm-admin-bundle": "dev-master",
             "sonata-project/intl-bundle": "dev-master"
         },
-        "time": "2013-01-28 22:11:41",
+        "time": "2013-01-31 10:13:43",
         "type": "symfony-bundle",
         "installation-source": "source",
         "autoload": {
@@ -1989,7 +1729,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://github.com/sonata-project/GoogleAuthenticator/archive/181c8341e38cf7b2f82697ef38c91fe65af1f409.zip",
+            "url": "https://api.github.com/repos/sonata-project/GoogleAuthenticator/zipball/181c8341e38cf7b2f82697ef38c91fe65af1f409",
             "reference": "181c8341e38cf7b2f82697ef38c91fe65af1f409",
             "shasum": ""
         },
@@ -2041,7 +1781,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://github.com/sonata-project/SonataEasyExtendsBundle/archive/33d9dced64afc785976828cbc3edf141061fedee.zip",
+            "url": "https://api.github.com/repos/sonata-project/SonataEasyExtendsBundle/zipball/33d9dced64afc785976828cbc3edf141061fedee",
             "reference": "33d9dced64afc785976828cbc3edf141061fedee",
             "shasum": ""
         },
@@ -2092,7 +1832,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://github.com/sonata-project/sonata-doctrine-extensions/archive/d2cd67a25602fecab6067290536f163ea54f1c8c.zip",
+            "url": "https://api.github.com/repos/sonata-project/sonata-doctrine-extensions/zipball/d2cd67a25602fecab6067290536f163ea54f1c8c",
             "reference": "d2cd67a25602fecab6067290536f163ea54f1c8c",
             "shasum": ""
         },
@@ -2143,7 +1883,7 @@
         },
         "dist": {
             "type": "zip",
-            "url": "https://github.com/sonata-project/SonataUserBundle/archive/49cabf737f61e9a90c362bcf8469cac645d1c2a3.zip",
+            "url": "https://api.github.com/repos/sonata-project/SonataUserBundle/zipball/0ea128edd6aba2adee1b8b02798276db173834a0",
             "reference": "92a144c020ff5e9eb6c89a4afcdb79131eadaf20",
             "shasum": ""
         },
@@ -2161,7 +1901,7 @@
         "suggest": {
             "sonata-project/doctrine-orm-admin-bundle": "dev-master"
         },
-        "time": "2013-01-29 16:04:05",
+        "time": "2013-01-30 16:47:56",
         "type": "symfony-bundle",
         "installation-source": "source",
         "autoload": {
@@ -2252,6 +1992,266 @@
         "homepage": "https://github.com/sonata-project/SonataCacheBundle",
         "keywords": [
             "cache block"
+        ]
+    },
+    {
+        "name": "doctrine/migrations",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/migrations",
+            "reference": "e1f6efcd94993b493de5c6a413cbc327ea9c0caa"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/migrations/zipball/e1f6efcd94993b493de5c6a413cbc327ea9c0caa",
+            "reference": "e1f6efcd94993b493de5c6a413cbc327ea9c0caa",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "doctrine/dbal": ">=2.0,<2.5.x-dev"
+        },
+        "require-dev": {
+            "symfony/console": "2.*",
+            "symfony/yaml": "2.*"
+        },
+        "suggest": {
+            "symfony/console": "to run the migration from the console"
+        },
+        "time": "2012-12-27 16:39:29",
+        "type": "library",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Doctrine\\DBAL\\Migrations": "lib"
+            }
+        },
+        "notification-url": "http://packagist.org/downloads/",
+        "license": [
+            "LGPL"
+        ],
+        "authors": [
+            {
+                "name": "Jonathan Wage",
+                "email": "jonwage@gmail.com",
+                "homepage": "http://www.jwage.com/"
+            },
+            {
+                "name": "Benjamin Eberlei",
+                "email": "kontakt@beberlei.de"
+            }
+        ],
+        "description": "Database Schema migrations using Doctrine DBAL",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "database",
+            "migrations"
+        ]
+    },
+    {
+        "name": "doctrine/doctrine-migrations-bundle",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "target-dir": "Doctrine/Bundle/MigrationsBundle",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/DoctrineMigrationsBundle.git",
+            "reference": "99c0192804134a8c1d0588777bd98bdbc2dbb554"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/DoctrineMigrationsBundle/zipball/99c0192804134a8c1d0588777bd98bdbc2dbb554",
+            "reference": "99c0192804134a8c1d0588777bd98bdbc2dbb554",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "doctrine/migrations": "*",
+            "symfony/framework-bundle": ">=2.1.0,<2.3-dev",
+            "doctrine/doctrine-bundle": ">=1.0,<2.0"
+        },
+        "time": "2013-01-12 20:06:22",
+        "type": "symfony-bundle",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Doctrine\\Bundle\\MigrationsBundle": ""
+            }
+        },
+        "notification-url": "http://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "http://symfony.com/contributors"
+            },
+            {
+                "name": "Doctrine Project",
+                "homepage": "http://www.doctrine-project.org"
+            }
+        ],
+        "description": "Symfony DoctrineMigrationsBundle",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "dbal",
+            "migrations",
+            "schema"
+        ]
+    },
+    {
+        "name": "doctrine/doctrine-fixtures-bundle",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "target-dir": "Doctrine/Bundle/FixturesBundle",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/doctrine/DoctrineFixturesBundle.git",
+            "reference": "95d1e0291878f64d376c878d9578239760cbaf73"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/doctrine/DoctrineFixturesBundle/zipball/95d1e0291878f64d376c878d9578239760cbaf73",
+            "reference": "95d1e0291878f64d376c878d9578239760cbaf73",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "doctrine/data-fixtures": "*",
+            "symfony/doctrine-bridge": ">=2.1.0,<2.3-dev",
+            "doctrine/doctrine-bundle": ">=1.0,<2.0"
+        },
+        "time": "2013-01-13 12:20:51",
+        "type": "symfony-bundle",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Doctrine\\Bundle\\FixturesBundle": ""
+            }
+        },
+        "notification-url": "http://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            },
+            {
+                "name": "Symfony Community",
+                "homepage": "http://symfony.com/contributors"
+            },
+            {
+                "name": "Doctrine Project",
+                "homepage": "http://www.doctrine-project.org"
+            }
+        ],
+        "description": "Symfony DoctrineFixturesBundle",
+        "homepage": "http://www.doctrine-project.org",
+        "keywords": [
+            "persistence",
+            "Fixture"
+        ]
+    },
+    {
+        "name": "instaclick/base-test-bundle",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "target-dir": "IC/Bundle/Base/TestBundle",
+        "source": {
+            "type": "git",
+            "url": "http://github.com/instaclick/ICBaseTestBundle",
+            "reference": "9d43bbed1989a528576c87fc59e2a759708f11dc"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://github.com/instaclick/ICBaseTestBundle/archive/9d43bbed1989a528576c87fc59e2a759708f11dc.zip",
+            "reference": "9d43bbed1989a528576c87fc59e2a759708f11dc",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.2",
+            "doctrine/doctrine-fixtures-bundle": "dev-master",
+            "symfony/framework-bundle": ">=2.0,<3.0-dev"
+        },
+        "time": "2013-01-18 21:32:17",
+        "type": "symfony-bundle",
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "IC\\Bundle\\Base\\TestBundle": ""
+            }
+        },
+        "notification-url": "http://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "InstaClick Inc.",
+                "homepage": "http://www.instaclick.com"
+            }
+        ],
+        "description": "This bundle provides lower level support for functional tests on Symfony2.",
+        "keywords": [
+            "Symfony2"
+        ]
+    },
+    {
+        "name": "twig/extensions",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/fabpot/Twig-extensions",
+            "reference": "5c2d515d4624bdd588226d688173cf0399a4d8cf"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://github.com/fabpot/Twig-extensions/archive/5c2d515d4624bdd588226d688173cf0399a4d8cf.zip",
+            "reference": "5c2d515d4624bdd588226d688173cf0399a4d8cf",
+            "shasum": ""
+        },
+        "require": {
+            "twig/twig": "1.*"
+        },
+        "time": "2013-01-04 16:55:05",
+        "type": "library",
+        "extra": {
+            "branch-alias": {
+                "dev-master": "1.0.x-dev"
+            }
+        },
+        "installation-source": "source",
+        "autoload": {
+            "psr-0": {
+                "Twig_Extensions_": "lib/"
+            }
+        },
+        "notification-url": "http://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Fabien Potencier",
+                "email": "fabien@symfony.com"
+            }
+        ],
+        "description": "Common additional features for Twig that do not directly belong in core",
+        "homepage": "https://github.com/fabpot/Twig-extensions",
+        "keywords": [
+            "debug",
+            "i18n",
+            "text"
         ]
     }
 ]

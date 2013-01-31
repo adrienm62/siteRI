@@ -7,3 +7,5 @@ build/
 vendor
 composer.phar
 !/vendor/
+/siteRI/nbproject/private/
+/nbproject/private/
