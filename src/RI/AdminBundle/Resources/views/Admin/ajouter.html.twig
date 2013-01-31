@@ -1,0 +1,19 @@
+{% extends "RIAdminBundle::layout.html.twig" %}
+
+{% block title %}
+	Ajouter un statut de partenaire - {{ parent() }}
+{% endblock %}
+
+{% block adminRI_body %}
+
+	<h2>Ajout {{ nom }}</h2>
+
+	{% include "RIAdminBundle:Admin:formulaire.html.twig" %}
+
+	<p>
+		Vous pouvez ajouter {{ nom }}
+	</p>
+
+	
+
+{% endblock %}

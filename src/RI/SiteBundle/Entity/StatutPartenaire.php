@@ -28,7 +28,7 @@ class StatutPartenaire
      */
     private $stp_libelle;
 
-
+   
     /**
      * Get id
      *
@@ -60,5 +60,13 @@ class StatutPartenaire
     public function getStpLibelle()
     {
         return $this->stp_libelle;
+    }
+    
+    
+
+
+    
+    public function __toString() {
+        return $this->getStpLibelle();
     }
 }

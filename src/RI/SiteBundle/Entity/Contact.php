@@ -38,7 +38,7 @@ class Contact
     /**
      * @var string
      *
-     * @ORM\Column(name="cont_adresse", type="text")
+     * @ORM\Column(name="cont_adresse", type="text", nullable=true)
      */
     private $cont_adresse;
 
@@ -59,13 +59,13 @@ class Contact
     /**
      * @var string
      *
-     * @ORM\Column(name="cont_mdp", type="text")
+     * @ORM\Column(name="cont_mdp", type="text", nullable = true)
      */
     private $cont_mdp;
     
     /**
      *
-     *@ORM\OneToMany(targetEntity="RI\SiteBundle\Entity\Partenaire", mappedBy="contact")
+     *@ORM\ManyToOne(targetEntity="RI\SiteBundle\Entity\Partenaire")
      *@ORM\JoinColumn(nullable=false)
      */
     
@@ -227,44 +227,9 @@ class Contact
     /**
      * Constructor
      */
-    public function __construct()
-    {
-        $this->partenaire = new \Doctrine\Common\Collections\ArrayCollection();
-    }
     
-    /**
-     * Add partenaire
-     *
-     * @param \RI\SiteBundle\Entity\Partenaire $partenaire
-     * @return Contact
-     */
-    public function addPartenaire(\RI\SiteBundle\Entity\Partenaire $partenaire)
-    {
-        $this->partenaire[] = $partenaire;
     
-        return $this;
-    }
-
-    /**
-     * Remove partenaire
-     *
-     * @param \RI\SiteBundle\Entity\Partenaire $partenaire
-     */
-    public function removePartenaire(\RI\SiteBundle\Entity\Partenaire $partenaire)
-    {
-        $this->partenaire->removeElement($partenaire);
-    }
-
-    /**
-     * Get partenaire
-     *
-     * @return \Doctrine\Common\Collections\Collection 
-     */
-    public function getPartenaire()
-    {
-        return $this->partenaire;
-    }
-
+   
     /**
      * Add documents
      *
@@ -297,4 +262,39 @@ class Contact
     {
         return $this->documents;
     }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->documents = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Set partenaire
+     *
+     * @param \RI\SiteBundle\Entity\Partenaire $partenaire
+     * @return Contact
+     */
+    public function setPartenaire(\RI\SiteBundle\Entity\Partenaire $partenaire)
+    {
+        $this->partenaire = $partenaire;
+    
+        return $this;
+    }
+
+    /**
+     * Get partenaire
+     *
+     * @return \RI\SiteBundle\Entity\Partenaire  
+     */
+    public function getPartenaire()
+    {
+        return $this->partenaire;
+    }
+    
+    public function __toString() {
+        return $this->getContNom() + " " + $this->getContPrenom();
+    }
+    
 }

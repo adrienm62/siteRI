@@ -118,4 +118,8 @@ class Formation
     {
         return $this->dpt;
     }
+    
+    public function __toString() {
+        return $this->getForLibelle() + " " + $this->getForAnnee();
+    }
 }

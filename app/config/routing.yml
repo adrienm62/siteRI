@@ -3,22 +3,31 @@ ri_admin:
     prefix:   /
 
 sec:
-    resource: "@SecBundle/Resources/config/routing.yml"
+    resource: "@RISecBundle/Resources/config/routing.yml"
     prefix:   /
 
 etu:
-    resource: "@EtuBundle/Resources/config/routing.yml"
+    resource: "@RIEtuBundle/Resources/config/routing.yml"
     prefix:   /
 
 ri_part:
     resource: "@RIPartBundle/Resources/config/routing.yml"
     prefix:   /
 
+admin:
+    resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
+    prefix:   /admin
+
+_sonata_admin:
+    resource: .
+    type: sonata_admin
+    prefix: /admin
+
 ri_user:
     resource: "@RIUserBundle/Resources/config/routing.yml"
-    prefix:   /
+    prefix:   /user
 
-ri_site:
+risite:
     resource: "@RISiteBundle/Resources/config/routing.yml"
     prefix:   /
 
