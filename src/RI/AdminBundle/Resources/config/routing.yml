@@ -1,11 +1,27 @@
-risite_adminAcc:
+ri_admin_index:
     pattern:  /admin
     defaults: { _controller: RIAdminBundle:Admin:index }
 
-risite_gestionPart:
-    pattern: /gestionPart/{id}
-    defaults: { _controller: RIAdminBundle:Admin:voirGestionPart }
+ri_admin_ajouter_stage:
+    pattern:  /admin/ajout/stage
+    defaults: { _controller: RIAdminBundle:Admin:ajoutStage}
+    requirements:
+        _scheme:  htpps  
 
-risite_stageEtu:
-    pattern: /stageEtu/{id}
-    defaults: { _controller: RIAdminBundle:Admin:voirStageEtu }
+ri_admin_ajout_partenaire:
+    pattern:  /admin/ajout/partenaire
+    defaults: { _controller: RIAdminBundle:Admin:ajoutPartenaire}
+    requirements:
+        _scheme:  htpps  
+
+ri_admin_ajout_contact:
+    pattern:  /admin/ajout/contact
+    defaults: { _controller: RIAdminBundle:Admin:ajoutContact}
+    requirements:
+        _scheme:  htpps
+        
+ri_admin_ajout_statut_partenaire:
+    pattern:  /admin/ajout/statutpartenaire
+    defaults: { _controller: RIAdminBundle:Admin:ajoutStatut}
+    requirements:
+        _scheme:  htpps

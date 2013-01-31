@@ -2,15 +2,16 @@
 
 namespace RI\AdminBundle\Controller;
 
+use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class AdminController extends Controller
 {
-    public function indexAction($name)
+    public function indexAction()
     {
-        return $this->render('RIAdminBundle:Admin:index.html.twig', array('name' => $name));
+        return $this->render('RIAdminBundle:Admin:index.html.twig');
     }
-    
+
     /**
      * @Secure(roles="ROLE_ADMIN")
      */
@@ -24,4 +25,25 @@ class AdminController extends Controller
     public function voirStageEtuAction(){
         return $this->render('RISiteBundle:Sec:stageEtu.html.twig');
     }
+
+    public function ajoutStatutPartenaireAction()
+    {
+        
+    }
+    
+    public function ajoutPartenaireAction()
+    {
+        
+    }
+    
+    public function ajoutContactAction()
+    {
+        
+    }
+    
+    public function ajoutStageAction()
+    {
+        
+    }
+
 }
