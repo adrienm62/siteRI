@@ -3,9 +3,9 @@ risite_secAcc:
     defaults: { _controller: RISecBundle:Sec:index }
 
 risite_documentSec:
-    pattern: /documentSec/{id}
+    pattern: /documentSec
     defaults: { _controller: RISecBundle:Sec:voirDocumentSec }
 
 risite_inscEtu:
-    pattern: /inscEtu/{id}
+    pattern: /inscEtu
     defaults: { _controller: RISecBundle:Sec:voirInscEtu }

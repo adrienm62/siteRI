@@ -2,9 +2,10 @@
 
 namespace RI\SecBundle\Controller;
 
+use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class DefaultController extends Controller
+class SecController extends Controller
 {
     public function indexAction()
     {

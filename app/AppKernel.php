@@ -22,10 +22,10 @@ class AppKernel extends Kernel
             new FOS\UserBundle\FOSUserBundle(),
             new RI\SiteBundle\RISiteBundle(),
             new RI\UserBundle\RIUserBundle(),
-            new RI\AdminBundle\RIAdminBundle(),
             new RI\PartBundle\RIPartBundle(),
             new RI\EtuBundle\EtuBundle(),
             new RI\SecBundle\SecBundle(),
+            new RI\AdminBundle\RIAdminBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {

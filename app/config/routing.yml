@@ -1,3 +1,7 @@
+ri_admin:
+    resource: "@RIAdminBundle/Resources/config/routing.yml"
+    prefix:   /
+
 sec:
     resource: "@SecBundle/Resources/config/routing.yml"
     prefix:   /
@@ -8,10 +12,6 @@ etu:
 
 ri_part:
     resource: "@RIPartBundle/Resources/config/routing.yml"
-    prefix:   /
-
-ri_admin:
-    resource: "@RIAdminBundle/Resources/config/routing.yml"
     prefix:   /
 
 ri_user:
