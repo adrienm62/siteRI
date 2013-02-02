@@ -31,13 +31,13 @@ class Formation
     /**
      * @var integer
      *
-     * @ORM\Column(name="for_annee", type="integer")
+     * @ORM\Column(name="for_annee", type="date")
      */
     private $for_annee;
     
     /**
      *@ORM\ManyToOne(targetEntity="RI\SiteBundle\Entity\Departement")
-     *@ORM\JoinColumn(nullable=false) 
+     *@ORM\JoinColumn(nullable=true) 
      */
     private $dpt;
     /**

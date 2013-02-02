@@ -1,18 +1,3 @@
-ri_admin:
-    resource: "@RIAdminBundle/Resources/config/routing.yml"
-    prefix:   /
-
-sec:
-    resource: "@RISecBundle/Resources/config/routing.yml"
-    prefix:   /
-
-etu:
-    resource: "@RIEtuBundle/Resources/config/routing.yml"
-    prefix:   /
-
-ri_part:
-    resource: "@RIPartBundle/Resources/config/routing.yml"
-    prefix:   /
 
 admin:
     resource: '@SonataAdminBundle/Resources/config/routing/sonata_admin.xml'
