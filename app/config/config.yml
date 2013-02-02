@@ -64,6 +64,9 @@ fos_user:
     firewall_name: main
     # Permet de renseigner la nouvelle entity utilisateur
     user_class: RI\UserBundle\Entity\User
+    registration:
+        form:
+            type: ri_user_register
     
 sonata_admin:
     title: Jobeet Admin

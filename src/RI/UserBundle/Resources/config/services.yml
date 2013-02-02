@@ -1,7 +1,9 @@
 parameters:
-#    ri_user.example.class: RI\UserBundle\Example
+    ri_user.example.class: RI\UserBundle\Form\Type\RegistrationFormType
 
 services:
-#    ri_user.example:
-#        class: %ri_user.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]
+    ri_user.registration.form.type:
+        class: RI\UserBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: ri_user_register }
