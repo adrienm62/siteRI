@@ -3,6 +3,7 @@
 namespace RI\UserBundle\Entity;
 
 use FOS\UserBundle\Entity\User as BaseUser;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -17,14 +18,21 @@ class User extends BaseUser {
      */
     protected $id;
     
+    
     /**
-     *@ORM\Column(type="text")
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Entrez votre nom.")
+     * @Assert\MinLength(limit="3", message="Votre nom est trop court")
+     * @Assert\MaxLength(limit="255", message="Votre nom est trop long.")
      */
     protected $nom;
     
     
     /**
-     *@ORM\Column(type="text")
+     * @ORM\Column(type="string", length=255)
+     * @Assert\NotBlank(message="Entrez votre prenom")
+     * @Assert\MinLength(limit="3", message="Votre prenom est trop court")
+     * @Assert\MaxLength(limit="255", message="Votre prénom est trop long.")
      */
     protected $prenom;
     
@@ -37,12 +45,12 @@ class User extends BaseUser {
     
     
     /**
-     *@ORM\Column(type="text", nullable= true)
+     *@ORM\Column(type="string", length = 5, nullable = true)
      */
     protected $codepostal;
     
     /**
-     *@ORM\Column(type="text", length = 5, nullable= true)
+     *@ORM\Column(type="string", length = 255, nullable= true)
      */
     protected $ville;
     
@@ -58,7 +66,7 @@ class User extends BaseUser {
      */
     protected $tel2;
      /**
-     *@ORM\Column(type="text", nullable = true)
+     *@ORM\Column(type="string", length = 255, nullable = true)
      * 
      */
     protected $ine;

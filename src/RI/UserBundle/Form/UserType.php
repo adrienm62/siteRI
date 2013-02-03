@@ -34,7 +34,7 @@ class UserType extends AbstractType
             ->add('ville')
             ->add('tel1')
             ->add('tel2')
-            ->add('INE')
+            ->add('ine')
         ;
     }
 

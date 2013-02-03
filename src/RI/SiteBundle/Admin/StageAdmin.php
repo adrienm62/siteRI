@@ -12,7 +12,7 @@ class StageAdmin extends Admin {
      {
          $formMapper->add('sta_sujet')
                   ->add('formation')
-                 ->add('contact')
+                 ->add('contactPrincipal')
                  ->add('sta_debut')
                  ->add('sta_fin');
                  
@@ -21,7 +21,7 @@ class StageAdmin extends Admin {
      {
           $datagridMapper->add('sta_sujet')
                   ->add('formation')
-                 ->add('contact')
+                 ->add('contactPrincipal')
                  ->add('sta_debut')
                  ->add('sta_fin');
      }
@@ -30,7 +30,7 @@ class StageAdmin extends Admin {
      {
          $listMapper->add('sta_sujet')
                   ->add('formation')
-                 ->add('contact')
+                 ->add('contactPrincipal')
                  ->add('sta_debut')
                  ->add('sta_fin');
      } 

@@ -39,7 +39,7 @@ class Formation
      *@ORM\ManyToOne(targetEntity="RI\SiteBundle\Entity\Departement")
      *@ORM\JoinColumn(nullable=true) 
      */
-    private $dpt;
+    private $departement;
     /**
      * Get id
      *
@@ -104,7 +104,7 @@ class Formation
      */
     public function setDepartement(\RI\SiteBundle\Entity\Departement $departement)
     {
-        $this->dpt= $departement;
+        $this->departement= $departement;
     
         return $this;
     }
@@ -116,7 +116,7 @@ class Formation
      */
     public function getDepartement()
     {
-        return $this->dpt;
+        return $this->departement;
     }
     
     public function __toString() {

@@ -56,6 +56,13 @@ class Partenaire
      */
     private $par_coordonnees;
 
+    
+    /**
+     *
+     * @ORM\ManyToOne(targetEntity="RI\SiteBundle\Entity\StatutPartenaire")
+     */
+    
+    private $statutpartenaire;
     public function __construct() {
         
     }
@@ -188,5 +195,28 @@ class Partenaire
     
     public function __toString() {
         return $this->getParNom();
+    }
+
+    /**
+     * Set statutpartenaire
+     *
+     * @param \RI\SiteBundle\Entity\StatutPartenaires $statutpartenaire
+     * @return Partenaire
+     */
+    public function setStatutpartenaire(\RI\SiteBundle\Entity\StatutPartenaires $statutpartenaire = null)
+    {
+        $this->statutpartenaire = $statutpartenaire;
+    
+        return $this;
+    }
+
+    /**
+     * Get statutpartenaire
+     *
+     * @return \RI\SiteBundle\Entity\StatutPartenaires 
+     */
+    public function getStatutpartenaire()
+    {
+        return $this->statutpartenaire;
     }
 }
