@@ -35,6 +35,7 @@ services:
     ri_site.admin.statutpartenaire:
         class: RI\SiteBundle\Admin\StatutPartenaireAdmin
         tags:
-            - {name: sonata.admin, manager_type: orm, group: site, label: StatutPartenaires}
-        arguments: [null, RI\SiteBundle\Entity\StatutPartenaire, RISiteBundle:StatutPartenaireAdmin]    
-   
+            - {name: sonata.admin, manager_type: orm, group: site, label: Statut de partenaire}
+        arguments: [null, RI\SiteBundle\Entity\StatutPartenaire, RISiteBundle:StatutPartenaireAdmin]
+     
+        

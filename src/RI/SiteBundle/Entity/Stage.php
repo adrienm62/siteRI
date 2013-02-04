@@ -60,6 +60,12 @@ class Stage
      */
     private $contactsSecondaire;
 
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="RI\UserBundle\Entity\User", cascade = {"persist"})
+     * @ORM\JoinColumn(nullable=true)
+     */
+    private $etudiant;
 
     public function __construct() {
         
@@ -246,5 +252,28 @@ class Stage
     public function getContactsSecondaire()
     {
         return $this->contactsSecondaire;
+    }
+
+    /**
+     * Set user
+     *
+     * @param \RI\UserBundle\Entity\User $user
+     * @return Stage
+     */
+    public function setEtudiant(\RI\UserBundle\Entity\User $user = null)
+    {
+        $this->etudiant = $user;
+    
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \RI\UserBundle\Entity\User 
+     */
+    public function getEtudiant()
+    {
+        return $this->etudiant;
     }
 }

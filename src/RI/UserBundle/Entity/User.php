@@ -77,6 +77,12 @@ class User extends BaseUser {
      * @return integer 
      */
     
+    /**
+     *@ORM\ManyToOne(targetEntity="RI\SiteBundle\Entity\Formation", cascade = {"persist"})
+     *@ORM\Column(nullable=false)
+     */
+    protected $formation;
+
     public function getId()
     {
         return $this->id;
@@ -253,5 +259,9 @@ class User extends BaseUser {
     
     public function getIne(){
         return $this->ine;
+    }
+    
+    public function __toString() {
+        return ;
     }
 }
