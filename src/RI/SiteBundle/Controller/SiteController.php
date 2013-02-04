@@ -11,6 +11,13 @@ class SiteController extends Controller {
         return $this->render('RISiteBundle:Site:index.html.twig');
     }
     
+    public function voirPartenairesAction(){
+        $partenaires = $this->getDoctrine()->getManager()->getRepository('RISiteBundle:Partenaire')->findAll();
+ 
+        
+        return $this->render('RISiteBundle:Site:listepartenaires.html.twig', array('partenaires' => $partenaires));
+    }
+    
 }
 
 ?>

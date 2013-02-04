@@ -14,29 +14,29 @@ class PartenaireAdmin extends Admin {
     
      protected function configureFormFields(FormMapper $formMapper)
      {
-         $formMapper->add('par_nom', 'text')
+         $formMapper->add('par_nom')
                   ->add('statutpartenaire')
-                 ->add('par_pays', 'text')
-                 ->add('par_ville', 'text')
-                 ->add('par_adresse', 'text');
+                 ->add('par_pays')
+                 ->add('par_ville')
+                 ->add('par_adresse');
                  
      }
      protected function configureDatagridFilters(DatagridMapper $datagridMapper)
      {
-          $datagridMapper->add('par_nom', 'text')
+          $datagridMapper->add('par_nom')
                  ->add('statutpartenaire') 
-                 ->add('par_pays', 'text')
-                 ->add('par_ville', 'text')
-                 ->add('par_adresse', 'text');
+                 ->add('par_pays')
+                 ->add('par_ville')
+                 ->add('par_adresse');
      }
      
      protected function configureListFields(ListMapper $listMapper)
      {
-         $listMapper->add('par_nom', 'text')
+         $listMapper->add('par_nom')
                  ->add('statutpartenaire') 
-                 ->add('par_pays', 'text')
-                 ->add('par_ville', 'text')
-                 ->add('par_adresse', 'text');
+                 ->add('par_pays')
+                 ->add('par_ville')
+                 ->add('par_adresse');
      } 
      
      

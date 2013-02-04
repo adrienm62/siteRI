@@ -203,7 +203,7 @@ class Partenaire
      * @param \RI\SiteBundle\Entity\StatutPartenaires $statutpartenaire
      * @return Partenaire
      */
-    public function setStatutpartenaire(\RI\SiteBundle\Entity\StatutPartenaires $statutpartenaire = null)
+    public function setStatutpartenaire(\RI\SiteBundle\Entity\StatutPartenaire $statutpartenaire = null)
     {
         $this->statutpartenaire = $statutpartenaire;
     

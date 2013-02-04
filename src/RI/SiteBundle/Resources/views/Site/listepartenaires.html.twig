@@ -1,0 +1,14 @@
+{# src/SiteRI/SiteBundle/Resources/views/Site/partenaire.html.twig #}
+{% extends "RISiteBundle::layout.html.twig" %}
+{% block title %}
+    Partenaires - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <h2><center><u>Partenaires</u></center></h2>
+    <ul>
+    {% for partenaire in partenaires %}
+            <li><a href >{{ partenaire.parnom }} - {{partenaire.parpays}} {{partenaire.parville}}</a></li>
+    {%endfor%}
+    </ul>
+{% endblock %}
