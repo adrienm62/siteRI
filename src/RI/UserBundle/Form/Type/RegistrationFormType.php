@@ -16,6 +16,7 @@ class RegistrationFormType extends BaseType {
         $builder->add('codepostal');
         $builder->add('ville');
         $builder->add('ine');
+        $builder->add('formation');
     }
     
     public function getName() {

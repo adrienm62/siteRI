@@ -7,8 +7,9 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
  * @ORM\Table(name="user")
+ * @ORM\Entity(repositoryClass="RI\UserBundle\Entity\UserRepository")
+ * 
  */
 class User extends BaseUser {
      /**
@@ -71,18 +72,19 @@ class User extends BaseUser {
      */
     protected $ine;
     
+   
+    
     /**
+     *@ORM\ManyToOne(targetEntity="RI\SiteBundle\Entity\Formation", cascade = {"persist"})
+     *@ORM\Column(nullable=true)
+     */
+    protected $formation;
+    
+     /**
      * Get id
      *
      * @return integer 
      */
-    
-    /**
-     *@ORM\ManyToOne(targetEntity="RI\SiteBundle\Entity\Formation", cascade = {"persist"})
-     *@ORM\Column(nullable=false)
-     */
-    protected $formation;
-
     public function getId()
     {
         return $this->id;
@@ -261,7 +263,16 @@ class User extends BaseUser {
         return $this->ine;
     }
     
+    public function getFormation(){
+        return $this->formation;
+    }
+    
+    public function setFormation(RI\SiteBundle\Entity\Formation $formation){
+        $this->formation = $formation;
+        return $this;
+    }
+    
     public function __toString() {
-        return ;
+        return $this->nom + " " + $this->prenom;
     }
 }

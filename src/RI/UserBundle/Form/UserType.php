@@ -35,6 +35,7 @@ class UserType extends AbstractType
             ->add('tel1')
             ->add('tel2')
             ->add('ine')
+            ->add('formation')
         ;
     }
 
