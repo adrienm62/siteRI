@@ -74,11 +74,7 @@ class User extends BaseUser {
     
    
     
-    /**
-     *@ORM\ManyToOne(targetEntity="RI\SiteBundle\Entity\Formation", cascade = {"persist"})
-     *@ORM\Column(nullable=true)
-     */
-    protected $formation;
+    
     
      /**
      * Get id
@@ -263,16 +259,9 @@ class User extends BaseUser {
         return $this->ine;
     }
     
-    public function getFormation(){
-        return $this->formation;
-    }
-    
-    public function setFormation(RI\SiteBundle\Entity\Formation $formation){
-        $this->formation = $formation;
-        return $this;
-    }
-    
     public function __toString() {
-        return $this->nom + " " + $this->prenom;
+        
+        return $this->nom . " " . $this->prenom; 
+        
     }
 }

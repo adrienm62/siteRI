@@ -37,5 +37,3 @@ services:
         tags:
             - {name: sonata.admin, manager_type: orm, group: site, label: Statut de partenaire}
         arguments: [null, RI\SiteBundle\Entity\StatutPartenaire, RISiteBundle:StatutPartenaireAdmin]
-     
-        

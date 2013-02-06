@@ -14,7 +14,6 @@ class StageAdmin extends Admin {
                   ->add('formation')
                  ->add('etudiant')
                  ->add('contactPrincipal')
-                 
                  ->add('sta_debut')
                  ->add('sta_fin');
                  

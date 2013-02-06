@@ -1,5 +1,5 @@
 risite_accueil:
-   pattern: /accueil
+   pattern: /
    defaults: { _controller: RISiteBundle:Site:index }
 
 risite_profil:
