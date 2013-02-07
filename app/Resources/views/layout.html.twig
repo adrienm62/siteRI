@@ -27,28 +27,34 @@
             {#Menu à gauche#}
             <div id="menu" class="span3">
             <ul class="nav nav-pills nav-stacked">
-                {# utilisation de la fonction {{ path }} pour faire des liens vers d'autres routes#}
+                {# L'utilisateur est-il connecté ? #}
                 <li><a href="{{ path('risite_accueil') }}">Accueil</a></li>
-                {% if is_granted('ROLE_USER')%}
-                <li><a href="{{ path('risite_profil') }}">Profil</a></li>
-                <li><a href="{{ path('risite_partenaire') }}">Partenaires</a></li>
-                <li><a href="{{ path('risite_document') }}">Mes documents</a></li>
-                {% endif%}
-                {% if is_granted('ROLE_SECRETARY')%}
-                <li><a href="{{ path('risite_inscEtu') }}">Inscrire étudiant</a></li>
-                <li><a href="{{ path('risite_documentSec') }}">Gestion des documents</a></li>
-                {% endif%}
-                {% if is_granted('ROLE_CONTACT')%}
-                <li><a href="{{ path('risite_stagiaire') }}">Voir stagiaires</a></li>
-                <li><a href="{{ path('risite_documentPart') }}">Gestion des documents</a></li>
-                {% endif%}
-                {% if is_granted('ROLE_ADMIN')%}
-                <li><a href="{{ path('risite_gestionPart') }}">Gestion des Partenaires</a></li>
-                <li><a href="{{ path('risite_stageEtu') }}">Stage des étudiants</a></li>
-                {% endif%}
-                <a href="{{ path('fos_user_security_login') }}">Connexion</a>
-                <a href="{{ path('fos_user_registration_register') }}">Inscription</a>
+                {%if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                    
+                    {% if is_granted('ROLE_USER')%}
+                        <li><a href="{{ path('risite_profil') }}">Profil</a></li>
+                        <li><a href="{{ path('risite_partenaires') }}">Partenaires</a></li>
+                        <li><a href="{{ path('risite_document') }}">Mes documents</a></li>
+                    {% endif%}
+                    {% if is_granted('ROLE_SECRETARY')%}
+                        <li><a href="{{ path('risite_inscEtu') }}">Inscrire étudiant</a></li>
+                        <li><a href="{{ path('risite_documentSec') }}">Gestion des documents</a></li>
+                    {% endif%}
+                    {% if is_granted('ROLE_CONTACT')%}
+                        <li><a href="{{ path('risite_stagiaire') }}">Voir stagiaires</a></li>
+                        <li><a href="{{ path('risite_documentPart') }}">Gestion des documents</a></li>
+                    {% endif%}
+                    {% if is_granted('ROLE_ADMIN')%}
+                        <li><a href="{{ path('risite_gestionPart') }}">Gestion des Partenaires</a></li>
+                        <li><a href="{{ path('risite_stageEtu') }}">Stage des étudiants</a></li>
+                    {% endif%}
+                        <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
+                {%else%}
+                    <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+                    <li><a href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
+                {%endif%}
                 <br>
+                    <li><a href="{{ path('risite_partenaires') }}">Partenaires</a></li>
             </ul>
             </div>            
             
