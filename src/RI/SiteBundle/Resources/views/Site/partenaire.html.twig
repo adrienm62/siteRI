@@ -1,0 +1,18 @@
+{# src/SiteRI/SiteBundle/Resources/views/Site/partenaire.html.twig #}
+{% extends "RISiteBundle::layout.html.twig" %}
+{% block title %}
+    Partenaire - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <h2><center><u>Partenaire: {{partenaire.parnom}}</u></center></h2>
+    <ul>
+        <li>Nom ou Raison Sociale: {{partenaire.parnom}}</li>
+        <li>Adresse: {{partenaire.paradresse}}<br>{{partenaire.parville}}<br>{{partenaire.parpays}}</li>
+
+        {%if partenaire.parcoordonnees is not null %}
+        <li>Coordonnées géographique: {{partenaire.parcoordonnees}}</li>
+        {%endif%}
+        
+    </ul>
+{% endblock %}

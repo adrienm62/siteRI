@@ -10,6 +10,10 @@ risite_partenaires:
     pattern: /partenaires
     defaults: { _controller: RISiteBundle:Site:voirPartenaires }
 
+risite_partenaire_info:
+    pattern: /partenaire/{id}
+    defaults: { _controller: RISiteBundle:Site:voirInfoPartenaire }
+
 risite_document:
     pattern: /document
     defaults: { _controller: RISiteBundle:Site:voirDocument }
