@@ -1,0 +1,17 @@
+{# src/SiteRI/SiteBundle/Resources/views/Site/contact.html.twig #}
+{% extends "RISiteBundle::layout.html.twig" %}
+{% block title %}
+    Contact - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <h2><center><u>Contact</u></center></h2>
+    <table>
+    <tr><th>Nom:</th> <td>{{contact.contnom}}</td></tr>
+    <tr><th>Prénom:</th> <td>{{contact.contprenom}}</td></tr>
+    <tr><th>Adresse:</th> <td>{{contact.contadresse}}</td></tr>
+    <tr><th>Mail:</th> <td>{{contact.contmail}}</td></tr>
+    <tr><th>Tel:</th> <td>{{contact.conttel}}</td></tr>
+    <tr><th>Partenaire: </th><td> {{contact.partenaire}}</td></tr>
+    </table>
+{% endblock %}

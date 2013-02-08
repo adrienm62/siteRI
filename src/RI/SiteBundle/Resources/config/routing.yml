@@ -3,7 +3,7 @@ risite_accueil:
    defaults: { _controller: RISiteBundle:Site:index }
 
 risite_profil:
-    pattern: /profil
+    pattern: /profil/{id}
     defaults: { _controller: RISiteBundle:Site:voirProfil }
 
 risite_partenaires:
@@ -13,6 +13,18 @@ risite_partenaires:
 risite_partenaire_info:
     pattern: /partenaire/{id}
     defaults: { _controller: RISiteBundle:Site:voirInfoPartenaire }
+
+risite_contact_info:
+    pattern: /contact/{id}
+    defaults: { _controller: RISiteBundle:Site:voirInfoContact }
+
+risite_stages:
+    pattern: /stages
+    defaults: { _controller: RISiteBundle:Site:voirStages }
+
+risite_stage_info:
+    pattern: /stage/{idStage}
+    defaults: { _controller: RISiteBundle:Site:voirInfoStage }
 
 risite_document:
     pattern: /document
@@ -25,14 +37,6 @@ risite_documentSec:
 risite_inscEtu:
     pattern: /inscEtu
     defaults: { _controller: RISiteBundle:Site:voirInscEtu }
-
-risite_gestionPart:
-    pattern: /gestionPart
-    defaults: { _controller: RISiteBundle:Site:voirGestionPart }
-
-risite_stageEtu:
-    pattern: /stageEtu
-    defaults: { _controller: RISiteBundle:Site:voirStageEtu }
 
 risite_test:
     pattern: /test

@@ -1,0 +1,14 @@
+{# src/SiteRI/SiteBundle/Resources/views/Site/listeStagiaire.html.twig #}
+{% extends "RISiteBundle::layout.html.twig" %}
+{% block title %}
+    Liste des stages - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <h2><center><u>Stages</u></center></h2>
+    <ul>
+    {% for stages in stages %}
+            <li><a href="{{ path('risite_stage_info',{'idStage':stages.id}) }}" >{{ stages.stasujet }} - Stage du {{stages.stadebut|date('Y-m-d')}} au {{stages.stafin|date('Y-m-d')}} - Etudiant : {{stages.etudiant}}</a></li>
+    {%endfor%}
+    </ul>
+{% endblock %}

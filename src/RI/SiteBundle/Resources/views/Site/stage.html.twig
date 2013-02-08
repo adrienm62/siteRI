@@ -1,0 +1,20 @@
+{# src/SiteRI/SiteBundle/Resources/views/Site/stage.html.twig #}
+{% extends "RISiteBundle::layout.html.twig" %}
+{% block title %}
+    Stage - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <h2><center><u>Stage n° {{stage.id}}</u></center></h2>
+    <table>
+    <tr><th>Intitulé du stage:</th> <td>{{stage.stasujet}}</td></tr>
+    <tr><th>Dates du stage:</th> <td> du {{stage.stadebut|date('Y-m-d')}} au {{stage.stafin|date('Y-m-d')}}</td></tr>
+    {%if stage.etudiant is not null %}
+    <tr><th>Etudiant:</th> <td><a href="{{ path('risite_profil',{'id':stage.etudiant.id}) }}" >{{stage.etudiant}}</a></td></tr>
+    {%endif%}
+    <tr><th>Contact principal:</th> <td><a href="{{ path ('risite_contact_info',{'id' : stage.contactprincipal.id})}}">{{stage.contactprincipal.contnom}} {{stage.contactprincipal.contprenom}}</a></td></tr>
+
+    
+        
+    </table>
+{% endblock %}

@@ -12,4 +12,10 @@ use Doctrine\ORM\EntityRepository;
  */
 class PartenaireRepository extends EntityRepository
 {
+    public function getContact($id){
+        $contact=$this->createQueryBuilder('a')
+                ->select('c.cont_nom, c.cont_prenom')->from('RISiteBundle:Contact', 'c')
+                ->where('c.partenaire = :id')->setParameter('id', $id);
+        return $contact->getQuery()->getResult();
+    }
 }

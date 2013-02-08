@@ -6,13 +6,13 @@
 
 {% block body %}
     <h2><center><u>Partenaire: {{partenaire.parnom}}</u></center></h2>
-    <ul>
-        <li>Nom ou Raison Sociale: {{partenaire.parnom}}</li>
-        <li>Adresse: {{partenaire.paradresse}}<br>{{partenaire.parville}}<br>{{partenaire.parpays}}</li>
-
-        {%if partenaire.parcoordonnees is not null %}
-        <li>Coordonnées géographique: {{partenaire.parcoordonnees}}</li>
-        {%endif%}
+    <table>
+    <tr><th>Nom:</th> <td>{{partenaire.parnom}}</td></tr>
+    <tr><th>Adresse:</th> <td>{{partenaire.paradresse}} - {{partenaire.parville}} - {{partenaire.parpays}}</td></tr>
+    <tr><th>Contact:</th> <td>{%render "RISiteBundle:Site:afficheContactPartenaire" with { 'id':partenaire.id}%}</td></tr>
+    {%if partenaire.parcoordonnees is not null %}
+    <tr><th>Coordonnées géographique:</th> <td>{{partenaire.parcoordonnees}}</td></tr>
+    {%endif%}
         
-    </ul>
+    </table>
 {% endblock %}
