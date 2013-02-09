@@ -120,6 +120,6 @@ class Formation
     }
     
     public function __toString() {
-        return $this->libelle . " " . $this->for_annee;
+        return $this->for_libelle;
     }
 }

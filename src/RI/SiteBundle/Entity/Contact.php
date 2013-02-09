@@ -294,7 +294,7 @@ class Contact
     }
     
     public function __toString() {
-        return $this->getContNom() + " " + $this->getContPrenom();
+        return $this->cont_nom . " " . $this->cont_prenom;
     }
     
 }
