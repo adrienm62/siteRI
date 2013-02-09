@@ -1,0 +1,16 @@
+{# src/SiteRI/SiteBundle/Resources/views/Site/profil.html.twig #}
+{% extends "RISiteBundle::layout.html.twig" %}
+{% block title %}
+    Profil - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <h2><center><u>Profil</u></center></h2>
+    <table>
+    <tr><th>Nom:</th> <td>{{profil.nom}}</td></tr>
+    <tr><th>Prénom:</th> <td>{{profil.prenom}}</td></tr>
+    <tr><th>Adresse:</th> <td>{{profil.adresse}}</td></tr>
+    <tr><th>Mail:</th> <td>???</td></tr>
+    <tr><th>Tel:</th> <td>{{profil.tel1}}</td></tr>
+    </table>
+{% endblock %}

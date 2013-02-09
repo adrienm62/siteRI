@@ -1,7 +1,0 @@
-parameters:
-#    ri_part.example.class: RI\PartBundle\Example
-
-services:
-#    ri_part.example:
-#        class: %ri_part.example.class%
-#        arguments: [@service_id, "plain_value", %parameter%]

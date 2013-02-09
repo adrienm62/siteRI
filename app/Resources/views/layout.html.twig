@@ -32,8 +32,8 @@
                 {%if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                     
                     {% if is_granted('ROLE_USER')%}
-                        <li><a href="{{ path('risite_profil') }}">Profil</a></li>
-                        <li><a href="{{ path('risite_partenaires') }}">Partenaires</a></li>
+                        <li><a href="{{ path('risite_profil', {'id':app.user.id}) }}">Profil</a></li>
+                        <li><a href="{{ path('risite_partenaires') }}">Liste des Partenaires</a></li>
                         <li><a href="{{ path('risite_document') }}">Mes documents</a></li>
                     {% endif%}
                     {% if is_granted('ROLE_SECRETARY')%}
@@ -45,8 +45,7 @@
                         <li><a href="{{ path('risite_documentPart') }}">Gestion des documents</a></li>
                     {% endif%}
                     {% if is_granted('ROLE_ADMIN')%}
-                        <li><a href="{{ path('risite_gestionPart') }}">Gestion des Partenaires</a></li>
-                        <li><a href="{{ path('risite_stageEtu') }}">Stage des étudiants</a></li>
+                        <li><a href="{{ path('risite_stages') }}">Liste des stages</a></li>
                     {% endif%}
                         <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
                 {%else%}

@@ -7,7 +7,9 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
 use Sonata\AdminBundle\Validator\ErrorElement;
 use Sonata\AdminBundle\Form\FormMapper;
-
+/*
+ * Permeyt à l'admin de gérer les statuts de partenaire
+ */
 class StatutPartenaireAdmin extends Admin {
     protected $datagridValues = array('_sort_order' => 'ASC',
         '_sort_by' => 'stp_libelle');
