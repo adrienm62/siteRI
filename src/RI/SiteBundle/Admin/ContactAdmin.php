@@ -20,8 +20,7 @@ class ContactAdmin extends Admin {
                  ->add('partenaire')
                  ->add('cont_adresse')
                  ->add('cont_mail')
-                 ->add('cont_tel')
-                 ->add('cont_adresse');
+                 ->add('cont_tel');
                  
      }
      protected function configureDatagridFilters(DatagridMapper $datagridMapper)
@@ -31,8 +30,8 @@ class ContactAdmin extends Admin {
                  ->add('partenaire')
                  ->add('cont_adresse')
                  ->add('cont_mail')
-                 ->add('cont_tel')
-                 ->add('cont_adresse');
+                 ->add('cont_tel');
+                 
      }
      
      protected function configureListFields(ListMapper $listMapper)
@@ -42,8 +41,7 @@ class ContactAdmin extends Admin {
                  ->add('partenaire')
                  ->add('cont_adresse')
                  ->add('cont_mail')
-                 ->add('cont_tel')
-                 ->add('cont_adresse');
+                 ->add('cont_tel');
      } 
 }
 

@@ -63,6 +63,6 @@ class Departement
     }
     
     public function __toString() {
-        return $this->getDptLibelle();
+        return $this->dpt_libelle;
     }
 }

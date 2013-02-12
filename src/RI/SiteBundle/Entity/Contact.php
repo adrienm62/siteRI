@@ -52,7 +52,7 @@ class Contact
     /**
      * @var integer
      *
-     * @ORM\Column(name="cont_tel", type="integer")
+     * @ORM\Column(name="cont_tel", type="string")
      */
     private $cont_tel;
 

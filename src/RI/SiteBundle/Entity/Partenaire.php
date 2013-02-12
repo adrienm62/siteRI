@@ -63,7 +63,6 @@ class Partenaire
      */
     
     private $statutpartenaire;
-    
     public function __construct() {
         
     }

@@ -276,4 +276,8 @@ class Stage
     {
         return $this->etudiant;
     }
+    
+    public function __toString() {
+        return $this->sta_sujet . " " . $this->getContactPrincipal()->getPartenaire()->getParNom();
+    }
 }
