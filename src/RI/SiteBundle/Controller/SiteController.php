@@ -4,6 +4,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Httpfoundation\Response;
 use RI\SiteBundle\Entity\Partenaire;
 use JMS\SecurityExtraBundle\Annotation\Secure;
+use RI\UserBundle\Entity\User;
     
     
 class SiteController extends Controller {
@@ -75,6 +76,43 @@ class SiteController extends Controller {
         }
         
         return $this->render('RISiteBundle:Site:stage.html.twig', array('stage' => $stage));
+    }
+    
+    /**
+     * @Secure(roles="ROLE_SECRETARY")
+     */
+    public function inscrireEtudiantAction(){
+        $user = new User;
+       
+        
+        $form = $this->createFormBuilder($user)
+                    ->add('nom', 'text')
+                    ->add('prenom', 'text')
+                    ->add('adresse', 'textarea')
+                    ->add('ville', 'text')
+                    ->add()
+                    ->getForm();
+        
+        $request = $this->get('request');
+        
+        if ($request->getMethod() == 'POST'){
+            $form->bind($request);
+            
+            if ($form->isValid()){
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+                
+                return $this->redirect($this->generateUrl('risite_profil'), array('id' => $user->getId()));
+                
+            }
+            
+            
+        }
+        
+        return $this->render('RISiteBundle:Site:ajouteretudiant.html.twig', array('form' => $form->createView()));
+                    
+                
     }
     
 }

@@ -59,10 +59,15 @@ class Partenaire
     
     /**
      *
-     * @ORM\ManyToOne(targetEntity="RI\SiteBundle\Entity\StatutPartenaires")
+     * @ORM\ManyToOne(targetEntity="RI\SiteBundle\Entity\StatutPartenaire")
      */
     
     private $statutpartenaire;
+    /**
+     *@ORM\OneToMany(targetEntity="RI\SiteBundle\Entity\Contact", mappedBy="partenaire")
+     * 
+     */
+    private $contacts;
     public function __construct() {
         
     }
@@ -195,5 +200,28 @@ class Partenaire
     
     public function __toString() {
         return $this->getParNom();
+    }
+
+    /**
+     * Set statutpartenaire
+     *
+     * @param \RI\SiteBundle\Entity\StatutPartenaires $statutpartenaire
+     * @return Partenaire
+     */
+    public function setStatutpartenaire(\RI\SiteBundle\Entity\StatutPartenaire $statutpartenaire = null)
+    {
+        $this->statutpartenaire = $statutpartenaire;
+    
+        return $this;
+    }
+
+    /**
+     * Get statutpartenaire
+     *
+     * @return \RI\SiteBundle\Entity\StatutPartenaires 
+     */
+    public function getStatutpartenaire()
+    {
+        return $this->statutpartenaire;
     }
 }

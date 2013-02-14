@@ -65,7 +65,7 @@ class Contact
     
     /**
      *
-     *@ORM\ManyToOne(targetEntity="RI\SiteBundle\Entity\Partenaire")
+     *@ORM\ManyToOne(targetEntity="RI\SiteBundle\Entity\Partenaire", inversedBy="contacts")
      *@ORM\JoinColumn(nullable=false)
      */
     

@@ -63,6 +63,11 @@ class Partenaire
      */
     
     private $statutpartenaire;
+    /**
+     *@ORM\OneToMany(targetEntity="RI\SiteBundle\Entity\Contact", mappedBy="partenaire")
+     * 
+     */
+    private $contacts;
     public function __construct() {
         
     }
@@ -218,5 +223,38 @@ class Partenaire
     public function getStatutpartenaire()
     {
         return $this->statutpartenaire;
+    }
+
+    /**
+     * Add contacts
+     *
+     * @param \RI\SiteBundle\Entity\Contact $contacts
+     * @return Partenaire
+     */
+    public function addContact(\RI\SiteBundle\Entity\Contact $contacts)
+    {
+        $this->contacts[] = $contacts;
+    
+        return $this;
+    }
+
+    /**
+     * Remove contacts
+     *
+     * @param \RI\SiteBundle\Entity\Contact $contacts
+     */
+    public function removeContact(\RI\SiteBundle\Entity\Contact $contacts)
+    {
+        $this->contacts->removeElement($contacts);
+    }
+
+    /**
+     * Get contacts
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getContacts()
+    {
+        return $this->contacts;
     }
 }
