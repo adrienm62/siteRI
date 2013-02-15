@@ -7,11 +7,11 @@
 {% block body %}
     <h2><center><u>Partenaire: {{partenaire.parnom}}</u></center></h2>
     <table>
-    <tr><th>Nom:</th> <td>{{partenaire.parnom}}</td></tr>
-    <tr><th>Adresse:</th> <td>{{partenaire.paradresse}} - {{partenaire.parville}} - {{partenaire.parpays}}</td></tr>
-    <tr><th>Contact:</th> <td>
+    <tr><th>Nom :</th> <td>{{partenaire.parnom}}</td></tr>
+    <tr><th>Adresse :</th> <td>{{partenaire.paradresse}} - {{partenaire.parville}} - {{partenaire.parpays}}</td></tr>
+    <tr><th>Contact(s) :</th> <td>
         {% for contact in partenaire.contacts %}
-            {{ contact.contnom }}  {{contact.contprenom}}
+            <a href="{{ path ('risite_contact_info',{'id' : contact.id}) }}" >{{ contact.contnom }}  {{contact.contprenom}}</a>
         {%endfor %}
         
         </td></tr>

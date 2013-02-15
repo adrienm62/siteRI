@@ -1,21 +1,17 @@
 <?php
 namespace RI\SiteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Httpfoundation\Response;
-use RI\SiteBundle\Entity\Partenaire;
 use JMS\SecurityExtraBundle\Annotation\Secure;
+use Symfony\Component\Httpfoundation\Response;
+use Symfony\Component\Httpfoundation\Request;
+use RI\SiteBundle\Entity\Partenaire;
+use RI\SiteBundle\Entity\Contact;
 use RI\UserBundle\Entity\User;
     
     
 class SiteController extends Controller {
     public function indexAction(){
         return $this->render('RISiteBundle:Site:index.html.twig');
-    }
-    
-    public function afficheContactPartenaireAction($id){
-        $contact=$this->getDoctrine()->getManager()->getRepository('RISiteBundle:Partenaire')->getContact($id);
-        
-        return new Response (var_dump($contact));
     }
     
     public function voirProfilAction($id){
@@ -25,8 +21,49 @@ class SiteController extends Controller {
             throw $this->createNotFoundException('Le profil de l\'utilisateur [id='.$id.'] n\'existe pas.');
         }
         
-        return $this->render('RISiteBundle:Site:profil.html.twig', array('profil' => $profil));
+        $user=new User();
+        
+        $user->setUsername($profil->getUsername());
+        $user->setPassword($profil->getPassword());
+        $user->setNom($profil->getNom());
+        $user->setPrenom($profil->getPrenom());
+        $user->setAdresse($profil->getAdresse());
+        $user->setCodepostal($profil->getCodepostal());
+        $user->setVille($profil->getVille());
+        $user->setEmail($profil->getEmail());
+        $user->setTel1($profil->getTel1());
+        $user->setTel2($profil->getTel2());
+        $user->setIne($profil->getIne());
+        
+        $form=$this->createFormBuilder($user)
+                ->add('adresse','text')
+                ->add('codepostal','text', array('label'=>'Code Postal'))
+                ->add('ville','text')
+                ->add('email','text')
+                ->add('tel1','text', array('label'=>'Téléphone 1'))
+                ->add('tel2','text', array('label'=>'Téléphone 2'))
+                ->add('ine','text', array('label'=>'Numéro INE'))
+                ->getForm();
+        
+        $request=  $this->get('request');
+        
+        if ($request->getMethod() == 'POST'){
+            $form->bind($request);
+            
+            if($form->isValid()){
+                
+                $em=  $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+                
+                
+                return $this->redirect($this->generateURL('risite_profil', array('id' => $id)));
+            }
+        }
+        
+        return $this->render('RISiteBundle:Site:profil.html.twig', array('profil' => $profil, 'form' => $form->createView()));
     }
+    
     
     public function voirPartenairesAction(){
         $partenaires = $this->getDoctrine()->getManager()->getRepository('RISiteBundle:Partenaire')->findAll();
@@ -90,7 +127,6 @@ class SiteController extends Controller {
                     ->add('prenom', 'text')
                     ->add('adresse', 'textarea')
                     ->add('ville', 'text')
-                    ->add()
                     ->getForm();
         
         $request = $this->get('request');

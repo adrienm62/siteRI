@@ -32,7 +32,7 @@
                 {%if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                     
                     {% if is_granted('ROLE_USER')%}
-                        <li><a href="{{ path('risite_profil', {'id':app.user.id}) }}">Profil</a></li>
+                        <li><a href="{{ path('risite_profil', {'id':app.user.id}) }}">Mon Profil</a></li>
                         <li><a href="{{ path('risite_partenaires') }}">Liste des Partenaires</a></li>
                         <li><a href="{{ path('risite_document') }}">Mes documents</a></li>
                     {% endif%}
@@ -52,8 +52,6 @@
                     <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
                     <li><a href="{{ path('fos_user_registration_register') }}">Inscription</a></li>
                 {%endif%}
-                <br>
-                    <li><a href="{{ path('risite_partenaires') }}">Partenaires</a></li>
             </ul>
             </div>            
             
