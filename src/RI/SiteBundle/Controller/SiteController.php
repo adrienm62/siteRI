@@ -15,13 +15,13 @@ class SiteController extends Controller {
     }
     
     public function voirProfilAction($id){
-        $profil = $this->getDoctrine()->getManager()->getRepository('RIUserBundle:User')->find($id);
-        
-        if($profil === null){
+        $user = $this->getDoctrine()->getManager()->getRepository('RIUserBundle:User')->find($id);
+        $profil = $user;
+        if($user === null){
             throw $this->createNotFoundException('Le profil de l\'utilisateur [id='.$id.'] n\'existe pas.');
         }
         
-        $user=new User();
+        
         
         $user->setUsername($profil->getUsername());
         $user->setPassword($profil->getPassword());
@@ -53,7 +53,7 @@ class SiteController extends Controller {
             if($form->isValid()){
                 
                 $em=  $this->getDoctrine()->getManager();
-                $em->persist($user);
+                
                 $em->flush();
                 
                 
@@ -123,6 +123,9 @@ class SiteController extends Controller {
        
         
         $form = $this->createFormBuilder($user)
+                    ->add('username', 'text')
+                    ->add('password', 'password')
+                    ->add('email', 'text')
                     ->add('nom', 'text')
                     ->add('prenom', 'text')
                     ->add('adresse', 'textarea')
@@ -135,6 +138,8 @@ class SiteController extends Controller {
             $form->bind($request);
             
             if ($form->isValid()){
+                $role = array ("ROLE_USER");
+                $user->addRole($role);
                 $em = $this->getDoctrine()->getManager();
                 $em->persist($user);
                 $em->flush();
@@ -149,6 +154,11 @@ class SiteController extends Controller {
         return $this->render('RISiteBundle:Site:ajouteretudiant.html.twig', array('form' => $form->createView()));
                     
                 
+    }
+    
+    public function suppressionCompteAction(){
+        $user = $this->getUser();
+        
     }
     
 }
