@@ -6,6 +6,7 @@ use Symfony\Component\Httpfoundation\Response;
 use Symfony\Component\Httpfoundation\Request;
 use RI\SiteBundle\Entity\Partenaire;
 use RI\SiteBundle\Entity\Contact;
+use RI\SiteBundle\Entity\Document;
 use RI\UserBundle\Entity\User;
     
     
@@ -111,6 +112,43 @@ class SiteController extends Controller {
         }
         
         return $this->render('RISiteBundle:Site:stage.html.twig', array('stage' => $stage));
+    }
+    
+    public function voirDocumentAction($id){
+        //récupération des documents de l'utilisateur
+        $user_id=$id;
+        $user= $this->getDoctrine()->getManager()->getRepository('RIUserBundle:User')->find($user_id);
+        $query = $this->getDoctrine()->getEntityManager()->createQuery(
+                'SELECT d FROM RISiteBundle:Document d WHERE d.user = :user')
+                ->setParameter('user', $user);
+        $documents=$query->getResult();
+        
+        //upload d'un document
+        $document = new Document();
+        
+    
+        $document->setDocDatedepot(new \DateTime);
+        $document->setDocChemin($document->getUploadRootDir());
+        $document->setUser($user);
+        $document->setDocNom($docNom);
+        
+        $form = $this->createFormBuilder($document)
+            ->add('file', null, array('label'=>'Document'))
+            ->getForm();
+
+        if ($this->getRequest()->isMethod('POST')) {
+            $form->bind($this->getRequest());
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getManager();
+
+                $em->persist($document);
+                $em->flush();
+
+                return $this->redirect($this->generateURL('risite_document', array('id' => $user_id)));
+            }
+        }
+        
+        return $this->render('RISiteBundle:Site:document.html.twig', array('documents' => $documents, 'form' => $form->createView()));
     }
     
     /**

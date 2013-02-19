@@ -72,7 +72,11 @@ class User extends BaseUser {
      */
     protected $ine;
     
-   
+    /**
+      * @ORM\OneToMany(targetEntity="RI\SiteBundle\Entity\Document", mappedBy="user")
+      * @ORM\JoinColumn(nullable=true)
+      */
+     protected $documents;
     
     
     

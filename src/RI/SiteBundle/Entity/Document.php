@@ -3,6 +3,7 @@
 namespace RI\SiteBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Document
@@ -43,6 +44,16 @@ class Document
     private $doc_chemin;
 
     
+    /**
+     * @Assert\File(maxSize="6000000")
+     */
+    public $file;
+    
+    /**
+     * @ORM\ManyToOne(targetEntity="RI\UserBundle\Entity\User", cascade = {"persist"})
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
 
     /**
      * Get id
@@ -112,7 +123,16 @@ class Document
     
         return $this;
     }
-
+    
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+    
+    public function getUser()
+    {
+        return $this->user;
+    }
     /**
      * Get doc_chemin
      *
@@ -121,5 +141,51 @@ class Document
     public function getDocChemin()
     {
         return $this->doc_chemin;
+    }
+    
+    
+    /**
+     * Get absolute path
+     * 
+     * @return string
+     */
+    public function getAbsolutePath()
+    {
+        return null === $this->path ? null : $this->getUploadRootDir().'/'.$this->path;
+    }
+
+    /**
+     * Get web path: Path of information that leads to the directory where web documents are stored
+     * 
+     * @return string
+     */
+    public function getWebPath()
+    {
+        return null === $this->path ? null : $this->getUploadDir().'/'.$this->path;
+    }
+
+    /**
+     * le chemin absolu du répertoire où les documents uploadés doivent être sauvegardés
+     * 
+     * @return string
+     */
+    public function getUploadRootDir()
+    {
+        return __DIR__.'/../../../../web/'.$this->getUploadDir();
+    }
+
+    /**
+     * on se débarrasse de « __DIR__ » afin de ne pas avoir de problème lorsqu'on affiche 
+     * le document/image dans la vue.
+     * 
+     * @return string
+     */
+    public function getUploadDir()
+    { 
+        return 'uploads/documents';
+    }
+    
+    public function __toString() {
+        return $this->doc_nom . " " . $this->doc_datedepot;
     }
 }

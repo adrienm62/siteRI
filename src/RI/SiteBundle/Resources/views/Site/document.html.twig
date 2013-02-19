@@ -1,0 +1,19 @@
+{# src/SiteRI/SiteBundle/Resources/views/Site/document.html.twig #}
+{% extends "RISiteBundle::layout.html.twig" %}
+{% block title %}
+    Mes Documents - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <h2><center><u>Gestion de mes documents</u></center></h2>
+    <h3>Mes documents</h3>
+    {%if documents is null%}
+        Je n'ai pas de documents.<br>
+    {%endif%}
+    
+    {% for document in documents %}
+        {{document.docnom}} déposé le {{document.docdatedepot|date('Y-m-d')}}
+    {%endfor%}
+    <h3>Déposer un document</h3>
+    {% include "RISiteBundle:Site:formulaire.html.twig" %}
+{% endblock %}
