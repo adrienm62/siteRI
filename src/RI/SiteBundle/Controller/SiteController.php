@@ -15,14 +15,14 @@ class SiteController extends Controller {
     }
     
     public function voirProfilAction($id){
-        $profil = $this->getDoctrine()->getManager()->getRepository('RIUserBundle:User')->find($id);
+        $user = $this->getDoctrine()->getManager()->getRepository('RIUserBundle:User')->find($id);
         
-        if($profil === null){
+        $profil = $user;
+    
+        if($user === null){
             throw $this->createNotFoundException('Le profil de l\'utilisateur [id='.$id.'] n\'existe pas.');
         }
-        
-        $user=new User();
-        
+
         $user->setUsername($profil->getUsername());
         $user->setPassword($profil->getPassword());
         $user->setNom($profil->getNom());
@@ -34,33 +34,31 @@ class SiteController extends Controller {
         $user->setTel1($profil->getTel1());
         $user->setTel2($profil->getTel2());
         $user->setIne($profil->getIne());
-        
+
         $form=$this->createFormBuilder($user)
-                ->add('adresse','text')
-                ->add('codepostal','text', array('label'=>'Code Postal'))
-                ->add('ville','text')
-                ->add('email','text')
-                ->add('tel1','text', array('label'=>'Téléphone 1'))
-                ->add('tel2','text', array('label'=>'Téléphone 2'))
-                ->add('ine','text', array('label'=>'Numéro INE'))
-                ->getForm();
-        
-        $request=  $this->get('request');
-        
+            ->add('adresse','text')
+            ->add('codepostal','text', array('label'=>'Code Postal'))
+            ->add('ville','text')
+            ->add('email','text')
+            ->add('tel1','text', array('label'=>'Téléphone 1'))
+            ->add('tel2','text', array('label'=>'Téléphone 2'))
+            ->add('ine','text', array('label'=>'Numéro INE'))
+            ->getForm();
+
+        $request= $this->get('request');
+
         if ($request->getMethod() == 'POST'){
             $form->bind($request);
-            
+
             if($form->isValid()){
-                
-                $em=  $this->getDoctrine()->getManager();
-                $em->persist($user);
+
+                $em= $this->getDoctrine()->getManager();
                 $em->flush();
-                
-                
+
                 return $this->redirect($this->generateURL('risite_profil', array('id' => $id)));
             }
         }
-        
+
         return $this->render('RISiteBundle:Site:profil.html.twig', array('profil' => $profil, 'form' => $form->createView()));
     }
     

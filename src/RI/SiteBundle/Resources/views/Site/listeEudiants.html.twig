@@ -7,7 +7,7 @@
 {%block body%}
     <ul>
     {%for etudiant in etudiants %}
-        {%if {{ etudiant.ine }} is not null %}
+        {%if etudiant.ine is not null %}
             {{ etudiant.nom }} {{ etudiant.prenom }} - {{etudiant.formation }}
         {%endif%}
     {%endfor%}
