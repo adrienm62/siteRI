@@ -69,7 +69,7 @@ fos_user:
             type: ri_user_register
     
 sonata_admin:
-    title: Jobeet Admin
+    title: Administration ri
  
 sonata_block:
     default_contexts: [cms]

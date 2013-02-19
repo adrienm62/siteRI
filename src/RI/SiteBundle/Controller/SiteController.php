@@ -149,6 +149,9 @@ class SiteController extends Controller {
                 
     }
     
+    public function suppressionCompteAction(){
+        $user = $this->getUser();
+        
+    }
+    
 }
-
-?>
