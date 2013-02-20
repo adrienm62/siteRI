@@ -128,11 +128,12 @@ class SiteController extends Controller {
         
     
         $document->setDocDatedepot(new \DateTime);
+        //le chemin est obligatoire, on met temporairement quelque chose
         $document->setDocChemin($document->getUploadRootDir());
         $document->setUser($user);
-        $document->setDocNom($docNom);
         
         $form = $this->createFormBuilder($document)
+            ->add('name', 'text', array('label'=>'Nom du Document'))
             ->add('file', null, array('label'=>'Document'))
             ->getForm();
 
@@ -140,9 +141,19 @@ class SiteController extends Controller {
             $form->bind($this->getRequest());
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
+                
+                //après up du form, on a le nom du fichier, donc on met à jour doc_chemin
+                $nom_fichier = $document->recupNomFichier();
+                $chemin = $document->getUploadRootDir();
+                $chemin_fichier = $chemin.'/'.$nom_fichier;
+                $document->setDocChemin($chemin_fichier);
+                
+                $document->upload();
 
                 $em->persist($document);
                 $em->flush();
+                
+                
 
                 return $this->redirect($this->generateURL('risite_document', array('id' => $user_id)));
             }
@@ -150,6 +161,46 @@ class SiteController extends Controller {
         
         return $this->render('RISiteBundle:Site:document.html.twig', array('documents' => $documents, 'form' => $form->createView()));
     }
+    
+    /**
+     * @Secure(roles="ROLE_USER")
+     */
+    public function supprimerDocumentAction($id, $user_id){
+        //récupération du document en faisant attention à ce que l'user soit le propriétaire
+        //un étudiant ne doit pas pouvoir supprimer les documents des autres users.
+        $user= $this->getDoctrine()->getManager()->getRepository('RIUserBundle:User')->find($user_id);
+        $query = $this->getDoctrine()->getEntityManager()->createQuery(
+                'SELECT d FROM RISiteBundle:Document d WHERE d.id = :id AND d.user = :user')
+                ->setParameter('user', $user)
+                ->setParameter('id', $id);
+        try{
+        $document=$query->getSingleResult();
+        }catch(\Doctrine\Orm\NoResultException $e){
+            $document=null;
+        }
+        
+        if($document != null){
+            //suppresion du document dans le dossier uploads/documents
+            $document->delete();
+            
+            //suppression du document dans la base de données
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($document);
+            $em->flush();
+        }
+        
+        return $this->redirect($this->generateURL('risite_document', array('id' => $user_id)));
+        
+    }
+    
+    /**
+     * @Secure(roles="ROLE_USER")
+     */
+    public function telechargerDocumentAction($id, $user_id){
+        
+    }
+    
+    
     
     /**
      * @Secure(roles="ROLE_SECRETARY")

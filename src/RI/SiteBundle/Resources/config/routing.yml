@@ -30,6 +30,14 @@ risite_document:
     pattern: /document/{id}
     defaults: { _controller: RISiteBundle:Site:voirDocument }
 
+risite_document_suppr:
+    pattern: /document/supprimer/{user_id}/{id}
+    defaults: { _controller: RISiteBundle:Site:supprimerDocument }
+
+risite_document_download:
+    pattern: /document/telecharger/{user_id}/{id}
+    defaults: { _controller: RISiteBundle:Site:telechargerDocument }
+
 risite_inscrireetudiant:
     pattern: /inscrire-etudiant
     defaults: { _controller: RISiteBundle:Site:inscrireEtudiant }
