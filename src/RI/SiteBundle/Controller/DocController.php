@@ -26,7 +26,7 @@ class DocController extends Controller  {
         $documents=$query->getResult();
         }catch(\Doctrine\Orm\NoResultException $e){
             $document=null;
-            return;
+            return null;
         }
         //upload d'un document
         $document = new Document();
@@ -83,7 +83,7 @@ class DocController extends Controller  {
         $document=$query->getSingleResult();
         }catch(\Doctrine\Orm\NoResultException $e){
             $document=null;
-            return;
+            throw $this->createNotFoundException('Impossible de supprimer ce document.');
         }
         
         if($document != null){
@@ -115,7 +115,7 @@ class DocController extends Controller  {
         $document=$query->getSingleResult();
         }catch(\Doctrine\Orm\NoResultException $e){
             $document=null;
-            return;
+            throw $this->createNotFoundException('Impossible de télécharger ce document.');
         }
         
         $fichier = $document->getDocChemin();
