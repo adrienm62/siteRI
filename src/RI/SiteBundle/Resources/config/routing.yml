@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 risite_accueil:
    pattern: /
    defaults: { _controller: RISiteBundle:Site:index }
@@ -43,36 +43,6 @@ risite_demandesuppression:
     pattern: /suppression-compte
     defaults: { _controller: RISiteBundle:Site:demandeSuppression }
 
-risite_test:
-    pattern: /test
-=======
-risite_accueil:
-   pattern: /
-   defaults: { _controller: RISiteBundle:Site:index }
-
-risite_profil:
-    pattern: /profil/{id}
-    defaults: { _controller: RISiteBundle:Site:voirProfil }
-
-risite_partenaires:
-    pattern: /partenaires
-    defaults: { _controller: RISiteBundle:Site:voirPartenaires }
-
-risite_partenaire_info:
-    pattern: /partenaire/{id}
-    defaults: { _controller: RISiteBundle:Site:voirInfoPartenaire }
-
-risite_contact_info:
-    pattern: /contact/{id}
-    defaults: { _controller: RISiteBundle:Site:voirInfoContact }
-
-risite_stages:
-    pattern: /stages
-    defaults: { _controller: RISiteBundle:Site:voirStages }
-
-risite_stage_info:
-    pattern: /stage/{idStage}
-    defaults: { _controller: RISiteBundle:Site:voirInfoStage }
 
 risite_document:
     pattern: /document/{id}
@@ -92,5 +62,4 @@ risite_inscrireetudiant:
 
 risite_test:
     pattern: /test
-
     defaults: { _controller: RISiteBundle:Site:test}
