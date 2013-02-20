@@ -122,7 +122,7 @@ class SiteController extends Controller {
         $user = new User;
        
         
-        $form = $this->createFormBuilder($user)
+        /*$form = $this->createFormBuilder($user)
                     ->add('username', 'text')
                     ->add('password', 'password')
                     ->add('email', 'text')
@@ -153,12 +153,27 @@ class SiteController extends Controller {
         
         return $this->render('RISiteBundle:Site:ajouteretudiant.html.twig', array('form' => $form->createView()));
                     
-                
+        */
+        
+        $mailer = $this->get('mailer');
+        
+        $message = \Swift_Message::newInstance()->setSubject('bonjour')
+                ->setFrom('tutorial@symfony2.com')
+                ->setTo('adrien.mercier62@gmail.com')
+                ->setBody('Coucou, voici un email que vous venez de recevoir!');
+    
+        $mailer->send($message);
+        
+        return new Response('Email bien envoyé');
     }
     
-    public function suppressionCompteAction(){
+    public function demandeSuppressionAction(){
         $user = $this->getUser();
         
+        $form=$this->createFormBuilder($user)
+                ->add('locked', 'choice' , array('choices' =>array('o' => 'Oui', 'n' => 'Non'), 'label'=>'Suppression'));
+        
+        return $this->render('RISiteBundle:Site:demande.html.twig', array('form' => $form->createView()));
     }
     
 }

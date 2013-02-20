@@ -17,13 +17,15 @@
     <tr><th>Tel:</th> <td>{{profil.tel1}}</td></tr>
     {%endif%}
     {%if profil.tel2 is not null%}
-    <tr><th>Tel:</th> <td>{{profil.tel2}}</td></tr>
+    <tr><th>Tel2:</th> <td>{{profil.tel2}}</td></tr>
     {%endif%}
     {%if profil.ine is not null%}
-    <tr><th>Tel:</th> <td>{{profil.ine}}</td></tr>
+    <tr><th>TelINE:</th> <td>{{profil.ine}}</td></tr>
     {%endif%}
     </table>
     <br>
     <h4>Modifier mon profil</h4>
     {% include "RISiteBundle:Site:formulaire.html.twig" %}
+    
+    <a href="{{ path('risite_demandesuppression') }}">Suppression de mon compte ?</a>
 {% endblock %}

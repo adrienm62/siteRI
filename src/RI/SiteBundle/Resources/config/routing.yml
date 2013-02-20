@@ -37,6 +37,10 @@ risite_documentSec:
 risite_inscrireetudiant:
     pattern: /inscrire-etudiant
     defaults: { _controller: RISiteBundle:Site:inscrireEtudiant }
+    
+risite_demandesuppression:
+    pattern: /suppression-compte
+    defaults: { _controller: RISiteBundle:Site:demandeSuppression }
 
 risite_test:
     pattern: /test
