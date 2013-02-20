@@ -28,15 +28,15 @@ risite_stage_info:
 
 risite_document:
     pattern: /document
-    defaults: { _controller: RISiteBundle:Site:voirDocument }
+    defaults: { _controller: RISiteBundle:Doc:voirDocument }
 
 risite_document_suppr:
     pattern: /document/supprimer/{id}
-    defaults: { _controller: RISiteBundle:Site:supprimerDocument }
+    defaults: { _controller: RISiteBundle:Doc:supprimerDocument }
 
 risite_document_dl:
     pattern: /document/telecharger/{id}
-    defaults: { _controller: RISiteBundle:Site:telechargerDocument }
+    defaults: { _controller: RISiteBundle:Doc:telechargerDocument }
 
 risite_inscrireetudiant:
     pattern: /inscrire-etudiant
