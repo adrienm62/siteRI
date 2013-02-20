@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 risite_accueil:
    pattern: /
    defaults: { _controller: RISiteBundle:Site:index }
@@ -44,4 +45,52 @@ risite_demandesuppression:
 
 risite_test:
     pattern: /test
+=======
+risite_accueil:
+   pattern: /
+   defaults: { _controller: RISiteBundle:Site:index }
+
+risite_profil:
+    pattern: /profil/{id}
+    defaults: { _controller: RISiteBundle:Site:voirProfil }
+
+risite_partenaires:
+    pattern: /partenaires
+    defaults: { _controller: RISiteBundle:Site:voirPartenaires }
+
+risite_partenaire_info:
+    pattern: /partenaire/{id}
+    defaults: { _controller: RISiteBundle:Site:voirInfoPartenaire }
+
+risite_contact_info:
+    pattern: /contact/{id}
+    defaults: { _controller: RISiteBundle:Site:voirInfoContact }
+
+risite_stages:
+    pattern: /stages
+    defaults: { _controller: RISiteBundle:Site:voirStages }
+
+risite_stage_info:
+    pattern: /stage/{idStage}
+    defaults: { _controller: RISiteBundle:Site:voirInfoStage }
+
+risite_document:
+    pattern: /document/{id}
+    defaults: { _controller: RISiteBundle:Site:voirDocument }
+
+risite_document_suppr:
+    pattern: /document/supprimer/{user_id}/{id}
+    defaults: { _controller: RISiteBundle:Site:supprimerDocument }
+
+risite_document_dl:
+    pattern: /document/telecharger/{user_id}/{id}
+    defaults: { _controller: RISiteBundle:Site:telechargerDocument }
+
+risite_inscrireetudiant:
+    pattern: /inscrire-etudiant
+    defaults: { _controller: RISiteBundle:Site:inscrireEtudiant }
+
+risite_test:
+    pattern: /test
+
     defaults: { _controller: RISiteBundle:Site:test}

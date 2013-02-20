@@ -8,7 +8,7 @@
     <h2><center><u>Stage n° {{stage.id}}</u></center></h2>
     <table>
     <tr><th>Intitulé du stage:</th> <td>{{stage.stasujet}}</td></tr>
-    <tr><th>Dates du stage:</th> <td> du {{stage.stadebut|date('Y-m-d')}} au {{stage.stafin|date('Y-m-d')}}</td></tr>
+    <tr><th>Dates du stage:</th> <td> du {{stage.stadebut|date('d-m-Y')}} au {{stage.stafin|date('d-m-Y')}}</td></tr>
     {%if stage.etudiant is not null %}
     <tr><th>Etudiant:</th> <td><a href="{{ path('risite_profil',{'id':stage.etudiant.id}) }}" >{{stage.etudiant}}</a></td></tr>
     {%endif%}

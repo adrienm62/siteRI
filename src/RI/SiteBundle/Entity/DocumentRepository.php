@@ -12,4 +12,7 @@ use Doctrine\ORM\EntityRepository;
  */
 class DocumentRepository extends EntityRepository
 {
+    public function findByUser($user_id){
+        
+    }
 }
