@@ -3,7 +3,7 @@ risite_accueil:
    defaults: { _controller: RISiteBundle:Site:index }
 
 risite_profil:
-    pattern: /profil/{id}
+    pattern: /profil
     defaults: { _controller: RISiteBundle:Site:voirProfil }
 
 risite_partenaires:
@@ -27,15 +27,15 @@ risite_stage_info:
     defaults: { _controller: RISiteBundle:Site:voirInfoStage }
 
 risite_document:
-    pattern: /document/{id}
+    pattern: /document
     defaults: { _controller: RISiteBundle:Site:voirDocument }
 
 risite_document_suppr:
-    pattern: /document/supprimer/{user_id}/{id}
+    pattern: /document/supprimer/{id}
     defaults: { _controller: RISiteBundle:Site:supprimerDocument }
 
 risite_document_dl:
-    pattern: /document/telecharger/{user_id}/{id}
+    pattern: /document/telecharger/{id}
     defaults: { _controller: RISiteBundle:Site:telechargerDocument }
 
 risite_inscrireetudiant:

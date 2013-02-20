@@ -15,8 +15,8 @@ class SiteController extends Controller {
         return $this->render('RISiteBundle:Site:index.html.twig');
     }
     
-    public function voirProfilAction($id){
-        $user = $this->getDoctrine()->getManager()->getRepository('RIUserBundle:User')->find($id);
+    public function voirProfilAction(){
+        $user = $this->getUser();
         
         $profil = $user;
     
@@ -114,15 +114,18 @@ class SiteController extends Controller {
         return $this->render('RISiteBundle:Site:stage.html.twig', array('stage' => $stage));
     }
     
-    public function voirDocumentAction($id){
+    public function voirDocumentAction(){
         //récupération des documents de l'utilisateur
-        $user_id=$id;
-        $user= $this->getDoctrine()->getManager()->getRepository('RIUserBundle:User')->find($user_id);
+        $user= $this->getUser();
         $query = $this->getDoctrine()->getEntityManager()->createQuery(
                 'SELECT d FROM RISiteBundle:Document d WHERE d.user = :user')
                 ->setParameter('user', $user);
+        try{
         $documents=$query->getResult();
-        
+        }catch(\Doctrine\Orm\NoResultException $e){
+            $document=null;
+            return;
+        }
         //upload d'un document
         $document = new Document();
         
@@ -142,20 +145,21 @@ class SiteController extends Controller {
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getManager();
                 
+                
+                //récupération du nom de fichier modifié avec ajout d'un random via l'upload du fichier
+                $nom_fichier = $document->upload();
+                
                 //après up du form, on a le nom du fichier, donc on met à jour doc_chemin
-                $nom_fichier = $document->recupNomFichier();
                 $chemin = $document->getUploadRootDir();
                 $chemin_fichier = $chemin.'/'.$nom_fichier;
                 $document->setDocChemin($chemin_fichier);
-                
-                $document->upload();
 
                 $em->persist($document);
                 $em->flush();
                 
                 
 
-                return $this->redirect($this->generateURL('risite_document', array('id' => $user_id)));
+                return $this->redirect($this->generateURL('risite_document', array('id' => $user)));
             }
         }
         
@@ -165,10 +169,10 @@ class SiteController extends Controller {
     /**
      * @Secure(roles="ROLE_USER")
      */
-    public function supprimerDocumentAction($id, $user_id){
+    public function supprimerDocumentAction($id){
         //récupération du document en faisant attention à ce que l'user soit le propriétaire
         //un étudiant ne doit pas pouvoir supprimer les documents des autres users.
-        $user= $this->getDoctrine()->getManager()->getRepository('RIUserBundle:User')->find($user_id);
+        $user= $this->getUser();
         $query = $this->getDoctrine()->getEntityManager()->createQuery(
                 'SELECT d FROM RISiteBundle:Document d WHERE d.id = :id AND d.user = :user')
                 ->setParameter('user', $user)
@@ -177,6 +181,7 @@ class SiteController extends Controller {
         $document=$query->getSingleResult();
         }catch(\Doctrine\Orm\NoResultException $e){
             $document=null;
+            return;
         }
         
         if($document != null){
@@ -189,17 +194,17 @@ class SiteController extends Controller {
             $em->flush();
         }
         
-        return $this->redirect($this->generateURL('risite_document', array('id' => $user_id)));
+        return $this->redirect($this->generateURL('risite_document', array('id' => $user)));
         
     }
     
     /**
      * @Secure(roles="ROLE_USER")
      */
-    public function telechargerDocumentAction($id, $user_id){
+    public function telechargerDocumentAction($id){
         //récupération du document en faisant attention à ce que l'user soit le propriétaire
         //un étudiant ne doit pas pouvoir télécharger les documents des autres users.
-        $user= $this->getDoctrine()->getManager()->getRepository('RIUserBundle:User')->find($user_id);
+        $user= $this->getUser();
         $query = $this->getDoctrine()->getEntityManager()->createQuery(
                 'SELECT d FROM RISiteBundle:Document d WHERE d.id = :id AND d.user = :user')
                 ->setParameter('user', $user)
@@ -208,6 +213,7 @@ class SiteController extends Controller {
         $document=$query->getSingleResult();
         }catch(\Doctrine\Orm\NoResultException $e){
             $document=null;
+            return;
         }
         
         $fichier = $document->getDocChemin();

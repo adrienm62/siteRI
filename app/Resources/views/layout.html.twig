@@ -32,9 +32,9 @@
                 {%if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
                     
                     {% if is_granted('ROLE_USER')%}
-                        <li><a href="{{ path('risite_profil', {'id':app.user.id}) }}">Mon Profil</a></li>
+                        <li><a href="{{ path('risite_profil') }}">Mon Profil</a></li>
                         <li><a href="{{ path('risite_partenaires') }}">Liste des Partenaires</a></li>
-                        <li><a href="{{ path('risite_document', {'id':app.user.id}) }}">Mes documents</a></li>
+                        <li><a href="{{ path('risite_document') }}">Mes documents</a></li>
                     {% endif%}
                     {% if is_granted('ROLE_SECRETARY')%}
                         <li><a href="{{ path('risite_inscrireetudiant') }}">Inscrire étudiant</a></li>
