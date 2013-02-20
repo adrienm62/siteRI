@@ -34,7 +34,7 @@ risite_document_suppr:
     pattern: /document/supprimer/{user_id}/{id}
     defaults: { _controller: RISiteBundle:Site:supprimerDocument }
 
-risite_document_download:
+risite_document_dl:
     pattern: /document/telecharger/{user_id}/{id}
     defaults: { _controller: RISiteBundle:Site:telechargerDocument }
 

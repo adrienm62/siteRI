@@ -10,7 +10,9 @@
     {% if documents is not null %}
     <table>
         {% for document in documents %}
-            <tr><th>- {{document.docnom}}</th> <td> Date de dépôt : {{document.docdatedepot|date('Y-m-d')}}</td><td>Télécharger</td><td><a href="{{ path('risite_document_suppr', {'user_id':app.user.id, 'id':document.id}) }}">Supprimer</a></td></tr>
+            <tr><td style="font-weight: bold">{{document.docnom}}</td> <td> Date de dépôt : {{document.docdatedepot|date('d-m-Y H:i:s')}}</td>
+                <td><a href="{{ path('risite_document_dl', {'user_id':app.user.id, 'id':document.id}) }}">Télécharger</a></td>
+                <td><a href="{{ path('risite_document_suppr', {'user_id':app.user.id, 'id':document.id}) }}">Supprimer</a></td></tr>
         {%endfor%}
     </table>
     {% else %}

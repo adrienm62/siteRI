@@ -197,10 +197,34 @@ class SiteController extends Controller {
      * @Secure(roles="ROLE_USER")
      */
     public function telechargerDocumentAction($id, $user_id){
+        //récupération du document en faisant attention à ce que l'user soit le propriétaire
+        //un étudiant ne doit pas pouvoir télécharger les documents des autres users.
+        $user= $this->getDoctrine()->getManager()->getRepository('RIUserBundle:User')->find($user_id);
+        $query = $this->getDoctrine()->getEntityManager()->createQuery(
+                'SELECT d FROM RISiteBundle:Document d WHERE d.id = :id AND d.user = :user')
+                ->setParameter('user', $user)
+                ->setParameter('id', $id);
+        try{
+        $document=$query->getSingleResult();
+        }catch(\Doctrine\Orm\NoResultException $e){
+            $document=null;
+        }
         
+        $fichier = $document->getDocChemin();
+        $nom = pathinfo($fichier, PATHINFO_BASENAME);
+        $ext = pathinfo($fichier, PATHINFO_EXTENSION);
+        
+        $response = new Response();
+        $response->setStatusCode(200);
+        $response->headers->set('Content-Type', 'application/'.$ext.'');
+        $response->setContent(file_get_contents($fichier));
+        $response->headers->set('Content-Disposition', sprintf('attachment;filename="%s"', $nom));
+        $response->headers->set('X-Sendfile', $fichier);
+
+        
+        $response->send();
+        return $response;
     }
-    
-    
     
     /**
      * @Secure(roles="ROLE_SECRETARY")

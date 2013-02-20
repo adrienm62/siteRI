@@ -33,7 +33,7 @@ class Document
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="doc_datedepot", type="date")
+     * @ORM\Column(name="doc_datedepot", type="datetime")
      */
     private $doc_datedepot;
 
