@@ -219,15 +219,12 @@ class Document
             return;
         }
 
+        $nom_fichier= rand(1111111,9999999).'-'.$this->file->getClientOriginalName();
         // la méthode « move » prend comme arguments le répertoire cible et
         // le nom de fichier cible où le fichier doit être déplacé
-        $this->file->move($this->getUploadRootDir(), $this->file->getClientOriginalName());
+        $this->file->move($this->getUploadRootDir(), $nom_fichier );
 
-        // définit la propriété « path » comme étant le nom de fichier où vous
-        // avez stocké le fichier
-        $this->path = $this->file->getClientOriginalName();
-
-        
+        return $nom_fichier;
     }
     
     public function delete(){

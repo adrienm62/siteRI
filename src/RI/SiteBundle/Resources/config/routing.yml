@@ -1,10 +1,9 @@
-
 risite_accueil:
    pattern: /
    defaults: { _controller: RISiteBundle:Site:index }
 
 risite_profil:
-    pattern: /profil/{id}
+    pattern: /profil
     defaults: { _controller: RISiteBundle:Site:voirProfil }
 
 risite_partenaires:
@@ -29,32 +28,15 @@ risite_stage_info:
 
 risite_document:
     pattern: /document
-    defaults: { _controller: RISiteBundle:Site:voirDocument }
-
-risite_documentSec:
-    pattern: /documentSec
-    defaults: { _controller: RISiteBundle:Site:voirDocumentSec }
-
-risite_inscrireetudiant:
-    pattern: /inscrire-etudiant
-    defaults: { _controller: RISiteBundle:Site:inscrireEtudiant }
-    
-risite_demandesuppression:
-    pattern: /suppression-compte
-    defaults: { _controller: RISiteBundle:Site:demandeSuppression }
-
-
-risite_document:
-    pattern: /document/{id}
-    defaults: { _controller: RISiteBundle:Site:voirDocument }
+    defaults: { _controller: RISiteBundle:Doc:voirDocument }
 
 risite_document_suppr:
-    pattern: /document/supprimer/{user_id}/{id}
-    defaults: { _controller: RISiteBundle:Site:supprimerDocument }
+    pattern: /document/supprimer/{id}
+    defaults: { _controller: RISiteBundle:Doc:supprimerDocument }
 
 risite_document_dl:
-    pattern: /document/telecharger/{user_id}/{id}
-    defaults: { _controller: RISiteBundle:Site:telechargerDocument }
+    pattern: /document/telecharger/{id}
+    defaults: { _controller: RISiteBundle:Doc:telechargerDocument }
 
 risite_inscrireetudiant:
     pattern: /inscrire-etudiant
@@ -63,3 +45,7 @@ risite_inscrireetudiant:
 risite_test:
     pattern: /test
     defaults: { _controller: RISiteBundle:Site:test}
+    
+risite_demandesuppression:
+    pattern: /suppression-compte
+    defaults: { _controller: RISiteBundle:Site:demandeSuppression }
