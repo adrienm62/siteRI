@@ -16,34 +16,16 @@ class SiteController extends Controller {
     }
     
     public function voirProfilAction(){
-        $user = $this->getUser();
         
-        $profil = $user;
-    
-        if($user === null){
-            throw $this->createNotFoundException('Le profil de l\'utilisateur [id='.$id.'] n\'existe pas.');
-        }
-
-        $user->setUsername($profil->getUsername());
-        $user->setPassword($profil->getPassword());
-        $user->setNom($profil->getNom());
-        $user->setPrenom($profil->getPrenom());
-        $user->setAdresse($profil->getAdresse());
-        $user->setCodepostal($profil->getCodepostal());
-        $user->setVille($profil->getVille());
-        $user->setEmail($profil->getEmail());
-        $user->setTel1($profil->getTel1());
-        $user->setTel2($profil->getTel2());
-        $user->setIne($profil->getIne());
-
-        $form=$this->createFormBuilder($user)
-            ->add('adresse','text')
-            ->add('codepostal','text', array('label'=>'Code Postal'))
-            ->add('ville','text')
-            ->add('email','text')
-            ->add('tel1','text', array('label'=>'Téléphone 1'))
-            ->add('tel2','text', array('label'=>'Téléphone 2'))
-            ->add('ine','text', array('label'=>'Numéro INE'))
+        $profil = $this->getUser();       
+        
+        $form=$this->createFormBuilder($profil)
+            ->add('adresse','text', array('label'=>'Adresse*'))
+            ->add('codepostal','text', array('label'=>'Code Postal*'))
+            ->add('ville','text', array('label'=>'Ville*'))
+            ->add('email','text', array('label'=>'Email*'))
+            ->add('tel1','text', array('label'=>'Téléphone 1', 'required'=>false))
+            ->add('tel2','text', array('label'=>'Téléphone 2', 'required'=>false))
             ->getForm();
 
         $request= $this->get('request');
@@ -56,7 +38,7 @@ class SiteController extends Controller {
                 $em= $this->getDoctrine()->getManager();
                 $em->flush();
 
-                return $this->redirect($this->generateURL('risite_profil', array('id' => $id)));
+                return $this->redirect($this->generateURL('risite_profil'));
             }
         }
 
