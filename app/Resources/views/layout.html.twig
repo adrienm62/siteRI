@@ -38,6 +38,7 @@
                     {% endif%}
                     {% if is_granted('ROLE_SECRETARY')%}
                         <li><a href="{{ path('risite_inscrireetudiant') }}">Inscrire étudiant</a></li>
+                        <li><a href="{{ path('risite_profiluser') }}">Supprimer étudiant</a></li>
                     {% endif%}
                     {% if is_granted('ROLE_CONTACT')%}
                         <li><a href="{{ path('risite_stagiaire') }}">Voir stagiaires</a></li>

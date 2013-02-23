@@ -78,8 +78,14 @@ class User extends BaseUser {
       */
      protected $documents;
     
-    
-    
+     /**
+      ** @ORM\OneToMany(targetEntity="RI\SiteBundle\Entity\Stage", mappedBy="etudiant")
+      *  @ORM\JoinColumn(nullable=true)
+      */
+     protected $stages;
+
+
+     
      /**
      * Get id
      *
@@ -267,5 +273,81 @@ class User extends BaseUser {
         
         return $this->nom . " " . $this->prenom; 
         
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->documents = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->user = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+    
+    /**
+     * Add documents
+     *
+     * @param \RI\SiteBundle\Entity\Document $documents
+     * @return User
+     */
+    public function addDocument(\RI\SiteBundle\Entity\Document $documents)
+    {
+        $this->documents[] = $documents;
+    
+        return $this;
+    }
+
+    /**
+     * Remove documents
+     *
+     * @param \RI\SiteBundle\Entity\Document $documents
+     */
+    public function removeDocument(\RI\SiteBundle\Entity\Document $documents)
+    {
+        $this->documents->removeElement($documents);
+    }
+
+    /**
+     * Get documents
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDocuments()
+    {
+        return $this->documents;
+    }
+
+    
+
+    /**
+     * Add stages
+     *
+     * @param \RI\SiteBundle\Entity\Stage $stages
+     * @return User
+     */
+    public function addStage(\RI\SiteBundle\Entity\Stage $stages)
+    {
+        $this->stages[] = $stages;
+    
+        return $this;
+    }
+
+    /**
+     * Remove stages
+     *
+     * @param \RI\SiteBundle\Entity\Stage $stages
+     */
+    public function removeStage(\RI\SiteBundle\Entity\Stage $stages)
+    {
+        $this->stages->removeElement($stages);
+    }
+
+    /**
+     * Get stages
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getStages()
+    {
+        return $this->stages;
     }
 }

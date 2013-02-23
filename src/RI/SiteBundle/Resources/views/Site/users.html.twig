@@ -1,0 +1,14 @@
+{% extends "RISiteBundle::layout.html.twig" %}
+{% block title %}
+    Etudiants demandant la supression de leur compte - {{ parent() }}
+{% endblock %}
+    
+{%block body %}
+    
+    <ul>
+        
+        {%for user in liste_users %}
+        <li><a href= {{path('risite_supprimeretudiant', {'id' : user.id } )}}>{{user.nom }} {{user.prenom}}</li>
+        {%endfor%}
+    </ul>
+{%endblock%}
