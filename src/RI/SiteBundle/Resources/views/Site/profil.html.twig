@@ -1,4 +1,3 @@
-
 {# src/SiteRI/SiteBundle/Resources/views/Site/profil.html.twig #}
 {% extends "RISiteBundle::layout.html.twig" %}
 {% block title %}
@@ -25,19 +24,14 @@
     {%endif%}
     </table>
     <br>
+    <h4>Modifier mon profil</h4>
+    Les champs avec * sont obligatoires.<br>
+    {% include "RISiteBundle:Site:formulaire.html.twig" %}
+    
+    <br>
     {% if is_granted('ROLE_USER') %}
         <h4>Modifier mon profil</h4>
         {% include "RISiteBundle:Site:formulaire.html.twig" %}
          <a href="{{ path('risite_demandesuppression') }}">Suppression de mon compte ?</a>
     {% endif %}
-    
-    {% if is_granted('ROLE_SECRETARY') %}
-        {% if demande is defined %}
-        <a href = "{{ path ('risite_suppresioncompte') }}">Suppression du compte</a>
-        {%endif%}
-    {%endif%}
-        
-        
-   
-
 {% endblock %}

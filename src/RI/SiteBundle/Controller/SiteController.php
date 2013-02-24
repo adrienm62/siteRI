@@ -1,3 +1,4 @@
+
 <?php
 namespace RI\SiteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
