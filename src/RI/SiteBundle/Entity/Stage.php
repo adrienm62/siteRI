@@ -62,7 +62,7 @@ class Stage
 
     
     /**
-     * @ORM\ManyToOne(targetEntity="RI\UserBundle\Entity\User", cascade = {"persist"})
+     * @ORM\ManyToOne(targetEntity="RI\UserBundle\Entity\User", cascade = {"persist"}, inversedBy="stages")
      * @ORM\JoinColumn(nullable=true)
      */
     private $etudiant;

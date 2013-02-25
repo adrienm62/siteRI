@@ -27,4 +27,11 @@
     <h4>Modifier mon profil</h4>
     Les champs avec * sont obligatoires.<br>
     {% include "RISiteBundle:Site:formulaire.html.twig" %}
+    
+    <br>
+    {% if is_granted('ROLE_USER') %}
+        <h4>Modifier mon profil</h4>
+        {% include "RISiteBundle:Site:formulaire.html.twig" %}
+         <a href="{{ path('risite_demandesuppression') }}">Suppression de mon compte ?</a>
+    {% endif %}
 {% endblock %}

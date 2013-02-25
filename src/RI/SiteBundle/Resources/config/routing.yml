@@ -45,3 +45,15 @@ risite_inscrireetudiant:
 risite_test:
     pattern: /test
     defaults: { _controller: RISiteBundle:Site:test}
+    
+risite_demandesuppression:
+    pattern: /suppression-compte
+    defaults: { _controller: RISiteBundle:Site:demandeSuppression }
+
+risite_supprimeretudiant:
+    pattern: /suppression/{id}
+    defaults: { _controller: RISiteBundle:Secretaire:suppressionCompte }
+    
+risite_profiluser:
+    pattern: /demandes-etudiants
+    defaults: { _controller: RISiteBundle:Secretaire:voirUsers }
