@@ -133,6 +133,7 @@ class User extends BaseUser {
     
         return $this;
     }
+    
 
     /**
      * Get prenom
@@ -279,6 +280,7 @@ class User extends BaseUser {
      */
     public function __construct()
     {
+        parent::__construct();
         $this->documents = new \Doctrine\Common\Collections\ArrayCollection();
         $this->user = new \Doctrine\Common\Collections\ArrayCollection();
     }

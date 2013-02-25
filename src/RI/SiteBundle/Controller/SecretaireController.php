@@ -21,9 +21,48 @@ class SecretaireController extends Controller {
                 array('liste_users' => $users));
     }
     
+    /**
+     * @Secure(roles="ROLE_SECRETARY")
+     * @Secure(roles="ROLE_ADMIN")
+     */
+    public function inscrireEtudiantAction(){
+        $user = new User;
+       
+        
+        $form = $this->createFormBuilder($user)
+                    ->add('nom', 'text')
+                    ->add('prenom', 'text')
+                    ->add('adresse', 'textarea')
+                    ->add('ville', 'text')
+                    ->getForm();
+        
+        $request = $this->get('request');
+        
+        if ($request->getMethod() == 'POST'){
+            $form->bind($request);
+            
+            if ($form->isValid()){
+                $password = sha512("1234");
+                $user->setPassword($password);
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($user);
+                $em->flush();
+                
+                return $this->redirect($this->generateUrl('risite_profil'), array('id' => $user->getId()));
+                
+            }
+            
+            
+        }
+        
+        return $this->render('RISiteBundle:Site:ajouteretudiant.html.twig', array('form' => $form->createView()));
+                    
+                
+    }
     
     /**
      * @Secure(roles="ROLE_SECRETARY")
+     * @Secure(roles="ROLE_ADMIN")
      */
     public function suppressionCompteAction($id){
         $user = $this->getDoctrine()->getManager()->getRepository('RIUserBundle:User')->find($id);

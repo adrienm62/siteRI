@@ -33,10 +33,11 @@
                     
                     {% if is_granted('ROLE_USER')%}
                         <li><a href="{{ path('risite_profil') }}">Mon Profil</a></li>
-                        <li><a href="{{ path('risite_partenaires') }}">Liste des Partenaires</a></li>
                         <li><a href="{{ path('risite_document') }}">Mes documents</a></li>
                     {% endif%}
-                    {% if is_granted('ROLE_SECRETARY')%}
+                        <li><a href="{{ path('risite_partenaires') }}">Liste des Partenaires</a></li>
+                        <li><a href="{{ path('risite_etudiants') }}">Liste des Etudiants</a></li>
+                    {% if is_granted('ROLE_SECRETARY') or is_granted('ROLE_ADMIN') %}
                         <li><a href="{{ path('risite_inscrireetudiant') }}">Inscrire étudiant</a></li>
                         <li><a href="{{ path('risite_profiluser') }}">Supprimer étudiant</a></li>
                     {% endif%}
@@ -50,6 +51,8 @@
                         <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
                 {%else%}
                     <li><a href="{{ path('fos_user_security_login') }}">Connexion</a></li>
+                    <li><a href="{{ path('fos_user_registration_register') }}">S'inscrire</a></li>
+                    
                 {%endif%}
             </ul>
             </div>            

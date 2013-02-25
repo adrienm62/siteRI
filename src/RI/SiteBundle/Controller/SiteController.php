@@ -1,4 +1,3 @@
-
 <?php
 namespace RI\SiteBundle\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
@@ -9,6 +8,7 @@ use RI\SiteBundle\Entity\Partenaire;
 use RI\SiteBundle\Entity\Contact;
 use RI\SiteBundle\Entity\Document;
 use RI\UserBundle\Entity\User;
+
     
     
 class SiteController extends Controller {
@@ -19,52 +19,50 @@ class SiteController extends Controller {
     }
     
     public function voirProfilAction(){
-        $user = $this->getUser();
+        $profil = $this->getUser();
         
-        $profil = $user;
-    
-        if($user === null){
-            throw $this->createNotFoundException('Le profil de l\'utilisateur [id='.$id.'] n\'existe pas.');
-        }
-        
-
-        $user->setUsername($profil->getUsername());
-        $user->setPassword($profil->getPassword());
-        $user->setNom($profil->getNom());
-        $user->setPrenom($profil->getPrenom());
-        $user->setAdresse($profil->getAdresse());
-        $user->setCodepostal($profil->getCodepostal());
-        $user->setVille($profil->getVille());
-        $user->setEmail($profil->getEmail());
-        $user->setTel1($profil->getTel1());
-        $user->setTel2($profil->getTel2());
-        $user->setIne($profil->getIne());
-
-        $form=$this->createFormBuilder($user)
+        $form=$this->createFormBuilder($profil)
             ->add('adresse','text')
             ->add('codepostal','text', array('label'=>'Code Postal'))
             ->add('ville','text')
             ->add('email','text')
-            ->add('tel1','text', array('label'=>'Téléphone 1'))
-            ->add('tel2','text', array('label'=>'Téléphone 2'))
-            ->add('ine','text', array('label'=>'Numéro INE'))
+            ->add('password','password', array('label'=>'Mot de passe',  'required' => false))
+            ->add('tel1','text', array('label'=>'Téléphone 1',  'required' => false))
+            ->add('tel2','text', array('label'=>'Téléphone 2',  'required' => false))
             ->getForm();
 
+        
         $request= $this->get('request');
 
         if ($request->getMethod() == 'POST'){
             $form->bind($request);
 
             if($form->isValid()){
-
+                
                 $em= $this->getDoctrine()->getManager();
                 $em->flush();
 
-                return $this->redirect($this->generateURL('risite_profil', array('id' => $id)));
+                return $this->redirect($this->generateURL('risite_profil'));
             }
         }
 
         return $this->render('RISiteBundle:Site:profil.html.twig', array('profil' => $profil, 'form' => $form->createView()));
+    }
+    
+    
+    public function voirProfil2Action($id){
+        $profil = $this->getDoctrine()->getManager()->getRepository('RIUserBundle:User')->find($id);
+        $current_user = $this->getUser();
+        
+        if($profil === null){
+            throw $this->createNotFoundException('Le profil de cet utilisateur id['.$id.'] n\'existe pas.');
+        }
+        
+        if($current_user == $profil){
+            return $this->redirect($this->generateURL('risite_profil'));
+        }else{
+            return $this->render('RISiteBundle:Site:profilUser.html.twig', array('profil' => $profil));
+        }
     }
     
     public function voirPartenairesAction(){
@@ -75,6 +73,19 @@ class SiteController extends Controller {
         }
         
         return $this->render('RISiteBundle:Site:listepartenaires.html.twig', array('partenaires' => $partenaires));
+    }
+    
+    public function voirEtudiantsAction(){
+        $em = $this->getDoctrine()->getEntityManager();
+        $query = $em->createQuery('SELECT e FROM RIUserBundle:User e WHERE e.ine IS NOT NULL');
+
+        $etudiants = $query->getResult();
+ 
+        if($etudiants === null){
+            throw $this->createNotFoundException('La liste des étudiants est vide.');
+        }
+        
+        return $this->render('RISiteBundle:Site:listeEtudiants.html.twig', array('etudiants' => $etudiants));
     }
     
     public function voirInfoPartenaireAction($id){
@@ -115,47 +126,7 @@ class SiteController extends Controller {
         }
         
         return $this->render('RISiteBundle:Site:stage.html.twig', array('stage' => $stage));
-    }
-    
-    
-    /**
-     * @Secure(roles="ROLE_SECRETARY")
-     */
-    public function inscrireEtudiantAction(){
-        $user = new User;
-       
-        
-        $form = $this->createFormBuilder($user)
-                    ->add('nom', 'text')
-                    ->add('prenom', 'text')
-                    ->add('adresse', 'textarea')
-                    ->add('ville', 'text')
-                    ->getForm();
-        
-        $request = $this->get('request');
-        
-        if ($request->getMethod() == 'POST'){
-            $form->bind($request);
-            
-            if ($form->isValid()){
-                $password = sha512("1234");
-                $user->setPassword($password);
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($user);
-                $em->flush();
-                
-                return $this->redirect($this->generateUrl('risite_profil'), array('id' => $user->getId()));
-                
-            }
-            
-            
-        }
-        
-        return $this->render('RISiteBundle:Site:ajouteretudiant.html.twig', array('form' => $form->createView()));
-                    
-                
-    }
-    
+    }   
     
     
     public function demandeSuppressionAction(){

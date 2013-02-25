@@ -6,9 +6,17 @@ risite_profil:
     pattern: /profil
     defaults: { _controller: RISiteBundle:Site:voirProfil }
 
+risite_profil2:
+    pattern: /profil/{id}
+    defaults: { _controller: RISiteBundle:Site:voirProfil2 }
+
 risite_partenaires:
     pattern: /partenaires
     defaults: { _controller: RISiteBundle:Site:voirPartenaires }
+
+risite_etudiants:
+    pattern: /etudiants
+    defaults: { _controller: RISiteBundle:Site:voirEtudiants }
 
 risite_partenaire_info:
     pattern: /partenaire/{id}
