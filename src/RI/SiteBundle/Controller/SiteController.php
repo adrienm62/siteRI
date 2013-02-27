@@ -1,6 +1,6 @@
-
 <?php
 namespace RI\SiteBundle\Controller;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Component\Httpfoundation\Response;
@@ -118,43 +118,6 @@ class SiteController extends Controller {
     }
     
     
-    /**
-     * @Secure(roles="ROLE_SECRETARY")
-     */
-    public function inscrireEtudiantAction(){
-        $user = new User;
-       
-        
-        $form = $this->createFormBuilder($user)
-                    ->add('nom', 'text')
-                    ->add('prenom', 'text')
-                    ->add('adresse', 'textarea')
-                    ->add('ville', 'text')
-                    ->getForm();
-        
-        $request = $this->get('request');
-        
-        if ($request->getMethod() == 'POST'){
-            $form->bind($request);
-            
-            if ($form->isValid()){
-                $password = sha512("1234");
-                $user->setPassword($password);
-                $em = $this->getDoctrine()->getManager();
-                $em->persist($user);
-                $em->flush();
-                
-                return $this->redirect($this->generateUrl('risite_profil'), array('id' => $user->getId()));
-                
-            }
-            
-            
-        }
-        
-        return $this->render('RISiteBundle:Site:ajouteretudiant.html.twig', array('form' => $form->createView()));
-                    
-                
-    }
     
     
     

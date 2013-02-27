@@ -40,7 +40,7 @@ risite_document_dl:
 
 risite_inscrireetudiant:
     pattern: /inscrire-etudiant
-    defaults: { _controller: RISiteBundle:Site:inscrireEtudiant }
+    defaults: { _controller: RISiteBundle:Secretaire:inscrireEtudiant }
 
 risite_test:
     pattern: /test

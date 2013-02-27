@@ -13,7 +13,7 @@ security:
         ROLE_STUDENT   :  [ROLE_USER]
         ROLE_CONTACT   :  [ROLE_CONTACT]
         ROLE_SECRETARY :  
-        ROLE_ADMIN:       [ROLE_USER, ROLE_SECRETARY]
+        ROLE_ADMIN:       [ROLE_SECRETARY]
         ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
 
     providers:
