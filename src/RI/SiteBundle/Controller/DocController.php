@@ -9,6 +9,7 @@ use RI\SiteBundle\Entity\Partenaire;
 use RI\SiteBundle\Entity\Contact;
 use RI\SiteBundle\Entity\Document;
 use RI\UserBundle\Entity\User;
+use RI\UserBundle\Entity\UserRepository;
 
 /**
  * Description of DocController
@@ -59,7 +60,7 @@ class DocController extends Controller  {
         try{
         $documents2=$query2->getResult();
         }catch(\Doctrine\Orm\NoResultException $e){
-            $document2=null;
+            $documents2=null;
             return null;
         }
         
@@ -96,22 +97,40 @@ class DocController extends Controller  {
             }
         }
         
-        //deuxième formulaire pour la recherche de l'utilisateur
+        //deuxième formulaire pour la recherche de l'utilisateur dont on veut envoyer un document
+        //ou consulter les documents
         $defaultData = array('Nom de l\utilisateur' => '', 'Prénom de l\'utilisateur' => '');
         $form2 = $this->createFormBuilder($defaultData)
-                ->add('nom', 'text')
-                ->add('prenom', 'text')
+                
+                ->add('users', 'entity', array(
+                    'class' => 'RIUserBundle:User', 'label' => 'Nom d\'utilisateur',
+                    'query_builder' => function(UserRepository $er) {
+                        return $er->createQueryBuilder('u')
+                        ->orderBy('u.nom', 'ASC'); }))
+                ->add('traitement', 'choice', 
+                        array('choices' => array('e' => 'Pour envoi','c' => 'Pour consultation')))
                 ->getForm();
         
         if ($this->getRequest()->isMethod('POST')) {
             $form2->bind($this->getRequest());
 
             // les données sont un tableau avec les clés "name", "email", et "message"
-            $nom_utilisateur = $form2->get('nom')->getData();
-            $prenom_utilisateur = $form2->get('prenom')->getData();
+            $user = $form2->get('users')->getData();
+            $choix = $form2->get('traitement')->getData();
             
+            if($choix == 'e'){
+                //return $this->redirect($this->generateURL('risite_document_envoi', array('nom' => $nom_utilisateur, 'prenom' => $prenom_utilisateur)));
             return $this->redirect($this->generateURL('risite_document_envoi', 
-                    array('nom' => $nom_utilisateur, 'prenom' => $prenom_utilisateur)));
+                    array('user' => $user)));
+            
+                
+            }  elseif ($choix == 'c') {
+                //return $this->redirect($this->generateURL('risite_document_user',array('nom' => $nom_utilisateur, 'prenom' => $prenom_utilisateur)));
+            return $this->redirect($this->generateURL('risite_document_user',
+                    array('user' => $user)));
+            
+                
+            }
             
         }
         
@@ -126,18 +145,23 @@ class DocController extends Controller  {
      * 
      * @Secure(roles="ROLE_ADMIN, ROLE_SECRETARY")
      */
-    public function envoiDocumentAction($nom, $prenom){
+    public function envoiDocumentAction($user){
+        $tab = explode(' ', $user);
+        $nom = $tab[0];
+        $prenom = $tab[1];
+        
         //recherche de l'utilisateur dans la base de données
-        $query = $this->getDoctrine()->getEntityManager()->createQuery(
+        
+            $query = $this->getDoctrine()->getEntityManager()->createQuery(
                 'SELECT u FROM RIUserBundle:User u WHERE u.nom = :nom AND u.prenom = :prenom')
                 ->setParameter('nom', $nom)
                 ->setParameter('prenom', $prenom);
-        try{
-           $user=$query->getSingleResult();
-        }catch(\Doctrine\Orm\NoResultException $e){
-           $user=null;
-           throw $this->createNotFoundException('Cet utilisateur n\'existe pas.');
-        }
+            try{
+               $user=$query->getSingleResult();
+            }catch(\Doctrine\Orm\NoResultException $e){
+               $user=null;
+               return null;
+            }
         if ($user != null){
             //formulaire du document
             $document = new Document();
@@ -241,6 +265,52 @@ class DocController extends Controller  {
         
         $response->send();
         return $response;
+    }
+    
+    /**
+     * Gère la page de recherche des documents par utilisateur
+     * 
+     * @Secure(roles="ROLE_ADMIN, ROLE_SECRETARY")
+     */
+    public function voirDocUsersAction($user){
+        $tab = explode(' ', $user);
+        $nom = $tab[0];
+        $prenom = $tab[1];
+        
+        //recherche de l'utilisateur dans la base de données
+        
+            $query = $this->getDoctrine()->getEntityManager()->createQuery(
+                'SELECT u FROM RIUserBundle:User u WHERE u.nom = :nom AND u.prenom = :prenom')
+                ->setParameter('nom', $nom)
+                ->setParameter('prenom', $prenom);
+            try{
+               $user=$query->getSingleResult();
+            }catch(\Doctrine\Orm\NoResultException $e){
+               $user=null;
+               return null;
+            }
+        
+        
+            
+            if ($user != null){
+                $query2 = $this->getDoctrine()->getEntityManager()->createQuery(
+                'SELECT d FROM RISiteBundle:Document d WHERE d.user = :user')
+                ->setParameter('user', $user);
+                try{
+                    $documents=$query2->getResult();
+                }catch(\Doctrine\Orm\NoResultException $e){
+                    $documents=null;
+                    return null;
+                }
+            }
+        
+        
+        return $this->render('RISiteBundle:Site:docUtilisateur.html.twig', 
+                array('user' => $user, 'docUser' => $documents));
+        
+        
+        
+        
     }
     
 }

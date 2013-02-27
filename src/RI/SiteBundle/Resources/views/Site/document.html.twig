@@ -33,8 +33,9 @@
     {% include "RISiteBundle:Site:formulaire.html.twig" %}
     
     {% if is_granted('ROLE_SECRETARY') or is_granted('ROLE_ADMIN') %}
-    <h3>Envoyer un document à un autre utilisateur</h3>
-    <p>Etape 1: Entrez le nom de l'utilisateur</p>
+    <h3>Envoi ou consultation de documents d'un utilisateur</h3>
     {% include "RISiteBundle:Site:formulaire2.html.twig" %}
+    
+    
     {%endif%}
 {% endblock %}
