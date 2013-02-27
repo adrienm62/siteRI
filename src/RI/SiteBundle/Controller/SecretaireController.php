@@ -30,8 +30,10 @@ class SecretaireController extends Controller {
        
         
         $form = $this->createFormBuilder($user)
+                    ->add('username', 'text')
                     ->add('nom', 'text')
                     ->add('prenom', 'text')
+                    ->add('email', 'text' )
                     ->add('adresse', 'textarea')
                     ->add('ville', 'text')
                     ->getForm();
