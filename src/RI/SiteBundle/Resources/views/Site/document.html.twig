@@ -6,6 +6,16 @@
 
 {% block body %}
     <h2><center><u>Gestion de mes documents</u></center></h2>
+    <h3>Les documents publics</h3>
+    {% if documentSecretaire is not null %}
+    <table>
+        {% for document in documentSecretaire %}
+            <tr><td style="font-weight: bold">{{document.docnom}}</td> <td> Date de dépôt : {{document.docdatedepot|date('d-m-Y')}} à {{document.docdatedepot|date('H:i:s')}}</td>
+                <td><a href="{{ path('risite_document_dl', {'id':document.id}) }}">Télécharger</a></td>
+                <td><a href="{{ path('risite_document_suppr', {'id':document.id}) }}">Supprimer</a></td></tr>
+        {%endfor%}
+    </table>
+    {% endif %}
     <h3>Mes documents</h3>
     {% if documents is not null %}
     <table>
@@ -15,9 +25,16 @@
                 <td><a href="{{ path('risite_document_suppr', {'id':document.id}) }}">Supprimer</a></td></tr>
         {%endfor%}
     </table>
-    {% else %}
-        Je n'ai pas encore de documents. <br>
     {% endif %}
     <h3>Déposer un document</h3>
+    {% if is_granted('ROLE_SECRETARY') or is_granted('ROLE_ADMIN') %}
+    <p>Dans cette section, les documents envoyés seront publics. Il s'agit de documents informatifs.</p>
+    {%endif%}
     {% include "RISiteBundle:Site:formulaire.html.twig" %}
+    
+    {% if is_granted('ROLE_SECRETARY') or is_granted('ROLE_ADMIN') %}
+    <h3>Envoyer un document à un autre utilisateur</h3>
+    <p>Etape 1: Entrez le nom de l'utilisateur</p>
+    {% include "RISiteBundle:Site:formulaire2.html.twig" %}
+    {%endif%}
 {% endblock %}

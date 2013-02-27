@@ -42,6 +42,10 @@ risite_document_suppr:
     pattern: /document/supprimer/{id}
     defaults: { _controller: RISiteBundle:Doc:supprimerDocument }
 
+risite_document_envoi:
+    pattern: /document/envoyer/{nom}-{prenom}
+    defaults: { _controller: RISiteBundle:Doc:envoiDocument }
+
 risite_document_dl:
     pattern: /document/telecharger/{id}
     defaults: { _controller: RISiteBundle:Doc:telechargerDocument }
