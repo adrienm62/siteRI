@@ -84,9 +84,8 @@ class User extends BaseUser {
       */
      protected $stages;
 
+
      
-
-
      /**
      * Get id
      *
@@ -134,6 +133,7 @@ class User extends BaseUser {
     
         return $this;
     }
+    
 
     /**
      * Get prenom
@@ -351,12 +351,5 @@ class User extends BaseUser {
     public function getStages()
     {
         return $this->stages;
-    }
-    
-    public function setPassword($rawPassword) 
-    { 
-        $salt = "fgv932g2e9dshdfkdjgf927gf8hlz082";
-        $password = sha512($salt . $rawPassword); 
-        parent::setPassword($password);
     }
 }

@@ -10,7 +10,7 @@
     <tr><th>Intitulé du stage:</th> <td>{{stage.stasujet}}</td></tr>
     <tr><th>Dates du stage:</th> <td> du {{stage.stadebut|date('d-m-Y')}} au {{stage.stafin|date('d-m-Y')}}</td></tr>
     {%if stage.etudiant is not null %}
-    <tr><th>Etudiant:</th> <td><a href="{{ path('risite_profil',{'id':stage.etudiant.id}) }}" >{{stage.etudiant}}</a></td></tr>
+    <tr><th>Etudiant:</th> <td><a href="{{ path('risite_profil2',{'id':stage.etudiant.id}) }}" >{{stage.etudiant}}</a></td></tr>
     {%endif%}
     <tr><th>Contact principal:</th> <td><a href="{{ path ('risite_contact_info',{'id' : stage.contactprincipal.id})}}">{{stage.contactprincipal.contnom}} {{stage.contactprincipal.contprenom}}</a></td></tr>
 

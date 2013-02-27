@@ -1,0 +1,21 @@
+{# src/SiteRI/SiteBundle/Resources/views/Site/listeEtudiants.html.twig #}
+{% extends "RISiteBundle::layout.html.twig" %}
+{% block title %}
+    Etudiants - {{ parent() }}
+{% endblock %}
+    
+{%block body%}
+    <h2><center><u>Liste des Etudiants inscrits</u></center></h2>
+    <table>
+    {%for etudiant in etudiants %}
+            <tr><td><a href="{{ path('risite_profil2',{'id':etudiant.id}) }}" >{{ etudiant.nom }} {{ etudiant.prenom }}</a>
+                    {% if etudiant.stages is not null %}
+                            {%for stage in etudiant.stages %}
+                            - <a href="{{ path('risite_stage_info',{'idStage':stage.id}) }}" >Stage</a>
+                            {%endfor%}
+                    {% endif %}
+            </td></tr>
+    {%endfor%}
+    </table>
+{%endblock%}
+    

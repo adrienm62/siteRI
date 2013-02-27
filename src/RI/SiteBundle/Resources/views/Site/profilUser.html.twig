@@ -1,0 +1,27 @@
+{# src/SiteRI/SiteBundle/Resources/views/Site/profilUser.html.twig #}
+{% extends "RISiteBundle::layout.html.twig" %}
+{% block title %}
+    Profil - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <h2><center><u>Profil</u></center></h2>
+    <table>
+        <tr><th>Nom:</th> <td>{{profil.nom}}</td></tr>
+        <tr><th>Prénom:</th> <td>{{profil.prenom}}</td></tr>
+        {% if is_granted('ROLE_SECRETARY') or is_granted('ROLE_ADMIN') %}
+        <tr><th>Adresse:</th> <td>{{profil.adresse}}</td></tr>
+        <tr><th>Code Postal:</th> <td>{{profil.codepostal}}</td></tr>
+        <tr><th>Ville:</th> <td>{{profil.ville}}</td></tr>
+        {%endif%}
+        <tr><th>Mail:</th> <td>{{profil.email}}</td></tr>
+    </table>
+    {% if is_granted('ROLE_SECRETARY') %}
+    <h3>Suppression du compte de {{ profil.nom }} {{ profil.prenom }}</h3>
+        {% include "RISiteBundle:Site:formulaire.html.twig" %}
+    {%endif%}
+        
+        
+   
+
+{% endblock %}
