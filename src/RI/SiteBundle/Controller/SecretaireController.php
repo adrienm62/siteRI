@@ -9,6 +9,8 @@ use RI\SiteBundle\Entity\Partenaire;
 use RI\SiteBundle\Entity\Contact;
 use RI\SiteBundle\Entity\Document;
 use RI\UserBundle\Entity\User;
+use RI\SiteBundle\Controller\DocController;
+
 
 class SecretaireController extends Controller {
     
@@ -17,7 +19,7 @@ class SecretaireController extends Controller {
                  ->getRepository('RIUserBundle:User')
                 ->findDemandeSuppression();
         
-        return $this->render('RISiteBundle:Site:users.html.twig',
+        return $this->render('RISiteBundle:Site:listeetudiantssuppression.html.twig',
                 array('liste_users' => $users));
     }
     
@@ -29,8 +31,10 @@ class SecretaireController extends Controller {
        
         
         $form = $this->createFormBuilder($user)
+                    ->add('username', 'text')
                     ->add('nom', 'text')
                     ->add('prenom', 'text')
+                    ->add('email', 'text' )
                     ->add('adresse', 'textarea')
                     ->add('ville', 'text')
                     ->getForm();
@@ -65,7 +69,9 @@ class SecretaireController extends Controller {
     public function suppressionCompteAction($id){
         $user = $this->getDoctrine()->getManager()->getRepository('RIUserBundle:User')->find($id);
         $stages = $user->getStages();
+        $documents = $user->getDocuments();
         $form = $this->createFormBuilder($user)->getForm();
+        $docController = new DocController;
         
         
         $request= $this->get('request');
@@ -78,6 +84,10 @@ class SecretaireController extends Controller {
                 foreach ($stages as $stage){
                     $stage->setEtudiant(null);
                 }
+                
+                foreach ($documents as $document) {
+                   $document->delete();
+                }
                 $em->remove($user);
                 $em->flush();
 
@@ -85,7 +95,7 @@ class SecretaireController extends Controller {
             }
        }
        
-       return $this->render('RISiteBundle:Site:profilEtudiant.html.twig', array('profil' => $user, 'form' => $form->createView()));
+       return $this->render('RISiteBundle:Site:profilUser.html.twig', array('profil' => $user, 'form' => $form->createView()));
     }
     
     

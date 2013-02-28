@@ -1,10 +1,10 @@
 {% extends "RISiteBundle::layout.html.twig" %}
 {% block title %}
-    Etudiants demandant la supression de leur compte - {{ parent() }}
+    Suppression de compte - {{ parent() }}
 {% endblock %}
     
 {%block body %}
-    
+    <h2>Liste des demandes de suppression</h2>
     <ul>
         
         {%for user in liste_users %}
