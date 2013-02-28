@@ -8,7 +8,6 @@ use RI\SiteBundle\Entity\Partenaire;
 use RI\SiteBundle\Entity\Contact;
 use RI\SiteBundle\Entity\Document;
 use RI\UserBundle\Entity\User;
-
     
     
 class SiteController extends Controller {
