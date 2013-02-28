@@ -127,6 +127,7 @@ class SiteController extends Controller {
     }
     
     public function voirInfoStageAction($idStage){
+        //récupération du stage
         $stage = $this->getDoctrine()->getManager()->getRepository('RISiteBundle:Stage')->find($idStage);
         
         if($stage === null){

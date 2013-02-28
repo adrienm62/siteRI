@@ -11,7 +11,7 @@
             <tr><td><a href="{{ path('risite_profil2',{'id':etudiant.id}) }}" >{{ etudiant.nom }} {{ etudiant.prenom }}</a>
                     {% if etudiant.stages is not null %}
                             {%for stage in etudiant.stages %}
-                            - <a href="{{ path('risite_stage_info',{'idStage':stage.id}) }}" >Stage</a>
+                            - <a href="{{ path('risite_stage_info',{'idStage':stage.id}) }}" >Stage en/au {{stage.contactprincipal.partenaire.parpays}}</a>
                             {%endfor%}
                     {% endif %}
             </td></tr>

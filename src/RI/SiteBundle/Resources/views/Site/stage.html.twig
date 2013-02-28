@@ -12,8 +12,10 @@
     {%if stage.etudiant is not null %}
     <tr><th>Etudiant:</th> <td><a href="{{ path('risite_profil2',{'id':stage.etudiant.id}) }}" >{{stage.etudiant}}</a></td></tr>
     {%endif%}
+    <tr><th>Formation:</th><td>{{stage.formation.forlibelle}} (Département {{stage.formation.departement.dptlibelle}})</td></tr>
+    <tr><th>Partenaire:</th><td><a href="{{ path('risite_partenaire_info',{'id':stage.contactprincipal.partenaire.id}) }}" >{{stage.contactprincipal.partenaire.parnom}} - {{stage.contactprincipal.partenaire.parpays}}</td><tr>
     <tr><th>Contact principal:</th> <td><a href="{{ path ('risite_contact_info',{'id' : stage.contactprincipal.id})}}">{{stage.contactprincipal.contnom}} {{stage.contactprincipal.contprenom}}</a></td></tr>
-
+    
     
         
     </table>

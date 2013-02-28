@@ -258,6 +258,39 @@ class DocController extends Controller  {
     }
     
     /**
+     * Téléchargement des documents publics
+     * 
+     * @Secure(roles="ROLE_USER")
+     */
+    public function telechargerDocument2Action($id){
+        //pas de vérification sur le propriétaire du document car le document est public.
+        $query = $this->getDoctrine()->getEntityManager()->createQuery(
+                'SELECT d FROM RISiteBundle:Document d WHERE d.id = :id')
+                ->setParameter('id', $id);
+        try{
+        $document=$query->getSingleResult();
+        }catch(\Doctrine\Orm\NoResultException $e){
+            $document=null;
+            throw $this->createNotFoundException('Impossible de télécharger ce document.');
+        }
+        
+        $fichier = $document->getDocChemin();
+        $nom = pathinfo($fichier, PATHINFO_BASENAME);
+        $ext = pathinfo($fichier, PATHINFO_EXTENSION);
+        
+        $response = new Response();
+        $response->setStatusCode(200);
+        $response->headers->set('Content-Type', 'application/'.$ext.'');
+        $response->setContent(file_get_contents($fichier));
+        $response->headers->set('Content-Disposition', sprintf('attachment;filename="%s"', $nom));
+        $response->headers->set('X-Sendfile', $fichier);
+
+        
+        $response->send();
+        return $response;
+    }
+    
+    /**
      * Gère la page de recherche des documents par utilisateur
      * 
      * @Secure(roles="ROLE_ADMIN, ROLE_SECRETARY")
