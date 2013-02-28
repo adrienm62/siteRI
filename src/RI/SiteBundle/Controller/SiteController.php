@@ -172,7 +172,8 @@ class SiteController extends Controller {
             $em= $this->getDoctrine()->getManager();
             $em->flush();
 
-            return new Response("Demande bien prise en compte");
+            $this->get('session')->getFlashBag()->add('notice', 'Demande bien prise en compte');
+            return $this->redirect( $this->generateUrl('risite_accueil') );
        }
         
         return $this->render('RISiteBundle:Site:demande.html.twig', array('form' => $form->createView()));
