@@ -30,6 +30,7 @@
     
     <br>
     {% if is_granted('ROLE_USER') %}
+    <a href="{{path('fos_user_change_password')}}">Changer de mot de passe ? </a>
         <a href="{{ path('risite_demandesuppression') }}">Suppression de mon compte ?</a>
     {% endif %}
 {% endblock %}

@@ -69,7 +69,7 @@ class SecretaireController extends Controller {
     public function suppressionCompteAction($id){
         $user = $this->getDoctrine()->getManager()->getRepository('RIUserBundle:User')->find($id);
         $stages = $user->getStages();
-        $documents = $user->getStages();
+        $documents = $user->getDocuments();
         $form = $this->createFormBuilder($user)->getForm();
         $docController = new DocController;
         
@@ -86,7 +86,7 @@ class SecretaireController extends Controller {
                 }
                 
                 foreach ($documents as $document) {
-                   $docController->supprimerDocumentAction($document->getId());
+                   $document->delete();
                 }
                 $em->remove($user);
                 $em->flush();

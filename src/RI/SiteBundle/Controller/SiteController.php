@@ -33,7 +33,6 @@ class SiteController extends Controller {
             ->add('codepostal','text', array('label'=>'Code Postal',  'required' => false))
             ->add('ville','text', array('label'=>'Ville',  'required' => false))
             ->add('email','text', array('label'=>'Email*',  'required' => false))
-            ->add('password','password', array('label'=>'Mot de passe',  'required' => false))
             ->add('tel1','text', array('label'=>'Téléphone 1',  'required' => false))
             ->add('tel2','text', array('label'=>'Téléphone 2',  'required' => false))
             ->getForm();
