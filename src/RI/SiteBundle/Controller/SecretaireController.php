@@ -31,12 +31,13 @@ class SecretaireController extends Controller {
        
         
         $form = $this->createFormBuilder($user)
-                    ->add('username', 'text')
-                    ->add('nom', 'text')
-                    ->add('prenom', 'text')
-                    ->add('email', 'text' )
-                    ->add('adresse', 'textarea')
-                    ->add('ville', 'text')
+                    ->add('username', 'text', array('label'=>'Nom d\'utilisateur*'))
+                    ->add('nom', 'text', array('label'=>'Nom*'))
+                    ->add('prenom', 'text', array('label'=>'Prénom*'))
+                    ->add('email', 'text', array('label'=>'Email*') )
+                    ->add('adresse', 'textarea', array('required'=>false))
+                    ->add('ville', 'text', array('required'=>false))
+                    ->add('ine', 'text', array('label'=>'Numéro d\'INE*'))
                     ->getForm();
         
         $request = $this->get('request');
