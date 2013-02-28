@@ -5,7 +5,7 @@
 {% endblock %}
     
 {%block body%}
-    <h2><center><u>Liste des Etudiants inscrits</u></center></h2>
+    <h2>Liste des Etudiants inscrits</h2>
     <table>
     {%for etudiant in etudiants %}
             <tr><td><a href="{{ path('risite_profil2',{'id':etudiant.id}) }}" >{{ etudiant.nom }} {{ etudiant.prenom }}</a>

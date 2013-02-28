@@ -1,0 +1,20 @@
+{# src/SiteRI/SiteBundle/Resources/views/Site/docUtilisateur.html.twig #}
+{% extends "RISiteBundle::layout.html.twig" %}
+{% block title %}
+    Documents Utilisateurs - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <h2>Gestion des documents utilisateurs</h2>
+    <h3>Recherche des documents de {{user.nom}} {{user.prenom}}</h3>
+       {% if docUser is not null %}
+        <table>
+            {% for document in docUser %}
+                <tr><td style="font-weight: bold">{{document.docnom}}</td> <td> Date de dépôt : {{document.docdatedepot|date('d-m-Y')}} à {{document.docdatedepot|date('H:i:s')}}</td>
+                    <td><a href="{{ path('risite_document_dl', {'id':document.id}) }}">Télécharger</a></td>
+                    <td><a href="{{ path('risite_document_suppr', {'id':document.id}) }}">Supprimer</a></td></tr>
+            {%endfor%}
+        </table>            
+        {% endif %}
+    
+{% endblock %}

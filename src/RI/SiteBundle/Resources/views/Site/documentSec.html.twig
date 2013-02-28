@@ -1,0 +1,13 @@
+{# src/SiteRI/SiteBundle/Resources/views/Site/documentSec.html.twig #}
+{% extends "RISiteBundle::layout.html.twig" %}
+{% block title %}
+    Envoi - {{ parent() }}
+{% endblock %}
+
+{% block body %}
+    <h2>Envoi d'un document</h2>
+    <p>Choisissez le document à envoyer à: {{user.nom}} {{user.prenom}}
+        {% include "RISiteBundle:Site:formulaire.html.twig" %}
+    </p>
+    
+{% endblock %}

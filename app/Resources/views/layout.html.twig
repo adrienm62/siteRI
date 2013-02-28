@@ -20,12 +20,12 @@
 <body>
     <div class="container">
         <div id="header" class="hero-unit">
-            <h1>Site Relations Internationales - IUT de Lens</h1>
+            <h1></h1>
         </div>
         <div class="row">
         
             {#Menu à gauche#}
-            <div id="menu" class="span3">
+            <div id="menu" class="span2">
             <ul class="nav nav-pills nav-stacked">
                 {# L'utilisateur est-il connecté ? #}
                 <li><a href="{{ path('risite_accueil') }}">Accueil</a></li>
@@ -37,16 +37,13 @@
                     {% endif%}
                         <li><a href="{{ path('risite_partenaires') }}">Liste des Partenaires</a></li>
                         <li><a href="{{ path('risite_etudiants') }}">Liste des Etudiants</a></li>
+                    {% if is_granted('ROLE_ADMIN')%}
+                        <li><a href="{{ path('risite_stages') }}">Liste des stages</a></li>
+                        <li><a href="{{ path('sonata_admin_dashboard') }}">Accès pannel admin</a></li>
+                    {% endif%}
                     {% if is_granted('ROLE_SECRETARY') or is_granted('ROLE_ADMIN') %}
                         <li><a href="{{ path('risite_inscrireetudiant') }}">Inscrire étudiant</a></li>
                         <li><a href="{{ path('risite_profiluser') }}">Supprimer étudiant</a></li>
-                    {% endif%}
-                    {% if is_granted('ROLE_CONTACT')%}
-                        <li><a href="{{ path('risite_stagiaire') }}">Voir stagiaires</a></li>
-                        <li><a href="{{ path('risite_documentPart') }}">Gestion des documents</a></li>
-                    {% endif%}
-                    {% if is_granted('ROLE_ADMIN')%}
-                        <li><a href="{{ path('risite_stages') }}">Liste des stages</a></li>
                     {% endif%}
                         <li><a href="{{ path('fos_user_security_logout') }}">Déconnexion</a></li>
                 {%else%}
@@ -58,7 +55,7 @@
             </div>            
             
             {#création du bloc « body » sans contenu par défaut#}
-            <div id="content" class="span9">
+            <div id="content" class="span10">
             {% block body %}
             {% endblock %}
             </div>

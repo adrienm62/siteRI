@@ -22,8 +22,7 @@ class SecretaireController extends Controller {
     }
     
     /**
-     * @Secure(roles="ROLE_SECRETARY")
-     * @Secure(roles="ROLE_ADMIN")
+     * @Secure(roles="ROLE_ADMIN, ROLE_SECRETARY")
      */
     public function inscrireEtudiantAction(){
         $user = new User;
@@ -63,8 +62,7 @@ class SecretaireController extends Controller {
     }
     
     /**
-     * @Secure(roles="ROLE_SECRETARY")
-     * @Secure(roles="ROLE_ADMIN")
+     * @Secure(roles="ROLE_ADMIN, ROLE_SECRETARY")
      */
     public function suppressionCompteAction($id){
         $user = $this->getDoctrine()->getManager()->getRepository('RIUserBundle:User')->find($id);
