@@ -75,6 +75,18 @@ img {
   -ms-interpolation-mode: bicubic;
 }
 
+.delete{
+    padding-right: 20px ;
+	line-height: 20px ;
+    background: url("../../delete.gif") no-repeat right bottom;
+}
+
+.download{
+    padding-right: 20px ;
+	line-height: 20px ;
+    background: url("../../download.gif") no-repeat right bottom;
+}
+
 #map_canvas img,
 .google-maps img {
   max-width: none;
