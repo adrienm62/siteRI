@@ -31,8 +31,7 @@
     
     {% if is_granted('ROLE_USER') %}
     <h3>Changer mon Mot de Passe ou Supprimer mon compte</h3>
-        <a href="{{path('fos_user_change_password')}}">Cliquez pour changer de mot de passe</a>
-        <a href="{{ path('risite_demandesuppression') }}">Cliquez pour envoyer une demande de suppression de compte</a>
+        {% include "RISiteBundle:Site:formulaire2.html.twig" %}
     {% endif %}
 
 {% endblock %}
