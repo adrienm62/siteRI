@@ -20,12 +20,12 @@
 <body>
     <div class="container">
         <div id="header" class="hero-unit">
-            <h1>Site Relations Internationales - IUT de Lens</h1>
+            <h1></h1>
         </div>
         <div class="row">
         
             {#Menu à gauche#}
-            <div id="menu" class="span3">
+            <div id="menu" class="span2">
             <ul class="nav nav-pills nav-stacked">
                 {# L'utilisateur est-il connecté ? #}
                 <li><a href="{{ path('risite_accueil') }}">Accueil</a></li>
@@ -55,7 +55,7 @@
             </div>            
             
             {#création du bloc « body » sans contenu par défaut#}
-            <div id="content" class="span9">
+            <div id="content" class="span10">
             {% block body %}
             {% endblock %}
             </div>

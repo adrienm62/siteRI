@@ -31,7 +31,7 @@ class DocController extends Controller  {
             return null;
         }
         
-        //récupération des documents de la secrétaire ou de l'admin
+        //récupération des documents publics de la secrétaire ou de l'admin
         $q1 = $this->getDoctrine()->getEntityManager()->createQuery(
                 'SELECT u FROM RIUserBundle:User u WHERE u.roles = :sec ')
                 ->setParameter('sec', 'a:1:{i:0;s:14:"ROLE_SECRETARY";}');
@@ -119,21 +119,11 @@ class DocController extends Controller  {
             $choix = $form2->get('traitement')->getData();
             
             if($choix == 'e'){
-                //return $this->redirect($this->generateURL('risite_document_envoi', array('nom' => $nom_utilisateur, 'prenom' => $prenom_utilisateur)));
-            return $this->redirect($this->generateURL('risite_document_envoi', 
-                    array('user' => $user)));
-            
-                
+                return $this->redirect($this->generateURL('risite_document_envoi', array('user' => $user)));
             }  elseif ($choix == 'c') {
-                //return $this->redirect($this->generateURL('risite_document_user',array('nom' => $nom_utilisateur, 'prenom' => $prenom_utilisateur)));
-            return $this->redirect($this->generateURL('risite_document_user',
-                    array('user' => $user)));
-            
-                
+                return $this->redirect($this->generateURL('risite_document_user', array('user' => $user)));
             }
-            
         }
-        
         return $this->render('RISiteBundle:Site:document.html.twig', array('documents' => $documents,
             'documentSecretaire' => $documents2,
             'form' => $form->createView(), 'form2' => $form2->createView()));

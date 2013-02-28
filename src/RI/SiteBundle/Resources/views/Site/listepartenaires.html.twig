@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    <h2><center><u>Partenaires</u></center></h2>
+    <h2>Partenaires</h2>
     <ul>
     {% for partenaire in partenaires %}
             <li><a href="{{ path('risite_partenaire_info',{'id':partenaire.id}) }}" >{{ partenaire.parnom }} - {{partenaire.parpays}} {{partenaire.parville}}</a></li>

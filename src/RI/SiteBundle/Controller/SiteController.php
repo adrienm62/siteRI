@@ -13,19 +13,27 @@ use RI\UserBundle\Entity\User;
     
 class SiteController extends Controller {
     public function indexAction(){
+        $query = $this->getDoctrine()->getEntityManager()->createQuery(
+                'SELECT u FROM RIUserBundle:User u WHERE u.roles = :admin ')
+                ->setParameter('admin', 'a:1:{i:0;s:10:"ROLE_ADMIN";}'); 
+        try{
+            $admin=$query->getSingleResult();
+        }catch(\Doctrine\Orm\NoResultException $e){
+            $admin=null;
+            return null;
+        }
         
-        
-        return $this->render('RISiteBundle:Site:index.html.twig');
+        return $this->render('RISiteBundle:Site:index.html.twig', array('admin' => $admin));
     }
     
     public function voirProfilAction(){
         $profil = $this->getUser();
         
         $form=$this->createFormBuilder($profil)
-            ->add('adresse','text')
-            ->add('codepostal','text', array('label'=>'Code Postal'))
-            ->add('ville','text')
-            ->add('email','text')
+            ->add('adresse','text',array('label'=>'Adresse',  'required' => false))
+            ->add('codepostal','text', array('label'=>'Code Postal',  'required' => false))
+            ->add('ville','text', array('label'=>'Ville',  'required' => false))
+            ->add('email','text', array('label'=>'Email*',  'required' => false))
             ->add('password','password', array('label'=>'Mot de passe',  'required' => false))
             ->add('tel1','text', array('label'=>'Téléphone 1',  'required' => false))
             ->add('tel2','text', array('label'=>'Téléphone 2',  'required' => false))
