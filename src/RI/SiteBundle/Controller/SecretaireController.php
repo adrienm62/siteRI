@@ -72,8 +72,6 @@ class SecretaireController extends Controller {
         $stages = $user->getStages();
         $documents = $user->getDocuments();
         $form = $this->createFormBuilder($user)->getForm();
-        $docController = new DocController;
-        
         
         $request= $this->get('request');
         
@@ -92,11 +90,12 @@ class SecretaireController extends Controller {
                 $em->remove($user);
                 $em->flush();
 
-                return new Response("Suppression effectuée");
+                $this->get('session')->getFlashBag()->add('notice', 'Suppression bien prise en compte');
+                return $this->redirect( $this->generateUrl('risite_liste_demandes') );
             }
        }
        
-       return $this->render('RISiteBundle:Site:profilUser.html.twig', array('profil' => $user, 'form' => $form->createView()));
+       return $this->render('RISiteBundle:Site:demande2.html.twig', array('profil' => $user, 'form' => $form->createView()));
     }
     
     
