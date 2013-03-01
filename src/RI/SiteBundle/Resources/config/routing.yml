@@ -50,6 +50,10 @@ risite_document_dl:
     pattern: /document/telecharger/{id}
     defaults: { _controller: RISiteBundle:Doc:telechargerDocument }
 
+risite_document_dl_public:
+    pattern: /document/telecharger-public/{id}
+    defaults: { _controller: RISiteBundle:Doc:telechargerDocument2 }
+
 risite_document_user:
     pattern: /document/recherche/{user}
     defaults: { _controller: RISiteBundle:Doc:voirDocUsers }
@@ -70,6 +74,6 @@ risite_supprimeretudiant:
     pattern: /suppression/{id}
     defaults: { _controller: RISiteBundle:Secretaire:suppressionCompte }
     
-risite_profiluser:
+risite_liste_demandes:
     pattern: /demandes-etudiants
     defaults: { _controller: RISiteBundle:Secretaire:voirUsers }

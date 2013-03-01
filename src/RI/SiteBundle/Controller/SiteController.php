@@ -51,8 +51,31 @@ class SiteController extends Controller {
                 return $this->redirect($this->generateURL('risite_profil'));
             }
         }
+        
+        //suppression ou modification de mot de passe
+        $defaultData = array('Nom de l\utilisateur' => '', 'Prénom de l\'utilisateur' => '');
+        $form2 = $this->createFormBuilder($defaultData)
+                ->add('traitement', 'choice', 
+                        array('choices' => array('m' => 'Modifier le mot de passe','s' => 'Demande de suppression'),
+                            'label'=>'Modification de mot de passe ou suppression de compte?'))
+                ->getForm();
+        
+        if ($this->getRequest()->isMethod('POST')) {
+            $form2->bind($this->getRequest());
 
-        return $this->render('RISiteBundle:Site:profil.html.twig', array('profil' => $profil, 'form' => $form->createView()));
+            // les données sont un tableau avec les clés "name", "email", et "message"
+            
+            $choix = $form2->get('traitement')->getData();
+            
+            if($choix == 'm'){
+                return $this->redirect($this->generateURL('fos_user_change_password'));
+            }  elseif ($choix == 's') {
+                return $this->redirect($this->generateURL('risite_demandesuppression'));
+            }
+        }
+
+        return $this->render('RISiteBundle:Site:profil.html.twig', array('profil' => $profil, 
+            'form' => $form->createView(),'form2' => $form2->createView()));
     }
     
     
@@ -125,6 +148,7 @@ class SiteController extends Controller {
     }
     
     public function voirInfoStageAction($idStage){
+        //récupération du stage
         $stage = $this->getDoctrine()->getManager()->getRepository('RISiteBundle:Stage')->find($idStage);
         
         if($stage === null){
@@ -148,7 +172,8 @@ class SiteController extends Controller {
             $em= $this->getDoctrine()->getManager();
             $em->flush();
 
-            return new Response("Demande bien prise en compte");
+            $this->get('session')->getFlashBag()->add('notice', 'Demande bien prise en compte');
+            return $this->redirect( $this->generateUrl('risite_accueil') );
        }
         
         return $this->render('RISiteBundle:Site:demande.html.twig', array('form' => $form->createView()));

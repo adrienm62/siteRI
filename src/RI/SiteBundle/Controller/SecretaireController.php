@@ -31,12 +31,13 @@ class SecretaireController extends Controller {
        
         
         $form = $this->createFormBuilder($user)
-                    ->add('username', 'text')
-                    ->add('nom', 'text')
-                    ->add('prenom', 'text')
-                    ->add('email', 'text' )
-                    ->add('adresse', 'textarea')
-                    ->add('ville', 'text')
+                    ->add('username', 'text', array('label'=>'Nom d\'utilisateur*'))
+                    ->add('nom', 'text', array('label'=>'Nom*'))
+                    ->add('prenom', 'text', array('label'=>'Prénom*'))
+                    ->add('email', 'text', array('label'=>'Email*') )
+                    ->add('adresse', 'textarea', array('required'=>false))
+                    ->add('ville', 'text', array('required'=>false))
+                    ->add('ine', 'text', array('label'=>'Numéro d\'INE*'))
                     ->getForm();
         
         $request = $this->get('request');
@@ -71,8 +72,6 @@ class SecretaireController extends Controller {
         $stages = $user->getStages();
         $documents = $user->getDocuments();
         $form = $this->createFormBuilder($user)->getForm();
-        $docController = new DocController;
-        
         
         $request= $this->get('request');
         
@@ -91,11 +90,12 @@ class SecretaireController extends Controller {
                 $em->remove($user);
                 $em->flush();
 
-                return new Response("Suppression effectuée");
+                $this->get('session')->getFlashBag()->add('notice', 'Suppression bien prise en compte');
+                return $this->redirect( $this->generateUrl('risite_liste_demandes') );
             }
        }
        
-       return $this->render('RISiteBundle:Site:profilUser.html.twig', array('profil' => $user, 'form' => $form->createView()));
+       return $this->render('RISiteBundle:Site:demande2.html.twig', array('profil' => $user, 'form' => $form->createView()));
     }
     
     

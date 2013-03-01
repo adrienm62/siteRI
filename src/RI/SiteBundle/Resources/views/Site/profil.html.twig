@@ -24,13 +24,14 @@
     {%endif%}
     </table>
     <br>
-    <h4>Modifier mon profil</h4>
-    Les champs avec * sont obligatoires.<br>
+    <h3>Modifier mon profil</h3>
+    Les champs marqués d'un * sont obligatoires.<br>
     {% include "RISiteBundle:Site:formulaire.html.twig" %}
     
-    <br>
+    
     {% if is_granted('ROLE_USER') %}
-    <a href="{{path('fos_user_change_password')}}">Changer de mot de passe ? </a>
-        <a href="{{ path('risite_demandesuppression') }}">Suppression de mon compte ?</a>
+    <h3>Changer mon Mot de Passe ou Supprimer mon compte</h3>
+        {% include "RISiteBundle:Site:formulaire2.html.twig" %}
     {% endif %}
+
 {% endblock %}
