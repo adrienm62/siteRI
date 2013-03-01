@@ -158,7 +158,9 @@ class SiteController extends Controller {
         return $this->render('RISiteBundle:Site:stage.html.twig', array('stage' => $stage));
     }   
     
-    
+     /**
+     * @Secure(roles="ROLE_ADMIN, ROLE_SECRETARY")
+     */
     public function demandeSuppressionAction(){
         $user = $this->getUser();
         $form = $this->createFormBuilder($user)->getForm();

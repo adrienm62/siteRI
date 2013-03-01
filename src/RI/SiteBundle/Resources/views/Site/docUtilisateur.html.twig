@@ -5,14 +5,19 @@
 {% endblock %}
 
 {% block body %}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash-notice">
+        Notification: {{ flashMessage }}
+    </div>
+{% endfor %}
     <h2>Gestion des documents utilisateurs</h2>
     <h3>Recherche des documents de {{user.nom}} {{user.prenom}}</h3>
        {% if docUser is not null %}
         <table>
             {% for document in docUser %}
                 <tr><td style="font-weight: bold">{{document.docnom}}</td> <td> Date de dépôt : {{document.docdatedepot|date('d-m-Y')}} à {{document.docdatedepot|date('H:i:s')}}</td>
-                    <td><div class ="download"><a href="{{ path('risite_document_dl', {'id':document.id}) }}">Télécharger</a></div></td>
-                    <td><div class ="delete"><a href="{{ path('risite_document_suppr', {'id':document.id}) }}">Supprimer</a></div></td></tr>
+                    <td><div class ="download"><a href="{{ path('risite_document_dl_admin', {'id':document.id}) }}">Télécharger</a></div></td>
+                    <td><div class ="delete"><a href="{{ path('risite_document_suppr_admin', {'id':document.id, 'user':user}) }}">Supprimer</a></div></td></tr>
             {%endfor%}
         </table>            
         {% endif %}

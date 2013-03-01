@@ -14,6 +14,9 @@ use RI\SiteBundle\Controller\DocController;
 
 class SecretaireController extends Controller {
     
+     /**
+     * @Secure(roles="ROLE_ADMIN, ROLE_SECRETARY")
+     */
     public function voirUsersAction(){
         $users = $this->getDoctrine()->getEntityManager()
                  ->getRepository('RIUserBundle:User')

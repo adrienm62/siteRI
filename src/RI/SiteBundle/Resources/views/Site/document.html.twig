@@ -5,6 +5,11 @@
 {% endblock %}
 
 {% block body %}
+    {% for flashMessage in app.session.flashbag.get('notice') %}
+    <div class="flash-notice">
+        Notification: {{ flashMessage }}
+    </div>
+{% endfor %}
     <h2>Gestion de mes documents</h2>
     <h3>Les documents publics</h3>
     {% if documentSecretaire is not null %}

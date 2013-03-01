@@ -39,7 +39,7 @@
                         <li><a href="{{ path('risite_partenaires') }}">Liste des Partenaires</a></li>
                     {% if is_granted('ROLE_ADMIN')%}
                         <li><a href="{{ path('risite_stages') }}">Liste des Stages</a></li>
-                        <li><a href="{{ path('sonata_admin_dashboard') }}">Accès pannel admin</a></li>
+                        <li><a href="{{ path('sonata_admin_dashboard') }}" target="_blank" >Accès pannel admin</a></li>
                     {% endif%}
                     {% if is_granted('ROLE_SECRETARY') or is_granted('ROLE_ADMIN') %}
                         <li><a href="{{ path('fos_user_registration_register') }}">Inscription (plan B)</a></li>
