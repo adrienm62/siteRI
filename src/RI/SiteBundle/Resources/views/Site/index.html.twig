@@ -21,7 +21,7 @@
     <p>
     Le professeur chargé des relations internationales au sein de l'IUT de Lens:<br>
     <table>
-        <tr><td style="font-weight: bold">{{admin.nom}} {{admin.prenom}}</td></tr>
+        <tr><td style="font-weight: bold"><a href="{{ path('risite_profil2',{'id':admin.id}) }}" >{{admin.nom}} {{admin.prenom}}</a></td></tr>
         <tr><td>{{admin.email}}</td></tr>
     </table>
     </p>

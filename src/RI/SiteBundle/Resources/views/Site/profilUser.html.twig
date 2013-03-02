@@ -15,6 +15,17 @@
         <tr><th>Ville:</th> <td>{{profil.ville}}</td></tr>
         {%endif%}
         <tr><th>Mail:</th> <td>{{profil.email}}</td></tr>
+        {% if is_granted('ROLE_SECRETARY') or is_granted('ROLE_ADMIN') %}
+            {%if profil.ine is not null%}
+                <tr><th>INE:</th> <td>{{profil.ine}}</td></tr>
+            {%endif%}
+            {%if profil.tel1 is not null%}
+                <tr><th>Téléphone 1:</th> <td>{{profil.tel1}}</td></tr>
+            {%endif%}
+            {%if profil.tel2 is not null%}
+                <tr><th>Téléphone 2:</th> <td>{{profil.tel2}}</td></tr>
+            {%endif%}
+        {%endif%}
     </table>
     {% if is_granted('ROLE_SECRETARY') %}
     <h3>Suppression du compte de {{ profil.nom }} {{ profil.prenom }}</h3>
