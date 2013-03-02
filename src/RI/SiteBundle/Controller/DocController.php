@@ -92,7 +92,7 @@ class DocController extends Controller  {
 
                 $em->persist($document);
                 $em->flush();
-
+                $this->get('session')->getFlashBag()->add('notice', 'Le document a bien été mis en ligne.');
                 return $this->redirect($this->generateURL('risite_document'));
             }
         }
@@ -182,7 +182,7 @@ class DocController extends Controller  {
 
                     $em->persist($document);
                     $em->flush();
-
+                    $this->get('session')->getFlashBag()->add('notice', 'Le document a bien été envoyé.');
                     return $this->redirect($this->generateURL('risite_document'));
                 }
             }
@@ -209,17 +209,75 @@ class DocController extends Controller  {
             throw $this->createNotFoundException('Impossible de supprimer ce document.');
         }
         
+        $form = $this->createFormBuilder($user)->getForm();
+        $request= $this->get('request');
+        
         if($document != null){
-            //suppresion du document dans le dossier uploads/documents
-            $document->delete();
-            
-            //suppression du document dans la base de données
-            $em = $this->getDoctrine()->getManager();
-            $em->remove($document);
-            $em->flush();
+            if ($request->getMethod() == 'POST'){
+                //suppresion du document dans le dossier uploads/documents
+                $document->delete();
+
+                //suppression du document dans la base de données
+                $em = $this->getDoctrine()->getManager();
+                $em->remove($document);
+                $em->flush();
+
+                $this->get('session')->getFlashBag()->add('notice', 'Le document a bien été supprimé.');
+                return $this->redirect($this->generateURL('risite_document', array('id' => $user)));
+            }
         }
         
-        return $this->redirect($this->generateURL('risite_document', array('id' => $user)));
+        return $this->render('RISiteBundle:Site:demande3.html.twig', array('form' => $form->createView()));
+        
+    }
+    
+    /**
+     * @Secure(roles="ROLE_ADMIN, ROLE_SECRETARY")
+     */
+    public function supprimerDocument2Action($id, $idUser){
+        
+        //recherche de l'utilisateur dans la base de données
+        
+            $query2 = $this->getDoctrine()->getEntityManager()->createQuery(
+                'SELECT u FROM RIUserBundle:User u WHERE u.id = :id')
+                ->setParameter('id', $idUser);
+            try{
+               $user=$query2->getSingleResult();
+            }catch(\Doctrine\Orm\NoResultException $e){
+               $user=null;
+               return null;
+            }
+        //récupération du document en ne faisant pas attention à ce que l'user soit le propriétaire
+        //un admin ou un secrétaire doit pouvoir supprimer les documents des autres users.
+        $query = $this->getDoctrine()->getEntityManager()->createQuery(
+                'SELECT d FROM RISiteBundle:Document d WHERE d.id = :id')
+                ->setParameter('id', $id);
+        try{
+        $document=$query->getSingleResult();
+        }catch(\Doctrine\Orm\NoResultException $e){
+            $document=null;
+            throw $this->createNotFoundException('Impossible de supprimer ce document.');
+        }
+        
+        $form = $this->createFormBuilder($document)->getForm();
+        $request= $this->get('request');
+        
+        if($document != null){
+            if ($request->getMethod() == 'POST'){
+                //suppresion du document dans le dossier uploads/documents
+                $document->delete();
+
+                //suppression du document dans la base de données
+                $em = $this->getDoctrine()->getManager();
+                $em->remove($document);
+                $em->flush();
+
+                $this->get('session')->getFlashBag()->add('notice', 'Le document a bien été supprimé.');
+                return $this->redirect($this->generateURL('risite_document_user', array('user' => $user)));
+            }
+        }
+        
+        return $this->render('RISiteBundle:Site:demande3.html.twig', array('form' => $form->createView()));
         
     }
     
@@ -291,6 +349,39 @@ class DocController extends Controller  {
     }
     
     /**
+     * Téléchargement des documents des utilisateurs par la secrétaire et l'admin
+     * 
+     * @Secure(roles="ROLE_ADMIN, ROLE_SECRETARY")
+     */
+    public function telechargerDocument3Action($id){
+        //pas de vérification sur le propriétaire du document car la secrétaire ou l'admin sont les boss :).
+        $query = $this->getDoctrine()->getEntityManager()->createQuery(
+                'SELECT d FROM RISiteBundle:Document d WHERE d.id = :id')
+                ->setParameter('id', $id);
+        try{
+        $document=$query->getSingleResult();
+        }catch(\Doctrine\Orm\NoResultException $e){
+            $document=null;
+            throw $this->createNotFoundException('Impossible de télécharger ce document.');
+        }
+        
+        $fichier = $document->getDocChemin();
+        $nom = pathinfo($fichier, PATHINFO_BASENAME);
+        $ext = pathinfo($fichier, PATHINFO_EXTENSION);
+        
+        $response = new Response();
+        $response->setStatusCode(200);
+        $response->headers->set('Content-Type', 'application/'.$ext.'');
+        $response->setContent(file_get_contents($fichier));
+        $response->headers->set('Content-Disposition', sprintf('attachment;filename="%s"', $nom));
+        $response->headers->set('X-Sendfile', $fichier);
+
+        
+        $response->send();
+        return $response;
+    }
+    
+    /**
      * Gère la page de recherche des documents par utilisateur
      * 
      * @Secure(roles="ROLE_ADMIN, ROLE_SECRETARY")
@@ -312,8 +403,6 @@ class DocController extends Controller  {
                $user=null;
                return null;
             }
-        
-        
             
             if ($user != null){
                 $query2 = $this->getDoctrine()->getEntityManager()->createQuery(

@@ -87,6 +87,12 @@ img {
     background: url("../../download.gif") no-repeat right bottom;
 }
 
+.add{
+    padding-right: 20px ;
+	line-height: 20px ;
+    background: url("../../add.gif") no-repeat right bottom;
+}
+
 #map_canvas img,
 .google-maps img {
   max-width: none;

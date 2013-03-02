@@ -42,6 +42,10 @@ risite_document_suppr:
     pattern: /document/supprimer/{id}
     defaults: { _controller: RISiteBundle:Doc:supprimerDocument }
 
+risite_document_suppr_admin:
+    pattern: /document/supprimer-admin/{idUser}-document{id}
+    defaults: { _controller: RISiteBundle:Doc:supprimerDocument2 }
+
 risite_document_envoi:
     pattern: /document/envoyer/{user}
     defaults: { _controller: RISiteBundle:Doc:envoiDocument }
@@ -54,6 +58,10 @@ risite_document_dl_public:
     pattern: /document/telecharger-public/{id}
     defaults: { _controller: RISiteBundle:Doc:telechargerDocument2 }
 
+risite_document_dl_admin:
+    pattern: /document/telecharger-admin/{id}
+    defaults: { _controller: RISiteBundle:Doc:telechargerDocument3 }
+
 risite_document_user:
     pattern: /document/recherche/{user}
     defaults: { _controller: RISiteBundle:Doc:voirDocUsers }
@@ -61,11 +69,7 @@ risite_document_user:
 risite_inscrireetudiant:
     pattern: /inscrire-etudiant
     defaults: { _controller: RISiteBundle:Secretaire:inscrireEtudiant }
-
-risite_test:
-    pattern: /test
-    defaults: { _controller: RISiteBundle:Site:test}
-    
+   
 risite_demandesuppression:
     pattern: /suppression-compte
     defaults: { _controller: RISiteBundle:Site:demandeSuppression }
