@@ -27,10 +27,7 @@
             {%endif%}
         {%endif%}
     </table>
-    {% if is_granted('ROLE_SECRETARY') %}
-    <h3>Suppression du compte de {{ profil.nom }} {{ profil.prenom }}</h3>
-        {% include "RISiteBundle:Site:formulaire.html.twig" %}
-    {%endif%}
+    
         
         
    

@@ -87,7 +87,7 @@ class SiteController extends Controller {
         if($profil === null){
             throw $this->createNotFoundException('Le profil de cet utilisateur id['.$id.'] n\'existe pas.');
         }
-        
+               
         if($current_user == $profil){
             return $this->redirect($this->generateURL('risite_profil'));
         }else{
