@@ -45,7 +45,7 @@ class Contact
     /**
      * @var string
      *
-     * @ORM\Column(name="cont_mail", type="text")
+     * @ORM\Column(name="cont_mail", type="string")
      */
     private $cont_mail;
 

@@ -168,7 +168,7 @@ class SiteController extends Controller {
 
         if ($request->getMethod() == 'POST'){
             
-            $user->setLocked(true);
+            $user->setDemandeSupppression(true);
             $em= $this->getDoctrine()->getManager();
             $em->flush();
 
