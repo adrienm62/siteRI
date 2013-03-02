@@ -1,6 +1,6 @@
-
 <?php
 namespace RI\SiteBundle\Controller;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Component\Httpfoundation\Response;
@@ -169,7 +169,7 @@ class SiteController extends Controller {
 
         if ($request->getMethod() == 'POST'){
             
-            $user->setDemandeSupppression(true);
+            $user->setDemandeSuppression(true);
             $em= $this->getDoctrine()->getManager();
             $em->flush();
 
