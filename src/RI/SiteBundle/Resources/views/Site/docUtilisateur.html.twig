@@ -17,7 +17,7 @@
             {% for document in docUser %}
                 <tr><td style="font-weight: bold">{{document.docnom}}</td> <td> Date de dépôt : {{document.docdatedepot|date('d-m-Y')}} à {{document.docdatedepot|date('H:i:s')}}</td>
                     <td><div class ="download"><a href="{{ path('risite_document_dl_admin', {'id':document.id}) }}">Télécharger</a></div></td>
-                    <td><div class ="delete"><a href="{{ path('risite_document_suppr_admin', {'id':document.id, 'user':user}) }}">Supprimer</a></div></td></tr>
+                    <td><div class ="delete"><a href="{{ path('risite_document_suppr_admin', {'id':document.id, 'idUser':user.id}) }}">Supprimer</a></div></td></tr>
             {%endfor%}
         </table>            
         {% endif %}

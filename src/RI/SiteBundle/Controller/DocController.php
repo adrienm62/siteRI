@@ -234,17 +234,13 @@ class DocController extends Controller  {
     /**
      * @Secure(roles="ROLE_ADMIN, ROLE_SECRETARY")
      */
-    public function supprimerDocument2Action($id, $user){
-        $tab = explode(' ', $user);
-        $nom = $tab[0];
-        $prenom = $tab[1];
+    public function supprimerDocument2Action($id, $idUser){
         
         //recherche de l'utilisateur dans la base de données
         
             $query2 = $this->getDoctrine()->getEntityManager()->createQuery(
-                'SELECT u FROM RIUserBundle:User u WHERE u.nom = :nom AND u.prenom = :prenom')
-                ->setParameter('nom', $nom)
-                ->setParameter('prenom', $prenom);
+                'SELECT u FROM RIUserBundle:User u WHERE u.id = :id')
+                ->setParameter('id', $idUser);
             try{
                $user=$query2->getSingleResult();
             }catch(\Doctrine\Orm\NoResultException $e){
