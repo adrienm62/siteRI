@@ -107,7 +107,8 @@ class SiteController extends Controller {
     
     public function voirEtudiantsAction(){
         $em = $this->getDoctrine()->getEntityManager();
-        $query = $em->createQuery('SELECT e FROM RIUserBundle:User e WHERE e.ine IS NOT NULL');
+        $query = $em->createQuery('SELECT e FROM RIUserBundle:User e 
+            WHERE e.ine IS NOT NULL');
 
         $etudiants = $query->getResult();
  
@@ -115,7 +116,8 @@ class SiteController extends Controller {
             throw $this->createNotFoundException('La liste des étudiants est vide.');
         }
         
-        return $this->render('RISiteBundle:Site:listeEtudiants.html.twig', array('etudiants' => $etudiants));
+        return $this->render('RISiteBundle:Site:listeEtudiants.html.twig', 
+                array('etudiants' => $etudiants));
     }
     
     public function voirInfoPartenaireAction($id){
