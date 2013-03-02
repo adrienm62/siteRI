@@ -1,5 +1,6 @@
 <?php
 namespace RI\SiteBundle\Controller;
+
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Component\Httpfoundation\Response;
@@ -158,9 +159,7 @@ class SiteController extends Controller {
         return $this->render('RISiteBundle:Site:stage.html.twig', array('stage' => $stage));
     }   
     
-     /**
-     * Confirmation de demande de suppression de compte (coté utilisateur)
-     */
+    
     public function demandeSuppressionAction(){
         $user = $this->getUser();
         $form = $this->createFormBuilder($user)->getForm();
@@ -170,7 +169,7 @@ class SiteController extends Controller {
 
         if ($request->getMethod() == 'POST'){
             
-            $user->setLocked(true);
+            $user->setDemandeSuppression(true);
             $em= $this->getDoctrine()->getManager();
             $em->flush();
 

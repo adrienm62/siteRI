@@ -9,7 +9,7 @@ class UserRepository extends EntityRepository {
         $queryBuilder = $this->_em->createQueryBuilder()
                 ->select('u')
                 ->from($this->_entityName, 'u')
-                ->andWhere('u.locked = 1');
+                ->andWhere('u.demandeSuppression = 1');
         
         $query = $queryBuilder->getQuery();
         $resultats = $query->getResult();

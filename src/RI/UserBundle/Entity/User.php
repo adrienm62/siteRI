@@ -84,8 +84,13 @@ class User extends BaseUser {
       */
      protected $stages;
 
+     /**
+      * @var boolean
+      * @ORM\Column(type="boolean", nullable = true)
+      */
+     protected $demandeSuppression;
 
-     
+
      /**
      * Get id
      *
@@ -351,5 +356,29 @@ class User extends BaseUser {
     public function getStages()
     {
         return $this->stages;
+    }
+
+    
+
+    /**
+     * Set demandeSuppression
+     *
+     * @param boolean $demandeSuppression
+     * @return User
+     */
+    public function setDemandeSuppression($demandeSuppression)
+    {
+        $this->demandeSuppression = $demandeSuppression;
+    
+        return $this;
+    }
+
+    /**
+     * Get demandeSuppression
+     *
+     * @return boolean 
+     */
+        public function suppressionEstDemandee(){
+        return $this->demandeSuppression;
     }
 }
