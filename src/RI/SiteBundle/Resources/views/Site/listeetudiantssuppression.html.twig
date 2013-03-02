@@ -9,11 +9,16 @@
         Notice: {{ flashMessage }}
     </div>
 {% endfor %}
-    <h2>Liste des demandes de suppression</h2>
+    <h2>Suppression de compte</h2>
+    <h3>Liste des demandes de suppression</h3>
     <ul>
         
         {%for user in liste_users %}
         <li><a href= {{path('risite_supprimeretudiant', {'id' : user.id } )}}>{{user.nom }} {{user.prenom}}</li>
         {%endfor%}
+        
+        
     </ul>
+    <h3>Suppression de compte</h3>
+        {% include "RISiteBundle:Site:formulaire.html.twig" %}
 {%endblock%}

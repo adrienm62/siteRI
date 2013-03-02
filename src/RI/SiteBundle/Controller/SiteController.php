@@ -159,7 +159,7 @@ class SiteController extends Controller {
     }   
     
      /**
-     * @Secure(roles="ROLE_ADMIN, ROLE_SECRETARY")
+     * Confirmation de demande de suppression de compte (coté utilisateur)
      */
     public function demandeSuppressionAction(){
         $user = $this->getUser();

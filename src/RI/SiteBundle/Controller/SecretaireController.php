@@ -9,6 +9,7 @@ use RI\SiteBundle\Entity\Partenaire;
 use RI\SiteBundle\Entity\Contact;
 use RI\SiteBundle\Entity\Document;
 use RI\UserBundle\Entity\User;
+use RI\UserBundle\Entity\UserRepository;
 use RI\SiteBundle\Controller\DocController;
 
 
@@ -22,8 +23,31 @@ class SecretaireController extends Controller {
                  ->getRepository('RIUserBundle:User')
                 ->findDemandeSuppression();
         
+        //formulaire pour suppression de compte
+        $defaultData = array('Nom de l\utilisateur' => '', 'Prénom de l\'utilisateur' => '');
+        $form = $this->createFormBuilder($defaultData)
+                
+                ->add('users', 'entity', array(
+                    'class' => 'RIUserBundle:User', 'label' => 'Nom d\'utilisateur',
+                    'query_builder' => function(UserRepository $er) {
+                        return $er->createQueryBuilder('u')
+                        ->orderBy('u.nom', 'ASC'); }))
+                ->getForm();
+        
+        if ($this->getRequest()->isMethod('POST')) {
+            $form->bind($this->getRequest());
+
+            // les données sont un tableau avec les clés "name", "email", et "message"
+            $user = $form->get('users')->getData();
+            $id_user = $user->getId();
+            
+            $this->suppressionCompteAction($id_user);
+            
+            
+        }
+        
         return $this->render('RISiteBundle:Site:listeetudiantssuppression.html.twig',
-                array('liste_users' => $users));
+                array('liste_users' => $users, 'form' =>$form->createView()));
     }
     
     /**
@@ -78,7 +102,7 @@ class SecretaireController extends Controller {
         
         $request= $this->get('request');
         
-        if ($user->isLocked() ) {
+        
             if ($request->getMethod() == 'POST'){
             
                 
@@ -89,14 +113,16 @@ class SecretaireController extends Controller {
                 
                 foreach ($documents as $document) {
                    $document->delete();
+                   $em->remove($document);
                 }
+                
                 $em->remove($user);
                 $em->flush();
 
                 $this->get('session')->getFlashBag()->add('notice', 'Suppression bien prise en compte');
                 return $this->redirect( $this->generateUrl('risite_liste_demandes') );
             }
-       }
+       
        
        return $this->render('RISiteBundle:Site:demande2.html.twig', array('profil' => $user, 'form' => $form->createView()));
     }
