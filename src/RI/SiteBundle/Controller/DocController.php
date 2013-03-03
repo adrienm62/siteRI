@@ -66,7 +66,7 @@ class DocController extends Controller  {
         
         //upload d'un document
         $document = new Document();
-    
+
         $document->setDocDatedepot(new \DateTime);
         //le chemin est obligatoire, on met temporairement quelque chose
         $document->setDocChemin($document->getUploadRootDir());
@@ -116,12 +116,13 @@ class DocController extends Controller  {
 
             // les données sont un tableau avec les clés "name", "email", et "message"
             $user = $form2->get('users')->getData();
+            $id_user = $user->getId();
             $choix = $form2->get('traitement')->getData();
             
             if($choix == 'e'){
-                return $this->redirect($this->generateURL('risite_document_envoi', array('user' => $user)));
+                return $this->redirect($this->generateURL('risite_document_envoi', array('id' => $id_user)));
             }  elseif ($choix == 'c') {
-                return $this->redirect($this->generateURL('risite_document_user', array('user' => $user)));
+                return $this->redirect($this->generateURL('risite_document_user', array('id' => $id_user)));
             }
         }
         return $this->render('RISiteBundle:Site:document.html.twig', array('documents' => $documents,
@@ -135,17 +136,13 @@ class DocController extends Controller  {
      * 
      * @Secure(roles="ROLE_ADMIN, ROLE_SECRETARY")
      */
-    public function envoiDocumentAction($user){
-        $tab = explode(' ', $user);
-        $nom = $tab[0];
-        $prenom = $tab[1];
-        
+    public function envoiDocumentAction($id){
+                
         //recherche de l'utilisateur dans la base de données
         
             $query = $this->getDoctrine()->getEntityManager()->createQuery(
-                'SELECT u FROM RIUserBundle:User u WHERE u.nom = :nom AND u.prenom = :prenom')
-                ->setParameter('nom', $nom)
-                ->setParameter('prenom', $prenom);
+                'SELECT u FROM RIUserBundle:User u WHERE u.id = :id')
+                ->setParameter('id', $id);
             try{
                $user=$query->getSingleResult();
             }catch(\Doctrine\Orm\NoResultException $e){
@@ -386,17 +383,13 @@ class DocController extends Controller  {
      * 
      * @Secure(roles="ROLE_ADMIN, ROLE_SECRETARY")
      */
-    public function voirDocUsersAction($user){
-        $tab = explode(' ', $user);
-        $nom = $tab[0];
-        $prenom = $tab[1];
+    public function voirDocUsersAction($id){
         
         //recherche de l'utilisateur dans la base de données
         
             $query = $this->getDoctrine()->getEntityManager()->createQuery(
-                'SELECT u FROM RIUserBundle:User u WHERE u.nom = :nom AND u.prenom = :prenom')
-                ->setParameter('nom', $nom)
-                ->setParameter('prenom', $prenom);
+                'SELECT u FROM RIUserBundle:User u WHERE u.id = :id')
+                ->setParameter('id', $id);
             try{
                $user=$query->getSingleResult();
             }catch(\Doctrine\Orm\NoResultException $e){

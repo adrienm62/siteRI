@@ -47,7 +47,7 @@ risite_document_suppr_admin:
     defaults: { _controller: RISiteBundle:Doc:supprimerDocument2 }
 
 risite_document_envoi:
-    pattern: /document/envoyer/{user}
+    pattern: /document/envoyer/{id}
     defaults: { _controller: RISiteBundle:Doc:envoiDocument }
 
 risite_document_dl:
@@ -63,7 +63,7 @@ risite_document_dl_admin:
     defaults: { _controller: RISiteBundle:Doc:telechargerDocument3 }
 
 risite_document_user:
-    pattern: /document/recherche/{user}
+    pattern: /document/recherche/{id}
     defaults: { _controller: RISiteBundle:Doc:voirDocUsers }
 
 risite_inscrireetudiant:
