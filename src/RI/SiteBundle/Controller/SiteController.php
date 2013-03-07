@@ -26,6 +26,11 @@ class SiteController extends Controller {
         return $this->render('RISiteBundle:Site:index.html.twig', array('admin' => $admin));
     }
     
+    /**
+     * 
+     * 
+     * @Secure(roles="ROLE_USER")
+     */
     public function voirProfilAction(){
         $profil = $this->getUser();
         
@@ -130,6 +135,11 @@ class SiteController extends Controller {
         return $this->render('RISiteBundle:Site:partenaire.html.twig', array('partenaire' => $partenaire));
     }
     
+    /**
+     *
+     * 
+     * @Secure(roles="ROLE_USER")
+     */
     public function voirInfoContactAction($id){
         $contact = $this->getDoctrine()->getManager()->getRepository('RISiteBundle:Contact')->find($id);
         
@@ -161,7 +171,11 @@ class SiteController extends Controller {
         return $this->render('RISiteBundle:Site:stage.html.twig', array('stage' => $stage));
     }   
     
-    
+    /**
+     * 
+     * 
+     * @Secure(roles="ROLE_USER")
+     */
     public function demandeSuppressionAction(){
         $user = $this->getUser();
         $form = $this->createFormBuilder($user)->getForm();
